@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_navbar_navbar_items",
+  "info": {
+    "displayName": "navbar-item"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}
