@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 const Header = () => {
   const [menuOpen,setMenuOpen]=useState(false);
+  const [navbarData,setNavbarData]=useState();
 
   const openMenus =()=>{
     setMenuOpen(!menuOpen);
@@ -16,7 +17,9 @@ const Header = () => {
                   query: GET_NAVBAR,
                  });
 
-      console.log("Navbar data:", res.data);
+      console.log("Navbar data:", res.data.navbar.Logo);
+      setNavbarData(res.data.navbar.Logo);
+
     }catch(err){
       console.log("Error fetching navbar data:", err);
     }
@@ -30,7 +33,7 @@ const Header = () => {
     <>
       <div className='header-cvr   w-full h-[80px] flex items-center justify-between  relative'>
         <div className="logo w-[45%]   h-full flex items-center justify-center sm:w-[35%] 2xl:w-[25%]">
-          <img className='h-[60%] lg:h-[80%] ' src="https://carelabz.com/wp-content/uploads/2016/04/Carelabs-logo.jpg" alt="" />
+          <img className='h-[60%] lg:h-[80%] ' src={navbarData.url} alt="" />
         </div>
         <div className="menubar p-3 sm:hidden" onClick={openMenus}>
           <i className="fa-solid fa-bars fa-2xl"></i>
