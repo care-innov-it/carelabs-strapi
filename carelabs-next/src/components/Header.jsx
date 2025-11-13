@@ -37,12 +37,16 @@ const Header = () => {
 
   return (
     <>
-      <div className='header-cvr   w-full h-[80px] flex items-center justify-between  relative'>
+      <div className='header-cvr bg-[#0d1222f2]  w-full h-[80px] flex items-center justify-between  relative p-3 '>
         <div className="logo w-[45%]   h-full flex items-center justify-center sm:w-[35%] 2xl:w-[25%]">
           <img className='h-[60%] lg:h-[80%] ' src={navbarData?.url||"https://carelabz.com/wp-content/uploads/2016/04/Carelabs-logo.jpg"} alt="" />
         </div>
         <div className="menubar p-3 sm:hidden" onClick={openMenus}>
-          <i className="fa-solid fa-bars fa-2xl"></i>
+          {menuOpen ? (
+          <i className="fa-solid fa-xmark fa-2xl" style={{ color: "white" }}></i>
+        ) : (
+          <i className="fa-solid fa-bars fa-2xl" style={{ color: "white" }}></i>
+        )}
         </div>
 
         <div className="menus hidden h-full sm:w-[75%] sm:flex sm:items-center sm:justify-end sm:text-[14px]
@@ -61,14 +65,16 @@ const Header = () => {
 
 
      {menuOpen && (
-       <div className="menu-list w-full absolute h-fit right-0 top-0  ">
-        <ul className=' bg-white text-[#2575b6] p-3'>
-          <li className='text-end text-3xl p-3' onClick={openMenus}><i className="fa-solid fa-xmark fa-lg"></i></li>
-          <li className='text-center text-3xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>HOME</li>
-          <li className='text-center text-3xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>ABOUT US</li>
-          <li className='text-center text-3xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>SERVICES</li>
-          <li className='text-center text-3xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>BLOG</li>
-          <li className='text-center text-3xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30]p-3'>CONTACT</li>
+       <div className="menu-list w-full absolute h-fit right-0 top-[80px]  ">
+        <ul className=' bg-[#0d1222f2] text-white p-3'>
+          {/* <li className='text-end text-3xl p-3' onClick={openMenus}><i className="fa-solid fa-xmark fa-lg"></i></li> */}
+          <li className='text-center text-xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Home</li>
+          <li className='text-center text-xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Services</li>
+          <li className='text-center text-xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Impact</li>
+          <li className='text-center text-xl hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Blog</li>
+          <li className='text-center text-lg  p-3'>
+            <button className='bg-red-300 px-3 py-1 rounded'>Enquire Now</button>
+          </li>
         </ul>
       </div>
      )}
