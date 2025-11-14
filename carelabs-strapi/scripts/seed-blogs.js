@@ -11,8 +11,36 @@ async function seedBlogs() {
     const body = {
       data: {
         title: blog.title,
+        slug: blog.slug,
+        link: blog.link,
+        pubDate: blog.pubDate,
+        description: blog.description,
         content: blog.content,
-        featureImage: blog.featureImage
+
+        featureImage: blog.featureImage,    
+
+        seo: {
+          canonicalURL: blog.seo?.canonicalURL,
+          keywords: blog.seo?.keywords,
+          metaDescription: blog.seo?.metaDescription,
+          metaTitle: blog.seo?.metaTitle,
+          metaRobots: blog.seo?.metaRobots,
+          metaViewport: blog.seo?.metaViewport,
+
+          metaImage: {
+            url: blog.seo?.metaImage?.url || null
+          },
+
+          openGraph: {
+            ogUrl: blog.seo?.openGraph?.ogUrl,
+            ogType: blog.seo?.openGraph?.ogType,
+            ogTitle: blog.seo?.openGraph?.ogTitle,
+            ogDescription: blog.seo?.openGraph?.ogDescription,
+            ogImage: {
+              url: blog.seo?.openGraph?.ogImage?.url || null
+            }
+          }
+        }
       }
     };
 
