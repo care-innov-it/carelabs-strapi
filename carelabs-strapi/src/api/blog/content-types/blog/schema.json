@@ -15,7 +15,7 @@
       "type": "string"
     },
     "content": {
-      "type": "text"
+      "type": "richtext"
     },
     "featureImage": {
       "type": "media",
@@ -26,6 +26,11 @@
         "videos",
         "audios"
       ]
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }
