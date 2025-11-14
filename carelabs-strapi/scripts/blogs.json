@@ -1,12 +1,37 @@
 [
   {
-    "title": "First Blog",
-    "content": "This is the first blog post.",
-    "featureImage": 3
-  },
-  {
-    "title": "Second Blog",
-    "content": "This is the second blog post.",
-    "featureImage": 2
+    "title": "Blast Freezer Calibration Services",
+    "slug": "blast-freezer-calibration",
+    "link": "https://carelabz.com/blast-freezer-calibration/",
+    "pubDate": "2017-08-08T16:21:52.000Z",
+
+    "description": "Blast Freezers is generally used for frosting bulkier products...",
+    
+    "content": "<b>Blast Freezers</b> is generally used for frosting bulkier products ... (full slider content here)",
+
+    "featureImage": {
+      "url": "https://carelabz.com/wp-content/uploads/2017/08/blast-chiller-750-175.jpg"
+    },
+
+    "seo": {
+      "canonicalURL": "https://carelabz.com/blast-freezer-calibration/",
+      "keywords": "Blast Freezer Calibration Services, Blast Freezer Calibration, Blast Freezer Calibration Services dubai",
+      "metaDescription": "Blast Freezers is generally used for frosting bulkier products where spiral or tunnels cannot be used.",
+      "metaTitle": "Blast Freezer Calibration Services in Dubai - UAE | Carelabz.com",
+      "metaRobots": "index, follow",
+      "metaViewport": "width=device-width, initial-scale=1.0",
+      "metaImage": {
+        "wordpress_media_id": "4147"
+      },
+      "openGraph": {
+        "ogUrl": "https://carelabz.com/blast-freezer-calibration/",
+        "ogType": "article",
+        "ogTitle": "Blast Freezer Calibration Services in Dubai - UAE",
+        "ogDescription": "Blast Freezers is generally used for frosting bulkier products where spiral or tunnels cannot be used.",
+        "ogImage": {
+          "url": "https://carelabz.com/wp-content/uploads/2017/08/blast-chiller-750-175.jpg"
+        }
+      }
+    }
   }
 ]
