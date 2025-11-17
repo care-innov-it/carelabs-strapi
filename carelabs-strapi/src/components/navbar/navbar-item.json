@@ -13,6 +13,11 @@
     },
     "order": {
       "type": "integer"
+    },
+    "submenus": {
+      "type": "component",
+      "component": "submenus.service-item",
+      "repeatable": true
     }
   },
   "config": {}

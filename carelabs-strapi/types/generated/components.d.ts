@@ -1,5 +1,15 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FeaturesFeatureItem extends Struct.ComponentSchema {
+  collectionName: 'components_features_feature_items';
+  info: {
+    displayName: 'featureItem';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface NavbarNavbarItem extends Struct.ComponentSchema {
   collectionName: 'components_navbar_navbar_items';
   info: {
@@ -9,6 +19,7 @@ export interface NavbarNavbarItem extends Struct.ComponentSchema {
     label: Schema.Attribute.String;
     link: Schema.Attribute.String;
     order: Schema.Attribute.Integer;
+    submenus: Schema.Attribute.Component<'submenus.service-item', true>;
   };
 }
 
@@ -83,14 +94,33 @@ export interface StatsStatBox extends Struct.ComponentSchema {
   };
 }
 
+export interface SubmenusServiceItem extends Struct.ComponentSchema {
+  collectionName: 'components_submenus_service_items';
+  info: {
+    displayName: 'serviceItem';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    Button: Schema.Attribute.String;
+    featureheading: Schema.Attribute.String;
+    features: Schema.Attribute.Component<'features.feature-item', true>;
+    heading: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    view: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'features.feature-item': FeaturesFeatureItem;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;
       'stats.stat-box': StatsStatBox;
+      'submenus.service-item': SubmenusServiceItem;
     }
   }
 }
