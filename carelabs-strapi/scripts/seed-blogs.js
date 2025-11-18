@@ -59,7 +59,7 @@ async function seedBlogs() {
       const result = await res.json();
       console.log("Blog created:", result);
     } catch (err) {
-      console.error("Error creating blog:", err);
+     console.error("Blog creation failed",err);
     }
   }
 }

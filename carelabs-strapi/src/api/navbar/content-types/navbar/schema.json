@@ -25,6 +25,23 @@
       "type": "component",
       "component": "navbar.navbar-item",
       "repeatable": true
+    },
+    "buttontext": {
+      "type": "string"
+    },
+    "buttonlink": {
+      "type": "string"
+    },
+    "regionSelector": {
+      "type": "string"
+    },
+    "regionTitle": {
+      "type": "string"
+    },
+    "regions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::region.region"
     }
   }
 }
