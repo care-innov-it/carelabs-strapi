@@ -14,7 +14,7 @@
     "name": {
       "type": "string"
     },
-    "slug": {
+    "link": {
       "type": "string"
     },
     "siteUrl": {

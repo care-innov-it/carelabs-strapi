@@ -38,6 +38,9 @@
     "regionTitle": {
       "type": "string"
     },
+    "viewText": {
+      "type": "string"
+    },
     "regions": {
       "type": "relation",
       "relation": "oneToMany",
