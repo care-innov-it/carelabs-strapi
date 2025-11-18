@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_service_items",
+  "info": {
+    "singularName": "home-service-item",
+    "pluralName": "home-service-items",
+    "displayName": "Home-serviceItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "linktext": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "featureheading": {
+      "type": "string"
+    },
+    "performanceheading": {
+      "type": "string"
+    },
+    "buttontext": {
+      "type": "string"
+    },
+    "buttonlink": {
+      "type": "string"
+    },
+    "home_serivice": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::home-serivice.home-serivice",
+      "inversedBy": "home_service_items"
+    },
+    "serviceFeatures": {
+      "type": "component",
+      "component": "features.service-feature",
+      "repeatable": true
+    },
+    "performance": {
+      "type": "component",
+      "component": "stats.performance-matrix",
+      "repeatable": true
+    }
+  }
+}

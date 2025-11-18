@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_serivices",
+  "info": {
+    "singularName": "home-serivice",
+    "pluralName": "home-serivices",
+    "displayName": "HomeSerivice"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "home_service_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::home-service-item.home-service-item",
+      "mappedBy": "home_serivice"
+    }
+  }
+}

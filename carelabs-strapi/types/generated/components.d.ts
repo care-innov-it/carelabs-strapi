@@ -10,6 +10,16 @@ export interface FeaturesFeatureItem extends Struct.ComponentSchema {
   };
 }
 
+export interface FeaturesServiceFeature extends Struct.ComponentSchema {
+  collectionName: 'components_features_service_features';
+  info: {
+    displayName: 'serviceFeature';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface NavbarNavbarItem extends Struct.ComponentSchema {
   collectionName: 'components_navbar_navbar_items';
   info: {
@@ -85,6 +95,14 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface StatsPerformanceMatrix extends Struct.ComponentSchema {
+  collectionName: 'components_stats_performance_matrices';
+  info: {
+    displayName: 'performance-matrix';
+  };
+  attributes: {};
+}
+
 export interface StatsStatBox extends Struct.ComponentSchema {
   collectionName: 'components_stats_stat_boxes';
   info: {
@@ -114,10 +132,12 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'features.feature-item': FeaturesFeatureItem;
+      'features.service-feature': FeaturesServiceFeature;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;
+      'stats.performance-matrix': StatsPerformanceMatrix;
       'stats.stat-box': StatsStatBox;
       'submenus.service-item': SubmenusServiceItem;
     }

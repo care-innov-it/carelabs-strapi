@@ -561,6 +561,85 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHomeSeriviceHomeSerivice
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'home_serivices';
+  info: {
+    displayName: 'HomeSerivice';
+    pluralName: 'home-serivices';
+    singularName: 'home-serivice';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    home_service_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-service-item.home-service-item'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-serivice.home-serivice'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomeServiceItemHomeServiceItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'home_service_items';
+  info: {
+    displayName: 'Home-serviceItem';
+    pluralName: 'home-service-items';
+    singularName: 'home-service-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buttonlink: Schema.Attribute.String;
+    buttontext: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    featureheading: Schema.Attribute.String;
+    home_serivice: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::home-serivice.home-serivice'
+    >;
+    linktext: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-service-item.home-service-item'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    performance: Schema.Attribute.Component<'stats.performance-matrix', true>;
+    performanceheading: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    serviceFeatures: Schema.Attribute.Component<
+      'features.service-feature',
+      true
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   collectionName: 'homes';
   info: {
@@ -1177,6 +1256,8 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::home-new.home-new': ApiHomeNewHomeNew;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::home-serivice.home-serivice': ApiHomeSeriviceHomeSerivice;
+      'api::home-service-item.home-service-item': ApiHomeServiceItemHomeServiceItem;
       'api::home.home': ApiHomeHome;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::region.region': ApiRegionRegion;
