@@ -746,6 +746,39 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiWorldwideImpactWorldwideImpact
+  extends Struct.SingleTypeSchema {
+  collectionName: 'worldwide_impacts';
+  info: {
+    displayName: 'worldwide-impact';
+    pluralName: 'worldwide-impacts';
+    singularName: 'worldwide-impact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::worldwide-impact.worldwide-impact'
+    > &
+      Schema.Attribute.Private;
+    projectsStat: Schema.Attribute.Component<'stats.project-stat', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    successStat: Schema.Attribute.Component<'stats.success-stat', true>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1265,6 +1298,7 @@ declare module '@strapi/strapi' {
       'api::home.home': ApiHomeHome;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::region.region': ApiRegionRegion;
+      'api::worldwide-impact.worldwide-impact': ApiWorldwideImpactWorldwideImpact;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -106,6 +106,19 @@ export interface StatsPerformanceMatrix extends Struct.ComponentSchema {
   };
 }
 
+export interface StatsProjectStat extends Struct.ComponentSchema {
+  collectionName: 'components_stats_project_stats';
+  info: {
+    displayName: 'project-stat';
+  };
+  attributes: {
+    count: Schema.Attribute.Integer;
+    countryCount: Schema.Attribute.String;
+    countryName: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface StatsStatBox extends Struct.ComponentSchema {
   collectionName: 'components_stats_stat_boxes';
   info: {
@@ -114,6 +127,17 @@ export interface StatsStatBox extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     number: Schema.Attribute.String;
+  };
+}
+
+export interface StatsSuccessStat extends Struct.ComponentSchema {
+  collectionName: 'components_stats_success_stats';
+  info: {
+    displayName: 'success-stat';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    value: Schema.Attribute.String;
   };
 }
 
@@ -141,7 +165,9 @@ declare module '@strapi/strapi' {
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;
       'stats.performance-matrix': StatsPerformanceMatrix;
+      'stats.project-stat': StatsProjectStat;
       'stats.stat-box': StatsStatBox;
+      'stats.success-stat': StatsSuccessStat;
       'submenus.service-item': SubmenusServiceItem;
     }
   }
