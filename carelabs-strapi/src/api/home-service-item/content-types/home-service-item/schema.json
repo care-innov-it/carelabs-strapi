@@ -26,17 +26,23 @@
     "performanceheading": {
       "type": "string"
     },
-    "buttontext": {
+    "button1text": {
       "type": "string"
     },
-    "buttonlink": {
+    "button1link": {
       "type": "string"
     },
-    "home_serivice": {
+    "button2text": {
+      "type": "string"
+    },
+    "button2link": {
+      "type": "string"
+    },
+    "home_serivices": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::home-serivice.home-serivice",
-      "inversedBy": "home_service_items"
+      "mappedBy": "home_service_item"
     },
     "serviceFeatures": {
       "type": "component",

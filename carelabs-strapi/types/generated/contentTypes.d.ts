@@ -578,8 +578,8 @@ export interface ApiHomeSeriviceHomeSerivice
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    home_service_items: Schema.Attribute.Relation<
-      'oneToMany',
+    home_service_item: Schema.Attribute.Relation<
+      'manyToOne',
       'api::home-service-item.home-service-item'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -608,15 +608,17 @@ export interface ApiHomeServiceItemHomeServiceItem
     draftAndPublish: true;
   };
   attributes: {
-    buttonlink: Schema.Attribute.String;
-    buttontext: Schema.Attribute.String;
+    button1link: Schema.Attribute.String;
+    button1text: Schema.Attribute.String;
+    button2link: Schema.Attribute.String;
+    button2text: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     featureheading: Schema.Attribute.String;
-    home_serivice: Schema.Attribute.Relation<
-      'manyToOne',
+    home_serivices: Schema.Attribute.Relation<
+      'oneToMany',
       'api::home-serivice.home-serivice'
     >;
     linktext: Schema.Attribute.String;

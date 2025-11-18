@@ -20,11 +20,11 @@
     "description": {
       "type": "text"
     },
-    "home_service_items": {
+    "home_service_item": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::home-service-item.home-service-item",
-      "mappedBy": "home_serivice"
+      "inversedBy": "home_serivices"
     }
   }
 }

@@ -4,6 +4,13 @@
     "displayName": "performance-matrix"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "stats": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
   "config": {}
 }

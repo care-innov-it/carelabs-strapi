@@ -100,7 +100,10 @@ export interface StatsPerformanceMatrix extends Struct.ComponentSchema {
   info: {
     displayName: 'performance-matrix';
   };
-  attributes: {};
+  attributes: {
+    name: Schema.Attribute.String;
+    stats: Schema.Attribute.String;
+  };
 }
 
 export interface StatsStatBox extends Struct.ComponentSchema {
