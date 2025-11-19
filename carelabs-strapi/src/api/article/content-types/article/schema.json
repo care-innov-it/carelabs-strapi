@@ -51,10 +51,10 @@
     "featuredText": {
       "type": "string"
     },
-    "Blogcategory": {
-      "type": "component",
-      "component": "blogs.blog-category",
-      "repeatable": true
+    "blog_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-category.blog-category"
     }
   }
 }
