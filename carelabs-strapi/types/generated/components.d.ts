@@ -1,5 +1,15 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlogsBlogCategory extends Struct.ComponentSchema {
+  collectionName: 'components_blogs_blog_categories';
+  info: {
+    displayName: 'blog-category';
+  };
+  attributes: {
+    CategoryName: Schema.Attribute.String;
+  };
+}
+
 export interface FeaturesFeatureItem extends Struct.ComponentSchema {
   collectionName: 'components_features_feature_items';
   info: {
@@ -202,6 +212,7 @@ export interface SubmenusServiceItem extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blogs.blog-category': BlogsBlogCategory;
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
       'footer.footer-bottomlink': FooterFooterBottomlink;

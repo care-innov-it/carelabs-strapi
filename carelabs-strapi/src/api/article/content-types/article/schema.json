@@ -50,6 +50,11 @@
     },
     "featuredText": {
       "type": "string"
+    },
+    "Blogcategory": {
+      "type": "component",
+      "component": "blogs.blog-category",
+      "repeatable": true
     }
   }
 }

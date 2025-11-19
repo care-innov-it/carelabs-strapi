@@ -478,6 +478,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Blogcategory: Schema.Attribute.Component<'blogs.blog-category', true>;
     buttonlink: Schema.Attribute.String;
     buttontext: Schema.Attribute.String;
     category: Schema.Attribute.String;
