@@ -44,9 +44,9 @@
       "component": "shared.seo",
       "repeatable": false
     },
-    "blog_category": {
+    "blog_categories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::blog-category.blog-category"
     },
     "category": {
