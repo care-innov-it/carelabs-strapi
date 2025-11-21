@@ -113,6 +113,33 @@ const page = () => {
         </div>
         </section>
 
+
+        <section>
+
+            <div className='w-full h-screen bg-red-500'>
+
+                <div className="text w-full h-auto flex flex-col items-center justify-center py-10">
+                    <div className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 2xl:w-[65%] bg-white flex items-center justify-center text-center flex-col gap-5 p-4">
+                    
+                    {/* Title */}
+                    <p className="gradient-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+                      What's Included in Our Power System Analysis
+
+                    </p>
+                    
+                    {/* Description */}
+                    <p className=" w-[80%] px-4 sm:px-8 text-lg  md:text-xl text-[#65758B]">
+                        {/* Operating across continents with local expertise and global standards. */}
+                       Comprehensive electrical engineering studies covering all critical aspects of power system design, operation, and safety.
+                    </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
       
       
     </div>
