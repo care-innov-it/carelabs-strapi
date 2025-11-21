@@ -1,33 +1,57 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { GET_TESTIMONIALS } from '@/lib/api-Collection';
+import client from '@/lib/appollo-client';
 
 
 const HomeTestimonials = () => {
 
-    const testimonials = [
-    {
-      quote:
-        "Carelabs transformed our power system reliability. Their expertise in compliance and safety audits helped us achieve 99.9% uptime across all facilities.",
-      name: "Ahmed Al-Mansouri",
-      position: "Facilities Director",
-      company: "Gulf Energy Corporation",
-    },
-    {
-      quote:
-        "Carelabs helped us improve energy efficiency by identifying critical faults early. Excellent service and highly professional team.",
-      name: "Sarah Johnson",
-      position: "Chief Engineer",
-      company: "International Mining Solutions",
-    },
-    {
-      quote:
-        "The power system studies conducted by Carelabs identified critical vulnerabilities before they became issues. Their proactive approach saved us significant downtime costs.",
-      name: "Michael Chen",
-      position: "Plant Supervisor",
-      company: "SunTech Industries",
-    },
-  ];
-
+  const [testimonialData, setTestimonialData] = useState(null)
   const [current, setCurrent] = useState(0);
+ 
+
+  //   const testimonials = [
+  //   {
+  //     quote:
+  //       "Carelabs transformed our power system reliability. Their expertise in compliance and safety audits helped us achieve 99.9% uptime across all facilities.",
+  //     name: "Ahmed Al-Mansouri",
+  //     position: "Facilities Director",
+  //     company: "Gulf Energy Corporation",
+  //   },
+  //   {
+  //     quote:
+  //       "Carelabs helped us improve energy efficiency by identifying critical faults early. Excellent service and highly professional team.",
+  //     name: "Sarah Johnson",
+  //     position: "Chief Engineer",
+  //     company: "International Mining Solutions",
+  //   },
+  //   {
+  //     quote:
+  //       "The power system studies conducted by Carelabs identified critical vulnerabilities before they became issues. Their proactive approach saved us significant downtime costs.",
+  //     name: "Michael Chen",
+  //     position: "Plant Supervisor",
+  //     company: "SunTech Industries",
+  //   },
+  // ];
+
+  const fetchTestimonials = async () => {
+    try {
+      const response = await client.query({
+        query:GET_TESTIMONIALS
+      })
+       console.log("testimonial Data:", response.data.testimonialsSection)
+       setTestimonialData(response.data.testimonialsSection)
+    } catch (error) {
+      console.log("Error fetching testimonials:", error);
+    }
+  }
+
+  useEffect(()=> {
+   fetchTestimonials()
+  },[])
+
+  if(!testimonialData) return null
+
+  const testimonials = testimonialData.testimonials || [];
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % testimonials.length);
@@ -46,17 +70,21 @@ const HomeTestimonials = () => {
     
     {/* Heading */}
     <h1 className="text-xs sm:text-sm md:text-base px-6 py-2 rounded-full border border-blue-500">
-        Client Testimonials
+        {/* Client Testimonials */}
+         {testimonialData.badge}
     </h1>
     
     {/* Title */}
-    <p className="gradient-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-        Trusted by Industry Leaders
+    <p className="gradient-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+       dangerouslySetInnerHTML={{ __html: testimonialData.title }}
+    >
+        {/* {testimonialData.title} */}
     </p>
     
     {/* Description */}
     <p className="px-4 sm:px-8 text-base sm:text-lg md:text-xl text-[#65758B]">
-        See what our clients say about working with Carelabs for their electrical safety and compliance needs.
+        {/* See what our clients say about working with Carelabs for their electrical safety and compliance needs. */}
+        {testimonialData.description}
     </p>
 
     </div>
@@ -75,15 +103,27 @@ const HomeTestimonials = () => {
 
         {/* Testimonial Text */}
         <p className="text-xl   md:text-2xl 2xl:px-0 text-gray-700 leading-relaxed ">
-          "{testimonials[current].quote}"
+          {/* "{testimonials[current].quote}" */}
+          "{testimonials[current]?.feedback}"
         </p>
 
         {/* Name + Position */}
-        <div className="mt-6 ">
+
+        {/* <div className="mt-6 ">
           <p className="font-bold text-lg">{testimonials[current].name}</p>
           <p className="text-sm text-gray-500">{testimonials[current].position}</p>
           <p className="text-sm text-blue-600">{testimonials[current].company}</p>
-        </div>
+        </div> */}
+        
+        <div className="mt-6">
+            <p className="font-bold text-lg">{testimonials[current]?.name}</p>
+            <p className="text-sm text-gray-500">
+              {testimonials[current]?.position}
+            </p>
+            <p className="text-sm text-blue-600">
+              {testimonials[current]?.company}
+            </p>
+          </div>
 
         {/* Navigation */}
         <div className="flex justify-center items-center gap-6 mt-10">

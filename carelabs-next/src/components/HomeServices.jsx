@@ -59,52 +59,23 @@ const fetchGlobalReach = async () => {
 
   </div>
 
-      <div className="w-full min-h-screen  py-8 lg:py-0">
+      <div className="w-full min-h-screen  py-8 lg:py-0 ">
       <div className="w-full h-full lg:h-screen flex items-center justify-center px-4">
-        <div className="flex flex-col lg:flex-row xl:w-full 2xl:w-[70%] lg:h-[80%] gap-4 lg:gap-0">
+        <div className="flex flex-col lg:flex-row xl:w-full 2xl:w-[75%] lg:h-[80%] gap-4 lg:gap-0">
 
             {/* Service Cards Column */}
             <div className="w-full lg:w-[35%] h-full flex flex-col justify-start items-center p-3 gap-3 lg:gap-5 overflow-y-auto">
 
-                {/* <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Power System Analysis</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div>
-                
-                <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Grid Management</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div>
-                
-                <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Energy Optimization</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div>
-                
-                <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Load Forecasting</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div>
-                
-                <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Renewable Integration</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div>
-                
-                <div className="w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer">
-                    <p className="text-lg sm:text-xl lg:text-2xl font-bold">Smart Monitoring</p>
-                    <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">Click to explore details</p>
-                </div> */}
 
                 {items.map((item, index) => (
                 <div
                   key={index}
                   onClick={() => setActiveServiceIndex(index)}
-                  className={`w-full sm:w-[85%] lg:w-[90%] min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
+                  className={`w-full sm:w-[85%] lg:w-full min-h-[70px] lg:h-[80px] rounded-2xl bg-white p-4 lg:p-5 flex justify-center flex-col shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
                     activeServiceIndex === index ? "border border-blue-500" : ""
                   }`}
                 >
-                  <p className="text-lg sm:text-xl lg:text-2xl font-bold">
+                  <p className="text-lg sm:text-xl  font-bold">
                     {item.name}
                   </p>
                   <p className="text-xs sm:text-sm lg:text-[14px] text-gray-600">

@@ -197,3 +197,32 @@ export const GET_TESTIMONIALS = gql`
   
 `
 
+export const GET_FOOTER = gql`
+
+query {
+  footer {
+    logo {
+      url
+    }
+    description
+    socialLinks {
+      icon
+      url
+    }
+    footerMenu {
+      title
+      links {
+        label
+        url
+      }
+    }
+    bottomLinks {
+      label
+      url
+    }
+    copyrightText
+  }
+}
+
+`
+
