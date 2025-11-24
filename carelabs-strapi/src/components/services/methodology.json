@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_services_methodologies",
+  "info": {
+    "displayName": "methodology"
+  },
+  "options": {},
+  "attributes": {
+    "Order": {
+      "type": "integer"
+    },
+    "OrderTitleText": {
+      "type": "string"
+    },
+    "OrderSubtitleText": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

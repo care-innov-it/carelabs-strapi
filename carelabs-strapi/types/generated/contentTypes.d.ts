@@ -935,6 +935,8 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    faqSubtitle: Schema.Attribute.Text;
+    faqTitle: Schema.Attribute.RichText;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -951,12 +953,40 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     mainheading1: Schema.Attribute.String;
     mainheading2: Schema.Attribute.String;
     mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    methodology: Schema.Attribute.Component<'services.methodology', false>;
+    methodsSubtitle: Schema.Attribute.String;
+    methodsTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    questions: Schema.Attribute.Component<'services.questions', true>;
+    readyButton1: Schema.Attribute.String;
+    readyButton1Link: Schema.Attribute.String;
+    readyButton2: Schema.Attribute.String;
+    readyButton2Link: Schema.Attribute.String;
+    readySubtitle: Schema.Attribute.Text;
+    readyTitle: Schema.Attribute.RichText;
+    relatedServices: Schema.Attribute.Component<
+      'services.related-services',
+      true
+    >;
+    relatedSubtitle: Schema.Attribute.Text;
+    relatedTitle: Schema.Attribute.RichText;
+    resultName: Schema.Attribute.Component<'services.result-name', true>;
+    resultsStat: Schema.Attribute.Component<'services.results-stat', true>;
+    resultsSubtitle: Schema.Attribute.Text;
+    resultsTitle: Schema.Attribute.RichText;
+    sectorBenefits: Schema.Attribute.Component<'services.benefit-sector', true>;
+    sectorBenefitsSubtitle: Schema.Attribute.Text;
+    sectorBenefitsTitle: Schema.Attribute.String;
     service_features: Schema.Attribute.Component<
       'services.service-features',
       true
     >;
     service_stats: Schema.Attribute.Component<'services.servicestats', true>;
+    technicalItems: Schema.Attribute.Component<
+      'services.technical-items',
+      false
+    >;
+    technicalTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

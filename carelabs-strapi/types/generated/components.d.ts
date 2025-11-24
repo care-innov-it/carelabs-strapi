@@ -92,6 +92,78 @@ export interface NewNewItem extends Struct.ComponentSchema {
   };
 }
 
+export interface ServicesBenefitSector extends Struct.ComponentSchema {
+  collectionName: 'components_services_benefit_sectors';
+  info: {
+    displayName: 'sectorBenefits';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    list1: Schema.Attribute.Text;
+    list2: Schema.Attribute.Text;
+    list3: Schema.Attribute.Text;
+  };
+}
+
+export interface ServicesMethodology extends Struct.ComponentSchema {
+  collectionName: 'components_services_methodologies';
+  info: {
+    displayName: 'methodology';
+  };
+  attributes: {
+    Order: Schema.Attribute.Integer;
+    OrderSubtitleText: Schema.Attribute.Text;
+    OrderTitleText: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesQuestions extends Struct.ComponentSchema {
+  collectionName: 'components_services_questions';
+  info: {
+    displayName: 'questions';
+  };
+  attributes: {
+    questionAns: Schema.Attribute.Text;
+    questionName: Schema.Attribute.Text;
+  };
+}
+
+export interface ServicesRelatedServices extends Struct.ComponentSchema {
+  collectionName: 'components_services_related_services';
+  info: {
+    displayName: 'relatedServices';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesResultName extends Struct.ComponentSchema {
+  collectionName: 'components_services_result_names';
+  info: {
+    displayName: 'resultName';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesResultsStat extends Struct.ComponentSchema {
+  collectionName: 'components_services_results_stats';
+  info: {
+    displayName: 'resultsStat';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    percentage: Schema.Attribute.String;
+  };
+}
+
 export interface ServicesServiceFeatures extends Struct.ComponentSchema {
   collectionName: 'components_services_service_features';
   info: {
@@ -114,6 +186,14 @@ export interface ServicesServicestats extends Struct.ComponentSchema {
   };
 }
 
+export interface ServicesTechnicalItems extends Struct.ComponentSchema {
+  collectionName: 'components_services_technical_items';
+  info: {
+    displayName: 'technicalItems';
+  };
+  attributes: {};
+}
+
 export interface ServicesWhatsIncludeFeatures extends Struct.ComponentSchema {
   collectionName: 'components_services_whats_include_features';
   info: {
@@ -122,6 +202,7 @@ export interface ServicesWhatsIncludeFeatures extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text;
     label: Schema.Attribute.String;
+    stat: Schema.Attribute.String;
   };
 }
 
@@ -249,8 +330,15 @@ declare module '@strapi/strapi' {
       'footer.social-link': FooterSocialLink;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
+      'services.benefit-sector': ServicesBenefitSector;
+      'services.methodology': ServicesMethodology;
+      'services.questions': ServicesQuestions;
+      'services.related-services': ServicesRelatedServices;
+      'services.result-name': ServicesResultName;
+      'services.results-stat': ServicesResultsStat;
       'services.service-features': ServicesServiceFeatures;
       'services.servicestats': ServicesServicestats;
+      'services.technical-items': ServicesTechnicalItems;
       'services.whats-include-features': ServicesWhatsIncludeFeatures;
       'services.why-matters': ServicesWhyMatters;
       'shared.open-graph': SharedOpenGraph;

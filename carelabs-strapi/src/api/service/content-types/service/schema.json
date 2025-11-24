@@ -76,6 +76,92 @@
       "type": "component",
       "component": "services.whats-include-features",
       "repeatable": true
+    },
+    "methodsTitle": {
+      "type": "string"
+    },
+    "methodsSubtitle": {
+      "type": "string"
+    },
+    "methodology": {
+      "type": "component",
+      "component": "services.methodology",
+      "repeatable": false
+    },
+    "sectorBenefitsTitle": {
+      "type": "string"
+    },
+    "sectorBenefitsSubtitle": {
+      "type": "text"
+    },
+    "sectorBenefits": {
+      "type": "component",
+      "component": "services.benefit-sector",
+      "repeatable": true
+    },
+    "resultsTitle": {
+      "type": "richtext"
+    },
+    "resultsSubtitle": {
+      "type": "text"
+    },
+    "resultsStat": {
+      "type": "component",
+      "component": "services.results-stat",
+      "repeatable": true
+    },
+    "resultName": {
+      "type": "component",
+      "component": "services.result-name",
+      "repeatable": true
+    },
+    "readyTitle": {
+      "type": "richtext"
+    },
+    "readySubtitle": {
+      "type": "text"
+    },
+    "readyButton1": {
+      "type": "string"
+    },
+    "readyButton1Link": {
+      "type": "string"
+    },
+    "readyButton2": {
+      "type": "string"
+    },
+    "readyButton2Link": {
+      "type": "string"
+    },
+    "relatedTitle": {
+      "type": "richtext"
+    },
+    "relatedSubtitle": {
+      "type": "text"
+    },
+    "relatedServices": {
+      "type": "component",
+      "component": "services.related-services",
+      "repeatable": true
+    },
+    "faqTitle": {
+      "type": "richtext"
+    },
+    "faqSubtitle": {
+      "type": "text"
+    },
+    "questions": {
+      "type": "component",
+      "component": "services.questions",
+      "repeatable": true
+    },
+    "technicalTitle": {
+      "type": "string"
+    },
+    "technicalItems": {
+      "type": "component",
+      "component": "services.technical-items",
+      "repeatable": false
     }
   }
 }
