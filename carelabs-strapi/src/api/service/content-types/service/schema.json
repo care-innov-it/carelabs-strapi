@@ -86,7 +86,7 @@
     "methodology": {
       "type": "component",
       "component": "services.methodology",
-      "repeatable": false
+      "repeatable": true
     },
     "sectorBenefitsTitle": {
       "type": "string"
@@ -161,7 +161,7 @@
     "technicalItems": {
       "type": "component",
       "component": "services.technical-items",
-      "repeatable": false
+      "repeatable": true
     }
   }
 }

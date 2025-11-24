@@ -4,6 +4,16 @@
     "displayName": "technicalItems"
   },
   "options": {},
-  "attributes": {},
+  "attributes": {
+    "icon": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    }
+  },
   "config": {}
 }

@@ -953,7 +953,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     mainheading1: Schema.Attribute.String;
     mainheading2: Schema.Attribute.String;
     mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    methodology: Schema.Attribute.Component<'services.methodology', false>;
+    methodology: Schema.Attribute.Component<'services.methodology', true>;
     methodsSubtitle: Schema.Attribute.String;
     methodsTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
@@ -984,7 +984,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     service_stats: Schema.Attribute.Component<'services.servicestats', true>;
     technicalItems: Schema.Attribute.Component<
       'services.technical-items',
-      false
+      true
     >;
     technicalTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

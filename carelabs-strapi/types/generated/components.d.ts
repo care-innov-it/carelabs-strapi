@@ -191,7 +191,11 @@ export interface ServicesTechnicalItems extends Struct.ComponentSchema {
   info: {
     displayName: 'technicalItems';
   };
-  attributes: {};
+  attributes: {
+    format: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
 }
 
 export interface ServicesWhatsIncludeFeatures extends Struct.ComponentSchema {
