@@ -18,6 +18,9 @@
       "type": "component",
       "component": "insights.why-traditional-items",
       "repeatable": true
+    },
+    "conclusion": {
+      "type": "text"
     }
   },
   "config": {}

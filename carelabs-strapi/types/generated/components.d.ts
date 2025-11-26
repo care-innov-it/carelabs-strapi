@@ -258,6 +258,7 @@ export interface InsightsWhyTraditionalMaintenance
     displayName: 'whyTraditionalMaintenance';
   };
   attributes: {
+    conclusion: Schema.Attribute.Text;
     introduction: Schema.Attribute.RichText;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.RichText;

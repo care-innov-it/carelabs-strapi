@@ -21,6 +21,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::service.service"
+    },
+    "serviceSeo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }

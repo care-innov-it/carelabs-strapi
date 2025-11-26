@@ -1145,6 +1145,7 @@ export interface ApiServicePageServicePage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    serviceSeo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
