@@ -42,7 +42,12 @@ const QuoteBar = () => {
         {/* Button Section */}
         <div className="flex flex-wrap sm:flex-nowrap gap-2 items-center justify-center sm:justify-end">
           <button className='px-4 sm:px-5 py-2 bg-[#FF7038] text-white rounded-full text-sm sm:text-base'>
-            <a href="">Request a Quote</a>
+            <a onClick={(e) => {
+             e.preventDefault();
+             window.openContactModal();
+             }}
+            
+            >Request a Quote</a>
           </button>
           <button className='w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 flex items-center justify-center'>
             <a href="">

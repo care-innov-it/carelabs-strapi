@@ -46,6 +46,8 @@ useEffect(() => {
   };
 
   fetchData();
+
+
 }, []);
 
 
@@ -157,7 +159,15 @@ if (!homeData) {
       <div className="w-full flex items-center justify-center py-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center w-full md:w-3/5">
           <button className="secondary-bg flex items-center justify-center gap-2  text-white py-2 px-6 rounded-full text-[14px] poppins-font hover:bg-orange-700">
-            <a href={homeData.btn1_link}>{homeData.btn1_text}</a>
+            <a 
+            
+            //href={homeData.btn1_link}
+            onClick={(e) => {
+            e.preventDefault();
+          window.openContactModal();
+          }}
+            
+            >{homeData.btn1_text}</a>
             <ArrowRight size={14} />
           </button>
 

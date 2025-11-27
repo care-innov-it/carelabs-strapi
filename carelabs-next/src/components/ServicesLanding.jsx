@@ -125,7 +125,11 @@ const downloadRandomPdf = () => {
               </a> */}
 
               <a
-      href={mainbuttonlink1}
+      //href={mainbuttonlink1}
+      onClick={(e) => {
+      e.preventDefault();
+      window.openContactModal();
+      }}
       className="
         group relative px-6 sm:px-8 py-2 rounded-lg text-sm 
         bg-blue-600 text-white overflow-hidden 
@@ -248,7 +252,7 @@ const downloadRandomPdf = () => {
               <span className="relative z-10">{mainbutton3}</span>
             </a> */}
 
-            <a
+            {/* <a
     href={mainbuttonlink3}
     className="
       group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
@@ -265,12 +269,33 @@ const downloadRandomPdf = () => {
       "
     ></span>
 
-    {/* ICON */}
+    
     <PlayCircle className="relative z-10 w-5 h-5 text-orange-500" />
 
-    {/* TEXT */}
     <span className="relative z-10">{mainbutton3}</span>
-  </a>
+  </a> */}
+
+  <button
+  onClick={() => window.openRandomVideoGlobal?.()}
+  className="
+    group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
+    border-2 border-orange-400 text-gray-600
+    lg:w-[60%] xl:w-[50%] 2xl:w-[40%]
+    overflow-hidden flex items-center gap-2 cursor-pointer
+  "
+>
+  <span
+    className="
+      absolute inset-0 bg-blue-200/40 
+      opacity-0 group-hover:opacity-100 
+      transition-opacity duration-300
+    "
+  ></span>
+
+  <PlayCircle className="relative z-10 w-5 h-5 text-orange-500" />
+  <span className="relative z-10">{mainbutton3}</span>
+</button>
+
 
           </div>
         </div>

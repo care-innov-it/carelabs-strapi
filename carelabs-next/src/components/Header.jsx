@@ -8,8 +8,6 @@ import Link from 'next/link';
 import * as LucideIcons from 'lucide-react';
 
 
-
-
 const Header = () => {
     const [navbarData,setNavbarData]=useState();
     const [activeIndex, setActiveIndex] = useState(null);
@@ -69,6 +67,11 @@ const Header = () => {
 
       useEffect(() => {
         fetchNavbarData();
+
+        if (typeof window !== "undefined") {
+        window.openContactModal = () => setIsContactModalOpen(true);
+       }
+
       
       }, []);
 

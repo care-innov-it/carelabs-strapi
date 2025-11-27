@@ -41,7 +41,7 @@ if (!featured) {
 
   return (
     <>
-        <div className="homeBlog-cover w-full  h-screen flex items-center justify-center ">
+        <div className="homeBlog-cover w-full  h-screen flex items-center justify-center bg-[#e7f1ff]">
         <div 
         
         data-aos="fade-up"
@@ -72,7 +72,7 @@ if (!featured) {
         <div
         data-aos="fade-up"
         data-aos-anchor-placement="top-center"
-        className="w-full mt-10  flex flex-col md:flex-row navbar-shadow rounded-2xl
+        className="bg-white w-full mt-10  flex flex-col md:flex-row navbar-shadow rounded-2xl
         md:w-[80%] md:h-[70%]
         lg:h-[80%]
         2xl:w-[65%] 2xl:h-[85%] 
@@ -132,18 +132,19 @@ if (!featured) {
         </div>
     </div>
 
-        <div className="w-full py-10">
+        <div className="w-full py-10 bg-[#e7f1ff]">
           <div className="cards-blog grid grid-cols-1 mt-16 lg:grid-cols-3 gap-8 w-[85%]  md:w-[80%] lg:mt-10  2xl:w-[65%] mx-auto sm-p-5">
 
             {/* CARD 1 */}
             {insights.articles.slice(1, 4).map((item, idx) => (
                <a key={idx} href={item.buttonlink} >
+                  <div className='transform transition-all duration-500 ease-in-out hover:-translate-y-3 border-1 border-transparent  hover:border hover:border-blue-900 '>
                     <div 
                     data-aos="fade-up"
                     data-aos-anchor-placement="top-center"
                     key={idx} className=" bg-[#e6f0fd]
                      card-shadow rounded-xl
-                     flex flex-col transform transition-all duration-500 ease-in-out hover:-translate-y-3 hover:shadow-lg hover:border hover:border-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] cursor-pointer group">
+                     flex flex-col  hover:shadow-lg cursor-pointer group">
 
                       {/* IMAGE */}
                       <div className="w-full h-48 overflow-hidden rounded-t-lg">
@@ -156,16 +157,17 @@ if (!featured) {
 
                       {/* CONTENT */}
                       <div className="px-6 py-4 flex flex-col gap-3 rounded-2xl">
-                        <p className="text-sm text-blue-600 font-bold">
+                        <p className="text-[12px] text-[#1f7fdb] font-bold">
                           {item.blog_category?.category}
                         </p>
                         <p className="text-xl font-semibold montserrat-font">{item.title}</p>
-                        <p className="text-sm text-para poppins-font">{item.description}</p>
-                        <p className="text-xs text-para   poppins-font">
+                        <p className="text-sm text-[#4B5563] text-para poppins-font">{item.description}</p>
+                        <p className="text-xs text-[#4B5563] text-para   poppins-font">
                           {item.date} · {item.category}
                         </p>
                       </div>
                     </div>
+                  </div>
                      </a>
             ))}
 

@@ -176,7 +176,7 @@ export default async function Page({ params }) {
           <div className="w-full sm:w-[90%] lg:w-[75%] flex flex-col lg:flex-row gap-8">
 
             {/* LEFT CARD → Why Power System Analysis Matters */}
-            <div className="bg-white p-6 sm:p-8 rounded-2xl w-full lg:w-[45%] card-shadow flex flex-col gap-5">
+            <div className="bg-red-500 p-6 sm:p-8 rounded-2xl w-full lg:w-[45%] card-shadow flex flex-col gap-5">
 
               <div className="w-[50px] h-[50px] bg-[#f9e0e2] rounded-xl flex justify-center items-center">
                 {service?.Why_Matters?.[0]?.icon && (() => {
