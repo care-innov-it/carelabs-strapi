@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import client from '@/lib/appollo-client'
 import { GET_FOOTER } from '@/lib/api-Collection'
+import * as LucideIcons from "lucide-react";
 
 const Footer = () => {
  const [footerData, setFooterData] = useState(null)
@@ -74,8 +75,8 @@ const Footer = () => {
     
     <div>
       {/* MAIN FOOTER BLOCK */}
-      <div className="w-full footer-background md:h-[350px] lg:h-[400px] py-10 flex justify-center">
-        <div className="w-[90%] md:w-[80%] flex flex-col gap-10">
+      <div className="w-full footer-background md:h-[350px] lg:h-[400px] py-20 flex justify-center">
+        <div className="w-[90%] md:w-[90%] flex flex-col gap-10">
 
           {/* TOP ROW: LOGO + MENUS */}
           <div className="flex flex-col md:flex-row gap-8">
@@ -83,22 +84,27 @@ const Footer = () => {
             {/* LOGO + DESC + SOCIAL LINKS */}
             <div className="flex-1 flex flex-col gap-4 text-gray-50">
               <img
-                className="w-32 md:w-40"
+                className="w-32 md:w-55"
                 src={logo?.url}
                 alt="Footer Logo"
               />
-              <p className="text-sm md:text-base">{description}</p>
+              <p className="text-sm text-[#808898] ">{description}</p>
 
               <div className="flex gap-3">
-                {socialLinks?.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.url}
-                    className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-400 text-black"
-                  >
-                    <i className={item.icon}></i>
-                  </a>
-                ))}
+                {socialLinks?.map((item, idx) => {
+                  const IconComponent = LucideIcons[item.icon];
+                  if (!IconComponent) return null; 
+
+                  return (
+                    <a
+                      key={idx}
+                      href={item.url || "#"} 
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-[#092141] text-[#157de4]"
+                    >
+                      <IconComponent className="w-4 h-4" />
+                    </a>
+                  )
+                })}
               </div>
             </div>
 

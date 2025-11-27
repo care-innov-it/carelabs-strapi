@@ -18,6 +18,9 @@ export default function Home() {
 
   const [homeData,setHomeData]=useState();
 
+  const [showVideo, setShowVideo] = useState(false);
+  const [videoId, setVideoId] = useState(null);
+
     useEffect(() => {
     Aos.init({ 
       once: true,     // animate only once
@@ -47,6 +50,22 @@ useEffect(() => {
 
 
 console.log("Home Data",homeData);
+
+const randomVideos = [
+  "dQw4w9WgXcQ",
+  "kXYiU_JCYtU",
+  "RgKAFK5djSk",
+  "3JZ_D3ELwOQ",
+  "9bZkp7q19f0",
+];
+
+const openRandomVideo = () => {
+  const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+  setVideoId(randomId);
+  setShowVideo(true);
+};
+
+
 
 
 if (!homeData) {
@@ -85,7 +104,7 @@ if (!homeData) {
   <div 
   data-aos="fade-up"
   data-aos-duration="2000"
-  className="  w-11/12 flex flex-col items-center justify-center border boreder-[#0f172914] glass-panel rounded-3xl  p-4
+  className="homeBanner  w-11/12 flex flex-col items-center justify-center border boreder-[#0f172914] glass-panel rounded-3xl  p-4
   md:w-4/5 md:h-[85%] md:mt-2  md:p-6
   lg:w-[85%] lg:mt-5
   xl:w-[80%] xl:mt-16
@@ -141,10 +160,21 @@ if (!homeData) {
             <a href={homeData.btn1_link}>{homeData.btn1_text}</a>
             <ArrowRight size={14} />
           </button>
-          <button className=" flex items-center justify-center gap-2 border hover:bg-[#f15c30] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font">
+
+          {/* <button className=" flex items-center justify-center gap-2 border hover:bg-[#f15c30] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font">
             <Play  size={14}/>
             <a href={homeData.btn2_link}>{homeData.btn2_text}</a>
-          </button>
+          </button> */}
+
+  <button
+  onClick={openRandomVideo}
+  className="flex items-center justify-center gap-2 border hover:bg-[#f15c30] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font"
+>
+  <Play size={14} />
+  {homeData.btn2_text}
+</button>
+
+
         </div>
       </div>
 
@@ -201,6 +231,35 @@ if (!homeData) {
         <div className="w-full h-[100px]  2xl:h-[150px]"></div>
         <HomeBlog/>
       </section>
+
+      {/* youtubevideo */}
+
+      {showVideo && (
+  <div
+    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+    onClick={(e) => e.target === e.currentTarget && setShowVideo(false)}
+  >
+    <div className="bg-black rounded-2xl shadow-xl relative w-[90%] max-w-3xl">
+      
+      {/* Close button */}
+      <button
+        onClick={() => setShowVideo(false)}
+        className="absolute top-3 right-3 text-white text-xl font-bold"
+      >
+        ✖
+      </button>
+
+      {/* YouTube iframe */}
+      <iframe
+        className="w-full aspect-video rounded-xl"
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+        allow="autoplay; encrypted-media"
+        allowFullScreen
+      ></iframe>
+    </div>
+  </div>
+)}
+
 
 
     </>

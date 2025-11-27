@@ -24,6 +24,23 @@ const ServicesLanding = ({service}) => {
     service_stats,
   } = service;
 
+  const randomPdfs = [
+  "/pdfs/sample1.pdf",
+];
+
+
+const downloadRandomPdf = () => {
+  const randomFile = randomPdfs[Math.floor(Math.random() * randomPdfs.length)];
+
+  const link = document.createElement("a");
+  link.href = randomFile;
+  link.download = randomFile.split("/").pop(); // auto filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+
 
 
   return (
@@ -155,7 +172,7 @@ const ServicesLanding = ({service}) => {
                 <span className="relative z-10">{mainbutton2}</span>
               </a> */}
 
-              <a
+              {/* <a
       href={mainbuttonlink2}
       className="
         group relative px-6 sm:px-8 py-2 text-sm 
@@ -172,12 +189,37 @@ const ServicesLanding = ({service}) => {
         "
       ></span>
 
-      {/* ICON */}
+      
       <Download className="relative z-10 w-4 h-4" />
 
-      {/* TEXT */}
+      
       <span className="relative z-10">{mainbutton2}</span>
-    </a>
+    </a> */}
+
+    <button
+  onClick={downloadRandomPdf}
+  className="
+    group relative px-6 sm:px-8 py-2 text-sm 
+    border-2 rounded-lg border-blue-500 
+    bg-white text-gray-600
+    overflow-hidden flex items-center gap-2
+  "
+>
+  <span
+    className="
+      absolute inset-0 bg-blue-200/40 
+      opacity-0 group-hover:opacity-100 
+      transition-opacity duration-300
+    "
+  ></span>
+
+  {/* ICON */}
+  <Download className="relative z-10 w-4 h-4" />
+
+  {/* TEXT */}
+  <span className="relative z-10">{mainbutton2}</span>
+</button>
+
 
             </div>
 

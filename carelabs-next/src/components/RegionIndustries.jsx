@@ -103,7 +103,7 @@ const RegionIndustries = () => {
                 </p>
     
     
-    <div className="grid grid-cols-5 gap-3 2xl:mt-10">
+    <div className="grid grid-cols-1 md:grid-cols-2   xl:grid-cols-5 gap-3 2xl:mt-10">
 
             <div className="p-3 bg-white text-center shadow-lg rounded-full">
                 <p className='text-[14px] poppins-font  '>Facilities & Commercial</p>

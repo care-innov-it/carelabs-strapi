@@ -2,7 +2,6 @@
 @import "tailwindcss";
 @import "aos/dist/aos.css";
 
-@import "flowbite";
 
 
 
@@ -101,6 +100,19 @@
     box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
     border-radius: 16px;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 /* icon blinks(navbar) */
 @keyframes blink {
   0%, 100% { opacity: 1; }
@@ -117,6 +129,12 @@
     .timeline-cards{
       height: 150px;
     }
+      .cards-blog{
+      margin-top: 200px;
+    }
+    .homeBanner{
+      margin-top: 50px;
+    }
    
 }
 
@@ -124,7 +142,7 @@
 @media (max-width: 400px) {
   /* Styles for mobile screens only */
     .cards-blog{
-      margin-top: 100px;
+      margin-top: 250px;
     }
     .timeline-cards{
       height: 150px;
@@ -132,6 +150,7 @@
       .services-column{
       width: 100%;
     }
+    
    
 }
 
@@ -140,7 +159,7 @@
     .cards-blog{
       margin-top: 150px;
     }
-  
+ 
    
 }
 

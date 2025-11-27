@@ -70,7 +70,7 @@ const HomeTestimonials = () => {
     <div  
     data-aos="fade-up"
      data-aos-anchor-placement="top-center"
-    className="w-11/12 sm:w-4/5 xl:w-[80%] flex items-center justify-center text-center flex-col gap-5 p-4">
+    className="quotes w-11/12 sm:w-4/5 xl:w-[80%] flex items-center justify-center text-center flex-col gap-5 p-4">
     
     {/* Heading */}
     <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import client from "@/lib/appollo-client";
 import { GET_INSIGHTS } from "@/lib/api-Collection";
+import Link from 'next/link';
 
 const HomeBlog = () => {
  
@@ -58,17 +59,24 @@ if (!featured) {
             </p>
             </div>
 
-            <button className="px-5 py-3 border border-blue-400 rounded-xl">
-            <a href={insights.buttonLink}>{insights.button}</a>
-            </button>
+  <Link href="/services/power-system-analysis" legacyBehavior>
+  <a className="px-5 py-3 border border-blue-400 rounded-xl inline-block">
+    {insights.button}
+  </a>
+</Link>
+
+
         </div>
 
         {/* BLOG CARD */}
         <div
         data-aos="fade-up"
-     data-aos-anchor-placement="top-center"
-            className="w-full md:w-[80%] 2xl:w-[65%] md:h-[70%] lg:h-[80%] 2xl:h-[85%] mt-10
-                    flex flex-col md:flex-row navbar-shadow rounded-2xl ">
+        data-aos-anchor-placement="top-center"
+        className="w-full mt-10  flex flex-col md:flex-row navbar-shadow rounded-2xl
+        md:w-[80%] md:h-[70%]
+        lg:h-[80%]
+        2xl:w-[65%] 2xl:h-[85%] 
+                   ">
 
             {/* IMAGE SECTION */}
             <div
@@ -133,7 +141,9 @@ if (!featured) {
                     <div 
                     data-aos="fade-up"
                     data-aos-anchor-placement="top-center"
-                    key={idx} className=" bg-[#e6f0fd] card-shadow flex flex-col transform transition-all duration-500 ease-in-out hover:-translate-y-3 hover:shadow-lg hover:border hover:border-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] cursor-pointer group">
+                    key={idx} className=" bg-[#e6f0fd]
+                     card-shadow rounded-xl
+                     flex flex-col transform transition-all duration-500 ease-in-out hover:-translate-y-3 hover:shadow-lg hover:border hover:border-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] cursor-pointer group">
 
                       {/* IMAGE */}
                       <div className="w-full h-48 overflow-hidden rounded-t-lg">
@@ -145,7 +155,7 @@ if (!featured) {
                       </div>
 
                       {/* CONTENT */}
-                      <div className="px-6 py-4 flex flex-col gap-3">
+                      <div className="px-6 py-4 flex flex-col gap-3 rounded-2xl">
                         <p className="text-sm text-blue-600 font-bold">
                           {item.blog_category?.category}
                         </p>

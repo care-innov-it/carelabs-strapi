@@ -9,6 +9,7 @@ import * as LucideIcons from 'lucide-react';
 
 
 
+
 const Header = () => {
     const [navbarData,setNavbarData]=useState();
     const [activeIndex, setActiveIndex] = useState(null);
@@ -17,6 +18,7 @@ const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedRegion, setSelectedRegion] = useState("Global");
+    const [isContactModalOpen,setIsContactModalOpen] = useState(false)
 
     const activeSubmenu =
       navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex];
@@ -42,6 +44,8 @@ const Header = () => {
       setOpenMobileMenu(!openMobileMenu);
     }
 
+    
+
 
      const fetchNavbarData = async () => {
         try{
@@ -62,14 +66,13 @@ const Header = () => {
         }
       }
 
-      
 
       useEffect(() => {
         fetchNavbarData();
-        import("flowbite/dist/flowbite.min.js")
-        .then(() => console.log("Flowbite Loaded Successfully 🎉"))
-        .catch((err) => console.log("Flowbite Load Error:", err));
+      
       }, []);
+
+
 if (!navbarData) {
   return (
     <div className="w-full bg-gray-100 flex items-center justify-center h-[80px] gap-3 p-2">
@@ -172,17 +175,12 @@ if (!navbarData) {
                   </div> */}
 
                   <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[35%] 2xl:w-[45%] bg-[#157de5]">
-  <button
-    data-modal-target="flowbite-modal"
-    data-modal-toggle="flowbite-modal"
-    className="text-sm lg:py-[10px] lg:px-3"
-    type="button"
-  >
-    <span className="text-[14px] text-white font-medium">
-      {navbarData?.buttontext}
-    </span>
-  </button>
-</div>
+                    <button className="text-sm lg:py-[10px] lg:px-3"onClick={() => setIsContactModalOpen(true)}>
+                      <span className="text-[14px] text-white font-medium">
+                        {navbarData?.buttontext}
+                      </span>
+                    </button>
+                  </div>
 
 
           
@@ -209,52 +207,49 @@ if (!navbarData) {
         {/* modal edit */}
 
          <div
-  id="flowbite-modal"
-  tabIndex="-1"
-  aria-hidden="true"
-  className="hidden fixed inset-0 z-50 flex justify-center items-center overflow-y-auto overflow-x-hidden bg-black/50"
->
-  <div className="relative p-4 w-full max-w-2xl">
-    <div className="relative bg-white rounded-lg shadow">
-
-      <div className="flex items-center justify-between p-4 border-b">
-        <h3 className="text-lg font-medium">Terms of Service</h3>
-        <button
-          type="button"
-          data-modal-hide="flowbite-modal"
-          className="text-gray-500 hover:text-black rounded-lg p-1"
+          id="flowbite-modal"
+          tabIndex="-1"
+          aria-hidden="true"
+          className="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-[calc(100%-1rem)] max-h-full"
         >
-          ✖
-        </button>
-      </div>
+          <div className="relative p-4 w-full max-w-2xl max-h-full">
+            <div className="relative bg-white rounded-lg shadow">
 
-      <div className="p-6 space-y-4">
-        <p className="text-gray-600">
-          With less than a month to go before the European Union enacts…
-        </p>
-        <p className="text-gray-600">
-          GDPR privacy regulations…
-        </p>
-      </div>
+              <div className="flex items-center justify-between p-4 border-b">
+                <h3 className="text-lg font-medium">Terms of Service</h3>
+                <button
+                  type="button"
+                  data-modal-hide="flowbite-modal"
+                  className="text-gray-500 hover:text-black rounded-lg p-1" 
+                >
+                  ✖
+                </button>
+              </div>
 
-      <div className="flex items-center p-4 border-t gap-3">
-        <button
-          data-modal-hide="flowbite-modal"
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-        >
-          I Accept
-        </button>
-        <button
-          data-modal-hide="flowbite-modal"
-          className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg"
-        >
-          Decline
-        </button>
-      </div>
+              <div className="p-6 space-y-4">
+                <p className="text-gray-600">
+                  With less than a month to go before GDPR…
+                </p>
+              </div>
 
-    </div>
-  </div>
-</div>
+              <div className="flex items-center p-4 border-t gap-3">
+                <button
+                  data-modal-hide="flowbite-modal"
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+                >
+                  I Accept
+                </button>
+                <button
+                  data-modal-hide="flowbite-modal"
+                  className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg"
+                >
+                  Decline
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
 
 
 
@@ -400,7 +395,7 @@ if (!navbarData) {
               </ul>
 
               <div className="w-full flex items-center justify-center py-2">
-                <button className="bg-blue-500 w-full md:w-[80%] p-2 rounded-lg">
+                <button className="bg-blue-500 w-full md:w-[80%] p-2 rounded-lg" onClick={() => setIsContactModalOpen(true)}>
                   <a
                     href={navbarData?.buttonlink}
                     className="text-[14px] text-white p-3"
@@ -486,7 +481,270 @@ if (!navbarData) {
         
          
 
-      )}
+         )}
+
+           {/* Contact Modal */}
+
+             {/* {isContactModalOpen && (
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+                  onClick={(e) => e.target === e.currentTarget && setIsContactModalOpen(false)}
+                >
+                  <div className="relative w-[90%] md:w-[70%] lg:w-[30%] rounded-2xl shadow-xl p-6 bg-red-200">
+                    
+                   
+                    <button
+                      onClick={() => setIsContactModalOpen(false)}
+                      className="absolute top-4 right-4 p-2 rounded-xl text-gray-500 hover:text-black hover:bg-gray-100 "
+                    >
+                      <X size={24} />
+                    </button>
+
+                    <div className="text-center flex  flex-col items-center justify-center xl:flex-row gap-2 mb-6">
+                      
+                      <Globe size={24} className="xl:mt-2 text-blue-600 mb-3" />
+                      <h2 className="text-xl font-semibold">Exploresdfsdg Carelabs in your region</h2>
+                    </div>
+
+        
+
+                    <p className="text-center text-sm text-gray-600 p-3">
+                      You're viewing: <span className="font-semibold">{selectedRegion} site</span>
+                    </p>
+                    <div className=" w-full flex items-center justify-center">
+                        <p className='text-sm'>
+                          Go to: www.carelabs.com
+                        </p>
+                        <Mail size={14} />
+                    </div>
+                      
+                  </div>
+                </div>
+      )} */}
+
+     {isContactModalOpen && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 z-[2000]"
+    onClick={(e) => e.target === e.currentTarget && setIsContactModalOpen(false)}
+  >
+    <div className="relative w-full max-w-[650px] lg:max-w-[700px] rounded-2xl shadow-xl bg-white overflow-hidden">
+      
+      {/* Scrollable Content with hidden scrollbar */}
+      <div className="max-h-[85vh] overflow-y-auto scrollbar-hide px-6 py-8 md:px-12 md:py-10">
+        {/* Close Button */}
+        <button
+          onClick={() => setIsContactModalOpen(false)}
+          className="absolute top-4 right-4 p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors z-10"
+        >
+          <X size={24} />
+        </button>
+
+        {/* Logo */}
+        <div className="flex justify-center mb-4">
+          <div className="text-2xl font-bold">
+            <span className="text-blue-600">care</span>
+            <span className="text-orange-500">labs</span>
+          </div>
+        </div>
+
+        {/* Title */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-2">
+          Connect with Us!
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-center text-sm text-gray-600 mb-6">
+          Please complete the form to schedule a <span className="text-orange-500 font-semibold">FREE</span> consultation.
+        </p>
+
+        {/* Form */}
+        <form 
+          className="space-y-4"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+              "Contact Name": formData.get("contactName"),
+              "Company Name": formData.get("companyName"),
+              "Country": formData.get("country"),
+              "Email": formData.get("email"),
+              "Phone": `${formData.get("countryCode")}${formData.get("phone")}`,
+              "Services": formData.get("services"),
+              "Issue Faced": formData.get("issueFaced")
+            };
+
+            // Create query string
+            const queryString = new URLSearchParams(data).toString();
+            const webhookUrl = `https://shahariyar.app.n8n.cloud/webhook/8720-cms-lead-v1?${queryString}`;
+
+            try {
+              const response = await fetch(webhookUrl, {
+                method: 'GET',
+              });
+
+              if (response.ok) {
+                alert('Form submitted successfully!');
+                setIsContactModalOpen(false);
+                e.target.reset();
+              } else {
+                alert('Failed to submit form. Please try again.');
+              }
+            } catch (error) {
+              console.error('Error submitting form:', error);
+              alert('An error occurred. Please try again.');
+            }
+          }}
+        >
+          {/* Contact Name & Company Name */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Contact Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="contactName"
+                placeholder="Your First & Last Name"
+                required
+                className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Company Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="companyName"
+                placeholder="Your Company Name"
+                required
+                className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Country & Email */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Country <span className="text-red-500">*</span>
+              </label>
+              <div className="relative">
+                <select 
+                  name="country"
+                  required
+                  className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none bg-white appearance-none pr-10 transition-colors"
+                >
+                  <option value="">Select your Country</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                  <option value="UK">UK</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Australia">Australia</option>
+                  {/* Add more countries as needed */}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="your.email@example.com"
+                required
+                className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Phone & Services */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Phone <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  name="countryCode"
+                  defaultValue="+1"
+                  className="w-14 px-2 py-2.5 text-sm text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none flex-shrink-0 transition-colors"
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="123456789"
+                  required
+                  className="flex-1 min-w-0 px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                Services <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="services"
+                placeholder="Services you're interested in"
+                required
+                className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          {/* Issue Faced */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Issue Faced <span className="text-red-500">*</span>
+            </label>
+            <textarea
+              name="issueFaced"
+              placeholder="Please describe the issue you're facing"
+              rows={4}
+              required
+              className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none resize-none transition-colors"
+            />
+          </div>
+
+          {/* Verification */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              Verification <span className="text-red-500">*</span>
+            </label>
+            <div className="flex items-center justify-between px-4 py-3 border border-gray-300 rounded-md bg-gray-50">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-5 h-5 bg-green-500 rounded-full flex-shrink-0">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-sm text-gray-700 font-medium">Success!</span>
+              </div>
+              <span className="text-xs text-gray-500">Cloudflare</span>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-md transition-colors duration-200 mt-6"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+)}
 
 
 

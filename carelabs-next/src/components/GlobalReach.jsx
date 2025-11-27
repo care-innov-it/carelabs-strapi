@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import client from '@/lib/appollo-client';
 import { GET_WORLD_IMPACT } from '@/lib/api-Collection';
-import { Globe, Zap } from 'lucide-react';
+import { Globe, Moon, Zap } from 'lucide-react';
 
 
 const GlobalReach = () => {
@@ -109,8 +109,8 @@ const GlobalReach = () => {
       
                 {impactData.successStat?.map((item, index) => (
               <div key={index} className="cards w-[90%] sm:w-[95%] flex flex-col items-center justify-center gap-3 p-3">
-                <div className="w-[45px] h-[45px] flex items-center justify-center bg-[#157de5] rounded-full">
-                  <i className="fa-regular fa-moon" style={{ color: "#3b82f6" }}></i>
+                <div className="w-[45px] h-[45px] primary-color flex items-center justify-center  light-blue rounded-full">
+                  <Moon/>
                 </div>
                 <p>{item.title}</p>
                 <p className='text-2xl font-bold poppins-font text-center' dangerouslySetInnerHTML={{ __html: item.value }}></p>

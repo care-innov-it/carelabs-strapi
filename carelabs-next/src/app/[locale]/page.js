@@ -6,6 +6,7 @@ import HomeBlog from "@/components/HomeBlog";
 import HomeCounter from "@/components/Homecounter";
 import HomeServices from "@/components/HomeServices";
 import HomeTestimonials from "@/components/HomeTestimonials";
+// import RegionClients from "@/components/RegionClients";
 import RegionIndustries from "@/components/RegionIndustries";
 import { GET_HOME_SECTION_12 } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
@@ -201,6 +202,10 @@ console.log("Pararar111",params['locale']);
       <section>
       <RegionIndustries/>
       </section>
+
+      {/* <section>
+        <RegionClients/>
+      </section> */}
 
       {/* Section-3  */}
       <section>

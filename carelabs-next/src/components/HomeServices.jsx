@@ -81,7 +81,7 @@ const fetchGlobalReach = async () => {
             <div 
             data-aos="fade-up"
             data-aos-anchor-placement="top-center"
-            className="  h-full flex flex-col justify-start items-center p-3 gap-3 lg:gap-5 overflow-y-auto
+            className=" w-full h-full flex flex-col justify-start items-center p-3 gap-3 lg:gap-5 overflow-y-auto
             lg:w-[85%] 
             xl:w-[40%]   ">
 
