@@ -9,7 +9,7 @@ const HomeServices = () => {
 
 const [globalReachData, setGlobalReachData] = useState(null)
 const [activeServiceIndex, setActiveServiceIndex] = useState(0)
-// const IconComponent = LucideIcons[activeItem?.icon];
+
 
 
 const fetchGlobalReach = async () => {
@@ -136,9 +136,13 @@ const fetchGlobalReach = async () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-transparent z-10"></div>
                         <div className="z-20 mb-2 sm:mb-4 lg:mb-5 flex flex-col justify-end gap-2 sm:gap-3 lg:gap-4">
                           <div className="flex items-center gap-2">
-                           <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#dae9fd] rounded-xl">
-                              <Zap size={30}/>
-                          </div>
+                            <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#dae9fd] rounded-xl">
+                              {(() => {
+                                const IconComponent = activeItem?.icon ? LucideIcons[activeItem.icon] : null;
+                                return IconComponent ? <IconComponent size={30} className="text-[#2575b6]" /> : null;
+                              })()}
+                            </div>
+
                               <p className="text-2xl sm:text-3xl lg:text-[30px] font-bold montserrat-font">
                                 {activeItem?.name}
                             </p>

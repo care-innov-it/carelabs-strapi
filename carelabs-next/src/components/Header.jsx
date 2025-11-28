@@ -114,6 +114,21 @@ if (!navbarData) {
   );
 }
 
+//slugmethod 
+const currentItem =
+  navbarData?.items?.[activeIndex] ?? null;
+
+const currentSubmenu =
+  currentItem?.submenus?.[selectedSubmenuIndex] ?? null;
+
+const targetSlug =
+  currentItem?.label?.toLowerCase() === "blogs"
+    ? `/blogs/${currentSubmenu?.slug ?? ""}`
+    : `/services/${currentSubmenu?.slug ?? ""}`;
+     
+    console.log("NAV DATA:", navbarData.items);
+
+
 
   return (
       <>
@@ -327,7 +342,7 @@ if (!navbarData) {
                           ))}
                         </div>
                   
-                    <Link 
+                    {/* <Link 
                         href={`/services/${navbarData.items[activeIndex].submenus[selectedSubmenuIndex].slug}`}
                         className="group relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)]"
                       >
@@ -335,7 +350,19 @@ if (!navbarData) {
                           {navbarData.items[activeIndex].submenus[selectedSubmenuIndex].Button}
                           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                         </span>
-                      </Link>
+                      </Link> */}
+
+                      {activeIndex !== null &&
+ currentItem &&
+ currentSubmenu && (
+  <Link href={targetSlug} className="group relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)]">
+    <span className="flex items-center gap-2">
+      {currentSubmenu?.Button}
+      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+    </span>
+  </Link>
+)}
+
 
                     
                       {/* <Link
@@ -693,7 +720,7 @@ if (!navbarData) {
                 <img
                  src="https://accessible-comfort-314cd1c7f5.media.strapiapp.com/carelab_logo_c9660c1289.png"
                  alt="Carelabs Logo"
-                 className="h-12 w-auto object-contain" 
+                 className="h-8 w-auto object-contain" 
                  />
               </div>
 
@@ -913,13 +940,21 @@ if (!navbarData) {
                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 resize-none focus:border-orange-500 focus:outline-none transition-colors"
                   />
                 </div>
+                
+                <div className="mt-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                 Verification <span className="text-red-500">*</span>
+                </label>
 
+                <div className="w-full flex justify-center">
                 <div
                   className="cf-turnstile mt-4"
                   data-sitekey="0x4AAAAAAA_eaDkiLVUQBCGg"
                   data-theme="light"
                   id="cf-captcha"
                 ></div>
+                </div>
+                </div>
 
                 {/* <button
                   type="submit"
@@ -934,7 +969,7 @@ if (!navbarData) {
                 className={`w-full text-white font-semibold py-3 rounded-md transition-colors duration-200 mt-6
                 ${isSubmitting 
                 ? "bg-orange-300 cursor-not-allowed" 
-                : "bg-orange-500 hover:bg-orange-600"
+                : "bg-orange-500 hover:bg-orange-600 cursor-pointer"
                 }`}
                 >
                 {isSubmitting ? "Submitting..." : "Submit"}
