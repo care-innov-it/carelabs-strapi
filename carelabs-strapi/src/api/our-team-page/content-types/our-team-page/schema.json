@@ -56,6 +56,56 @@
       "type": "component",
       "component": "ourteam.snapshot",
       "repeatable": false
+    },
+    "Drives_Us": {
+      "type": "component",
+      "component": "ourteam.drives-us",
+      "repeatable": false
+    },
+    "Work_Together": {
+      "type": "component",
+      "component": "ourteam.work-together",
+      "repeatable": false
+    },
+    "Guiding": {
+      "type": "component",
+      "component": "ourteam.guiding",
+      "repeatable": false
+    },
+    "Teams_in_Action": {
+      "type": "component",
+      "component": "ourteam.teams-in-action",
+      "repeatable": false
+    },
+    "How_We_Partner": {
+      "type": "component",
+      "component": "ourteam.how-we-partner",
+      "repeatable": false
+    },
+    "Milestones": {
+      "type": "component",
+      "component": "ourteam.milestones",
+      "repeatable": false
+    },
+    "What_it_feels": {
+      "type": "component",
+      "component": "ourteam.what-it-feels",
+      "repeatable": false
+    },
+    "Where_you_work": {
+      "type": "component",
+      "component": "ourteam.where-you-work",
+      "repeatable": false
+    },
+    "Recognitions": {
+      "type": "component",
+      "component": "ourteam.recognitions",
+      "repeatable": false
+    },
+    "Ready_to_Talk": {
+      "type": "component",
+      "component": "ourteam.ready-to-talk",
+      "repeatable": false
     }
   }
 }

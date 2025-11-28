@@ -1119,6 +1119,9 @@ export interface ApiOurTeamPageOurTeamPage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Drives_Us: Schema.Attribute.Component<'ourteam.drives-us', false>;
+    Guiding: Schema.Attribute.Component<'ourteam.guiding', false>;
+    How_We_Partner: Schema.Attribute.Component<'ourteam.how-we-partner', false>;
     images: Schema.Attribute.Component<'ourteam.images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1129,13 +1132,23 @@ export interface ApiOurTeamPageOurTeamPage extends Struct.SingleTypeSchema {
     maindescription: Schema.Attribute.Text;
     mainheading: Schema.Attribute.RichText;
     mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Milestones: Schema.Attribute.Component<'ourteam.milestones', false>;
     ourteam_stats: Schema.Attribute.Component<'ourteam.ourteam-stats', true>;
     publishedAt: Schema.Attribute.DateTime;
+    Ready_to_Talk: Schema.Attribute.Component<'ourteam.ready-to-talk', false>;
+    Recognitions: Schema.Attribute.Component<'ourteam.recognitions', false>;
     scrolltext: Schema.Attribute.String;
     snapshot: Schema.Attribute.Component<'ourteam.snapshot', false>;
+    Teams_in_Action: Schema.Attribute.Component<
+      'ourteam.teams-in-action',
+      false
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    What_it_feels: Schema.Attribute.Component<'ourteam.what-it-feels', false>;
+    Where_you_work: Schema.Attribute.Component<'ourteam.where-you-work', false>;
+    Work_Together: Schema.Attribute.Component<'ourteam.work-together', false>;
   };
 }
 

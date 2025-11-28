@@ -297,6 +297,99 @@ export interface NewNewItem extends Struct.ComponentSchema {
   };
 }
 
+export interface OurteamDrivesUs extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_drives_uses';
+  info: {
+    displayName: 'Drives-Us';
+  };
+  attributes: {
+    Drives_Us_Items: Schema.Attribute.Component<
+      'ourteam.drives-us-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamDrivesUsItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_drives_us_items';
+  info: {
+    displayName: 'Drives-Us-Items';
+  };
+  attributes: {
+    Drives_Us_subItems: Schema.Attribute.Component<
+      'ourteam.drives-us-sub-items',
+      true
+    >;
+    icon: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamDrivesUsSubItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_drives_us_sub_items';
+  info: {
+    displayName: 'Drives-Us-subItems';
+  };
+  attributes: {
+    points: Schema.Attribute.Text;
+  };
+}
+
+export interface OurteamGuiding extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_guidings';
+  info: {
+    displayName: 'Guiding';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Guiding_Items: Schema.Attribute.Component<'ourteam.guiding-items', true>;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamGuidingItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_guiding_items';
+  info: {
+    displayName: 'Guiding_Items';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    hovertext: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamHowWePartner extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_how_we_partners';
+  info: {
+    displayName: 'How_We_Partner';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    How_We_Partner_Items: Schema.Attribute.Component<
+      'ourteam.how-we-partner-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamHowWePartnerItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_how_we_partner_items';
+  info: {
+    displayName: 'How_We_Partner_Items';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    step: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface OurteamImages extends Struct.ComponentSchema {
   collectionName: 'components_ourteam_images';
   info: {
@@ -308,6 +401,35 @@ export interface OurteamImages extends Struct.ComponentSchema {
   };
 }
 
+export interface OurteamMilestones extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_milestones';
+  info: {
+    displayName: 'Milestones';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Milestones_Items: Schema.Attribute.Component<
+      'ourteam.milestones-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamMilestonesItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_milestones_items';
+  info: {
+    displayName: 'Milestones_Items';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    title: Schema.Attribute.String;
+    year: Schema.Attribute.String;
+  };
+}
+
 export interface OurteamOurteamStats extends Struct.ComponentSchema {
   collectionName: 'components_ourteam_ourteam_stats';
   info: {
@@ -316,6 +438,75 @@ export interface OurteamOurteamStats extends Struct.ComponentSchema {
   attributes: {
     label: Schema.Attribute.String;
     stats: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamReadyToTalk extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_ready_to_talks';
+  info: {
+    displayName: 'Ready_to_Talk';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Ready_to_Talk_buttons: Schema.Attribute.Component<
+      'ourteam.ready-to-talk-buttons',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamReadyToTalkButtons extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_ready_to_talk_buttons';
+  info: {
+    displayName: 'Ready_to_Talk_buttons';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    link: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamRecognitions extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_recognitions';
+  info: {
+    displayName: 'Recognitions';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+    Recognitions_Item1: Schema.Attribute.Component<
+      'ourteam.recognitions-item1',
+      true
+    >;
+    Recognitions_Item2: Schema.Attribute.Component<
+      'ourteam.recognitions-item2',
+      true
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamRecognitionsItem1 extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_recognitions_item1s';
+  info: {
+    displayName: 'Recognitions_Item1';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamRecognitionsItem2 extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_recognitions_item2s';
+  info: {
+    displayName: 'Recognitions_Item2';
+  };
+  attributes: {
+    countryyear: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -341,6 +532,142 @@ export interface OurteamSnapshotStats extends Struct.ComponentSchema {
     icon: Schema.Attribute.String;
     label: Schema.Attribute.String;
     stats: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamTeamsInAction extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_teams_in_actions';
+  info: {
+    displayName: 'Teams_in_Action';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Teams_in_Action_Items: Schema.Attribute.Component<
+      'ourteam.teams-in-action-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamTeamsInActionItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_teams_in_action_items';
+  info: {
+    displayName: 'Teams_in_Action_Items';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Teams_in_Action_Points: Schema.Attribute.Component<
+      'ourteam.teams-in-action-points',
+      true
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamTeamsInActionPoints extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_teams_in_action_points';
+  info: {
+    displayName: 'Teams_in_Action_Points';
+  };
+  attributes: {
+    points: Schema.Attribute.Text;
+  };
+}
+
+export interface OurteamWhatItFeels extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_what_it_feels';
+  info: {
+    displayName: 'What_it_feels';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+    What_it_feels_gallery: Schema.Attribute.Component<
+      'ourteam.what-it-feels-gallery',
+      true
+    >;
+  };
+}
+
+export interface OurteamWhatItFeelsGallery extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_what_it_feels_galleries';
+  info: {
+    displayName: 'What_it_feels_gallery';
+  };
+  attributes: {
+    hovertext: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface OurteamWhereYouWork extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_where_you_works';
+  info: {
+    displayName: 'Where_you_work';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+    viewLink: Schema.Attribute.String;
+    viewText: Schema.Attribute.String;
+    Where_you_work_Items: Schema.Attribute.Component<
+      'ourteam.where-you-work-items',
+      true
+    >;
+  };
+}
+
+export interface OurteamWhereYouWorkCountries extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_where_you_work_countries';
+  info: {
+    displayName: 'Where_you_work_countries';
+  };
+  attributes: {
+    country: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamWhereYouWorkItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_where_you_work_items';
+  info: {
+    displayName: 'Where_you_work_Items';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    Where_you_work_countries: Schema.Attribute.Component<
+      'ourteam.where-you-work-countries',
+      true
+    >;
+  };
+}
+
+export interface OurteamWorkTogether extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_work_togethers';
+  info: {
+    displayName: 'Work_Together';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+    Work_Together_Items: Schema.Attribute.Component<
+      'ourteam.work-together-items',
+      true
+    >;
+  };
+}
+
+export interface OurteamWorkTogetherItems extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_work_together_items';
+  info: {
+    displayName: 'Work_Together_Items';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -610,10 +937,34 @@ declare module '@strapi/strapi' {
       'insights.why-traditional-maintenance': InsightsWhyTraditionalMaintenance;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
+      'ourteam.drives-us': OurteamDrivesUs;
+      'ourteam.drives-us-items': OurteamDrivesUsItems;
+      'ourteam.drives-us-sub-items': OurteamDrivesUsSubItems;
+      'ourteam.guiding': OurteamGuiding;
+      'ourteam.guiding-items': OurteamGuidingItems;
+      'ourteam.how-we-partner': OurteamHowWePartner;
+      'ourteam.how-we-partner-items': OurteamHowWePartnerItems;
       'ourteam.images': OurteamImages;
+      'ourteam.milestones': OurteamMilestones;
+      'ourteam.milestones-items': OurteamMilestonesItems;
       'ourteam.ourteam-stats': OurteamOurteamStats;
+      'ourteam.ready-to-talk': OurteamReadyToTalk;
+      'ourteam.ready-to-talk-buttons': OurteamReadyToTalkButtons;
+      'ourteam.recognitions': OurteamRecognitions;
+      'ourteam.recognitions-item1': OurteamRecognitionsItem1;
+      'ourteam.recognitions-item2': OurteamRecognitionsItem2;
       'ourteam.snapshot': OurteamSnapshot;
       'ourteam.snapshot-stats': OurteamSnapshotStats;
+      'ourteam.teams-in-action': OurteamTeamsInAction;
+      'ourteam.teams-in-action-items': OurteamTeamsInActionItems;
+      'ourteam.teams-in-action-points': OurteamTeamsInActionPoints;
+      'ourteam.what-it-feels': OurteamWhatItFeels;
+      'ourteam.what-it-feels-gallery': OurteamWhatItFeelsGallery;
+      'ourteam.where-you-work': OurteamWhereYouWork;
+      'ourteam.where-you-work-countries': OurteamWhereYouWorkCountries;
+      'ourteam.where-you-work-items': OurteamWhereYouWorkItems;
+      'ourteam.work-together': OurteamWorkTogether;
+      'ourteam.work-together-items': OurteamWorkTogetherItems;
       'services.benefit-sector': ServicesBenefitSector;
       'services.methodology': ServicesMethodology;
       'services.questions': ServicesQuestions;
