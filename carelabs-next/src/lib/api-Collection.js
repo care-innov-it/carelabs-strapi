@@ -422,6 +422,7 @@ export const GET_SINGLE_SERVICE_BY_SLUG = gql`
     resultsStat {
       percentage
       description
+      icon
     }
     resultName {
       icon

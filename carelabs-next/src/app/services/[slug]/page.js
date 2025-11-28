@@ -406,7 +406,7 @@ export default async function Page({ params }) {
       {/* =====================================================================================
          SECTION 5 → Sector Benefits
       ===================================================================================== */}
-      <section>
+      {/* <section>
         <div className="w-full flex flex-col items-center py-10">
 
           <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
@@ -435,19 +435,57 @@ export default async function Page({ params }) {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <section>
+  <div className="w-full flex flex-col items-center py-10">
+
+    <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
+    <p className="text-gray-700 max-w-xl text-center mt-3">{service?.sectorBenefitsSubtitle}</p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
+      {service?.sectorBenefits?.map((sec, idx) => {
+        const iconName = sec.icon?.trim(); // trim spaces
+        const Icon = LucideIcons[iconName] || LucideIcons.Circle; // fallback icon
+
+        return (
+          <div key={idx} className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4">
+
+            {/* Dynamic Icon */}
+            <div className="w-[50px] h-[50px] bg-blue-300 rounded-xl flex justify-center items-center">
+              <Icon className="w-6 h-6 text-white" />
+            </div>
+
+            <p className="text-xl font-bold">{sec.label}</p>
+
+            {[sec.list1, sec.list2, sec.list3].map(
+              (txt, i) =>
+                txt && (
+                  <div key={i} className="flex gap-2">
+                    <i className="fa-solid fa-circle-exclamation" />
+                    <p>{txt}</p>
+                  </div>
+                )
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
 
       {/* =====================================================================================
          SECTION 6 → Results Section (Stats + Bottom Cards)
       ===================================================================================== */}
-      <section>
+      {/* <section>
         <div className="min-h-[80vh] flex justify-center py-10">
           <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
 
             <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p>
             <p className="text-gray-700 mt-3 text-center">{service?.resultsSubtitle}</p>
 
-            {/* STATS */}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-10">
               {service?.resultsStat?.map((stat, i) => (
                 <div key={i} className="bg-white p-6 rounded-xl text-center flex flex-col items-center gap-3">
@@ -460,7 +498,7 @@ export default async function Page({ params }) {
               ))}
             </div>
 
-            {/* BOTTOM BOXES */}
+            
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 w-full mt-10">
               {service?.resultName?.map((item, idx) => (
                 <div key={idx} className="bg-white p-6 rounded-xl flex flex-col gap-4">
@@ -475,7 +513,57 @@ export default async function Page({ params }) {
 
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <section>
+  <div className="min-h-[80vh] flex justify-center py-10">
+    <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
+
+      <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p>
+      <p className="text-gray-700 mt-3 text-center">{service?.resultsSubtitle}</p>
+
+      {/* STATS */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-10">
+        {service?.resultsStat?.map((stat, i) => {
+          const iconName = stat.icon?.trim();
+          const StatIcon = LucideIcons[iconName] || LucideIcons.Circle;
+
+          return (
+            <div key={i} className="bg-white p-6 rounded-xl text-center flex flex-col items-center gap-3">
+              <div className="w-[50px] h-[50px] bg-yellow-300 rounded-xl flex justify-center items-center">
+                <StatIcon className="w-6 h-6 text-white" />
+              </div>
+              <p className="text-4xl font-bold bg-gradient-to-r from-[#5b68c3] to-[#c58a7a] bg-clip-text text-transparent">
+                {stat.percentage}
+              </p>
+              <p className="text-sm text-gray-600">{stat.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* BOTTOM BOXES */}
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 w-full mt-10">
+        {service?.resultName?.map((item, idx) => {
+          const iconName = item.icon?.trim();
+          const ItemIcon = LucideIcons[iconName] || LucideIcons.Circle;
+
+          return (
+            <div key={idx} className="bg-white p-6 rounded-xl flex flex-col gap-4">
+              <div className="flex gap-4 items-center">
+                <ItemIcon className="w-5 h-5 text-[#157be2]" />
+                <p className="text-xl font-bold">{item.label}</p>
+              </div>
+              <p className="text-sm pl-10 text-gray-600">{item.description}</p>
+            </div>
+          );
+        })}
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       <section className="mt-10">
         <PowerSystemAnalysisCTA service={service} />

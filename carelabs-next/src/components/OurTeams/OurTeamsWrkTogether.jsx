@@ -12,11 +12,13 @@ const OurTeamsWrkTogether = () => {
                 </div>
 
         <div className="flex flex-col w-[85%] p-5 rounded-2xl glass-panel
-                md:p-10
-                lg:flex-row
-                2xl:w-[65%]">
-                    <div className="w-full grid grid-cols-1"></div>
-                    </div>       
+            2xl:w-[65%]">
+            <div className="w-full grid grid-cols-1">
+                <div className="">
+                    <div className="w-[50px] h-[50px] rounded-xl flex items-center justify-center light-blue"></div>
+                </div>
+            </div>
+        </div>       
     </div>
   )
 }

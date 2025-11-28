@@ -4,7 +4,7 @@ import React from 'react'
 
 const OurTeamsDrivesUs = () => {
   return (
-    <div className='w-full flex flex-col items-center justify-center  mt-20'>
+    <div className='w-full flex flex-col items-center justify-center mt-20'>
         <h2 className='text-[36px] montserrat-font font-semibold text-center  my-10'>What Drives Us</h2>
             <div className="flex flex-col w-[85%] rounded-2xl 
                
