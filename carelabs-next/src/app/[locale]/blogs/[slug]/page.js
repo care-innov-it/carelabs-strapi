@@ -134,14 +134,14 @@ export default function Page(props) {
           {/* MAIN CONTENT */}
           <div className="w-[90%] md:w-full lg:w-[75%] flex flex-col gap-5">
             {/* INTRO SECTION */}
-            {blog.introtitle && blog.introcontent && (
+            {blog.introtitle && blog.IntroductionContent && (
               <div className="glass-panel rounded-2xl p-10">
                 <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
                   {blog.introtitle}
                 </h1>
                 <div
                   className="poppins-font text-[16px]"
-                  dangerouslySetInnerHTML={{ __html: blog.introcontent }}
+                  dangerouslySetInnerHTML={{ __html: blog.IntroductionContent }}
                 />
               </div>
             )}

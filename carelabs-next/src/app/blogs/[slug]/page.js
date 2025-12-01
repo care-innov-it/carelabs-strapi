@@ -134,36 +134,35 @@ export default function Page(props) {
           </div>
 
           {/* MAIN CONTENT */}
-          <div className="w-[90%] md:w-full lg:w-[75%] flex flex-col gap-5">
-            {/* INTRO SECTION */}
-            {/* {blog.introtitle && blog.introcontent && (
-              <div className="glass-panel rounded-2xl p-10">
-                <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
-                  {blog.introtitle}
-                </h1>
-                <div
-                  className="poppins-font text-[16px] space-y-4 leading-[1.7]"
-                  dangerouslySetInnerHTML={{ __html: blog.introcontent }}
-                />
-              </div>
-            )} */}
+          <div className="w-[90%] md:w-full lg:w-[75%] flex flex-col gap-5 bg-red-50">
+          
 
-        {blog.introtitle && blog.IntroductionContent && (
-          <div className="glass-panel rounded-2xl p-10">
-          <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
-          {blog.introtitle}
-          </h1>
+ {blog.introtitle && blog.IntroductionContent && (
+  <div className="glass-panel rounded-2xl p-10">
+    <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+      {blog.introtitle}
+    </h1>
 
-          {blog.IntroductionContent
-          .split(/\n\s*\n/) // split by blank lines
-          .map((para, index) => (
-          <p key={index} className="mb-5 poppins-font text-[16px] leading-[1.7]">
-          {para.trim()}
-          </p>
-          ))
-          }
-          </div>
-          )}
+    <div
+      className="poppins-font text-[16px] leading-[1.7]"
+      dangerouslySetInnerHTML={{
+        __html: blog.IntroductionContent.includes("<")
+          ? blog.IntroductionContent
+          : blog.IntroductionContent
+              // Convert literal \n\n to paragraph breaks
+              .replace(/\\n\\n/g, "</p><p class='mb-5'>")
+              // Convert remaining \n to <br/>
+              .replace(/\\n/g, "<br/>")
+              // Convert literal tabs \t to indentation
+              .replace(/\\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;")
+              // Wrap everything in <p> if not already
+              .replace(/^/, "<p class='mb-5'>")
+              .concat("</p>")
+      }}
+    />
+  </div>
+)}
+
 
 
             {/* DYNAMIC SECTIONS */}

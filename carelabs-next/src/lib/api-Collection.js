@@ -702,6 +702,131 @@ export const GET_INSIGHTS_BY_SLUG = gql`
 `;
 
 
+export const GET_INSIGHTS_BY_SLUG_By_LOCALE = gql`
+   query ($slug: String!, $locale: I18NLocaleCode) {
+    insightblogs(
+      filters: { slug: { eq: $slug } }
+      locale: $locale
+    ) {
+      badge
+      badgeicon
+      mainheading
+      description
+      authoricon
+      author
+      publishedicon
+      publishedOn
+      timeicon
+      time
+      slug
+        locale
+      category {
+        title
+      }
+      introtitle
+      IntroductionContent
+      articleSection {
+        title
+        articleItems {
+          order
+          slug
+          title
+        }
+      }
+      Weeklytitle
+      Weeklydesc
+      emailplaceholder
+      subscribebutton
+      subscribebuttonlink
+      sections {
+        ... on ComponentInsightsWhyTraditionalMaintenance {
+          title
+          slug
+          introduction
+          WhyTraditionalItems {
+            title
+            description
+          }
+        }
+        ... on ComponentInsightsWhatAiPoweredPredictive {
+          title
+          slug
+          content
+          imagetext
+          image {
+            url
+          }
+        }
+        ... on ComponentInsightsKeyBuildingBlocks {
+          title
+          slug
+          KeyBuildingBlocksItems {
+            order
+            title
+            icon
+            content
+          }
+          image {
+            url
+          }
+          imagetext
+        }
+        ... on ComponentInsightsRealWorld {
+          title
+          slug
+          RealWorldItems {
+            icon
+            title
+            content
+            result
+          }
+        }
+        ... on ComponentInsightsHowtoGetStarted {
+          title
+          content
+          image {
+            url
+          }
+          imagetext
+          slug
+        }
+        ... on ComponentInsightsChallenges {
+          title
+          slug
+          introduction
+          ChallengesItems {
+            title
+            description
+          }
+          conclusion
+        }
+        ... on ComponentInsightsTheRoadAhead {
+          title
+          slug
+          content
+          conclusion
+        }
+      }
+      exploretitle
+      exploresubtitle
+      button1text
+      button1icon
+      button1link
+      button2text
+      button2link
+      RelatedArticlesText
+      RelatedArticleItems {
+        icon
+        category
+        title
+        readtext
+        readicon
+        link
+      }
+    }
+  }
+`;
+
 
 
 

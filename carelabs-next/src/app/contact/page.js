@@ -1,7 +1,35 @@
-import React from 'react'
-import { CheckCircle, FileText, HelpCircle, Headphones, Users, } from "lucide-react";
+"use client";
+
+import React, { useState } from 'react'
+import { CheckCircle, FileText, HelpCircle, Headphones, Users, ChevronDown } from "lucide-react";
+
+
+const moreFaqs = [
+  {
+    q: "What languages do your engineers speak?",
+    a: "Our engineering teams are multilingual and support clients in English, Arabic, French, Hindi, and several regional languages. We match your project with the nearest and most suitable team."
+  },
+  {
+    q: "Do you work with international standards?",
+    a: "Yes, we comply with IEC, IEEE, NFPA, NEC, and local country-specific standards for all engineering assessments, reports, and studies."
+  },
+  {
+    q: "How do you keep project data secure?",
+    a: "We use encrypted storage, secure file-sharing channels, and follow strict cybersecurity practices. Sensitive project documentation is handled only by certified engineers."
+  },
+  {
+    q: "What's the typical project timeline?",
+    a: "Timeline depends on project complexity. Simple studies take 3–7 working days, while large-scale engineering projects may take several weeks. You’ll get an ETA upfront."
+  },
+  {
+    q: "What industries do you support?",
+    a: "We work with data centers, hospitals, utilities, manufacturing plants, oil & gas facilities, commercial buildings, and government sectors globally."
+  }
+];
 
 const page = () => {
+
+     const [openIndex, setOpenIndex] = useState(null);
   
     const cards = [
     {
@@ -852,7 +880,59 @@ const page = () => {
 
 {/* faq */}
 
+<section className="w-full flex flex-col items-center py-12 bg-[#F7F8FB]">
+      <div
+        className="
+          w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
+          text-center
+        "
+      >
+        
 
+    {/* Title + Subtitle Section */}
+    <h2 className="text-4xl md:text-5xl font-semibold mb-3">
+      Before you <span className="text-blue-600">reach</span>{" "}
+      <span className="text-orange-500">out</span>
+    </h2>
+
+    <p className="text-gray-600 text-[15px] mb-12">
+      Common questions about contacting our team and working with Carelabs
+    </p>
+
+        <div
+          className="
+            bg-white rounded-3xl p-8 md:p-10 
+            shadow-[0_12px_60px_rgba(0,0,0,0.06)]
+            w-full max-w-4xl mx-auto
+          "
+        >
+          {moreFaqs.map((item, i) => (
+            <div key={i} className="border-b border-gray-200 last:border-b-0">
+              <button
+                className="w-full flex justify-between items-center py-5 text-left"
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              >
+                <span className="text-gray-800 font-medium text-[15px]">
+                  {item.q}
+                </span>
+
+                <ChevronDown
+                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                    openIndex === i ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {openIndex === i && (
+                <div className="pb-5 text-gray-600 text-sm leading-relaxed">
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
 
 

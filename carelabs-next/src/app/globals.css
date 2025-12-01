@@ -23,7 +23,7 @@
 }
 
 .gradient-border-top {
-  border-top: 4px solid;
+  border: 1px solid;
   border-image: linear-gradient(90deg, #f15c30, #2575b6) 1;
 }
 

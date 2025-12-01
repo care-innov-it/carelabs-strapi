@@ -257,8 +257,7 @@ export default async function Page({ params }) {
       ===================================================================================== */}
       <section>
         <div className="w-full flex flex-col items-center py-10">
-          {/* <p className=" text-4xl font-bold">{service?.WhatsIncludedtitle}</p> */}
-           <p className=" text-4xl font-bold" dangerouslySetInnerHTML={{ __html: service.WhatsIncludedtitle }}></p>
+           <h1 className=" text-4xl font-bold montserrat-font md:text-5xl text-center leading-tight " dangerouslySetInnerHTML={{ __html: service.WhatsIncludedtitle }}></h1>
           <p className="text-gray-700 max-w-xl text-center mt-3">{service?.WhatsIncludedsubtitle}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] lg:w-[70%]">
@@ -346,9 +345,13 @@ export default async function Page({ params }) {
       </section> */}
 
       <section>
-  <div className="w-full flex flex-col items-center py-10">
+  <div className="w-full flex flex-col items-center py-11">
 
-    <p className="gradient-text text-4xl font-bold">{service?.methodsTitle}</p>
+    <h1 className="gradient-text montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
+  {service?.methodsTitle?.split(" ").slice(0, -1).join(" ")} <br />
+  {service?.methodsTitle?.split(" ").slice(-1)}
+</h1>
+
     <p className="text-gray-700 max-w-xl text-center mt-3">{service?.methodsSubtitle}</p>
 
     <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10">
@@ -356,41 +359,49 @@ export default async function Page({ params }) {
         <div key={index} className="flex flex-col items-center gap-4">
 
           <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
-            <div className="group bg-white rounded-2xl navbar-shadow flex flex-col md:flex-row overflow-hidden w-full lg:w-[80%] xl:w-[75%] 2xl:w-[70%]">
-              {/* IMAGE */}
-              <div className="w-full md:w-[40%] h-56 md:h-auto overflow-hidden">
-                <div
-                  className="
-                    w-full h-full
-                    transition-transform duration-[1100ms]
-                    ease-[cubic-bezier(.13,.62,.31,1)]
-                    group-hover:scale-[1.08]
-                  "
-                  style={{
-                    backgroundImage: `url(${step?.image?.url})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                />
-              </div>
+             <div
+    className={`
+      group bg-white rounded-2xl navbar-shadow flex overflow-hidden
+      w-full lg:w-[80%] xl:w-[75%] 2xl:w-[70%]
+      ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+    `}
+  >
+    {/* IMAGE */}
+    <div className="w-full md:w-[40%] h-56 md:h-auto overflow-hidden">
+      <div
+        className="
+          w-full h-full
+          transition-transform duration-[1100ms]
+          ease-[cubic-bezier(.13,.62,.31,1)]
+          group-hover:scale-[1.08]
+        "
+        style={{
+          backgroundImage: `url(${step?.image?.url})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+    </div>
 
-              {/* CONTENT */}
-              <div className="p-6 flex gap-4 md:w-[90%]">
-                <div className="w-[100px] h-[40px] flex justify-center items-center bg-[#e2ecf8] text-[#157be2] rounded-xl text-lg font-bold">
-                  {step.Order}
-                </div>
-                {step.icon && (() => {
-                    const iconName = step.icon.trim();
-                    const StepIcon = LucideIcons[iconName] || LucideIcons.Circle;
-                    return <StepIcon className="text-[#157be2] w-12 h-10" />;
-                  })()}
-                <div>                      
-                  {/* <p className="text-xl font-bold">{step.icon}</p> */}
-                  <p className="text-xl font-bold">{step.OrderTitleText}</p>
-                  <p className="text-sm text-gray-700 mt-2">{step.OrderSubtitleText}</p>
-                </div>
-              </div>
-            </div>
+    {/* CONTENT */}
+    <div className="p-6 flex gap-4 md:w-[90%]">
+      <div className="w-[100px] h-[40px] flex justify-center items-center bg-[#e2ecf8] text-[#157be2] rounded-xl text-lg font-bold">
+        {step.Order}
+      </div>
+
+      {step.icon && (() => {
+        const iconName = step.icon.trim();
+        const StepIcon = LucideIcons[iconName] || LucideIcons.Circle;
+        return <StepIcon className="text-[#157be2] w-12 h-10" />;
+      })()}
+
+      <div>
+        <p className="text-xl font-bold">{step.OrderTitleText}</p>
+        <p className="text-sm text-gray-700 mt-2">{step.OrderSubtitleText}</p>
+      </div>
+    </div>
+  </div>
+
           </div>
 
           {index !== service.methodology.length - 1 && (
@@ -476,58 +487,57 @@ export default async function Page({ params }) {
 <section>
   <div className="w-full flex flex-col items-center py-10">
 
-    <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
+    <h1 className="gradient-text montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
+  {service?.sectorBenefitsTitle.split(" ").slice(0, -1).join(" ")} <br />
+  {service?.sectorBenefitsTitle?.split(" ").slice(-1)}
+</h1>
     <p className="text-gray-700 max-w-xl text-center mt-3">{service?.sectorBenefitsSubtitle}</p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
-      {service?.sectorBenefits?.map((sec, idx) => {
-        const iconName = sec.icon?.trim();
-        const Icon = LucideIcons[iconName] || LucideIcons.Circle;
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 w-[95%] lg:w-[90%] xl:w-[85%] 2xl:w-[80%] ">
+  {service?.sectorBenefits?.map((sec, idx) => {
+    const iconName = sec.icon?.trim();
+    const Icon = LucideIcons[iconName] || LucideIcons.Circle;
 
-        return (
-          <div
-            key={idx}
-            className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4
-                       transition-all duration-300 ease-out group
-                       hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]"
-          >
-            {/* ICON BOX */}
-            <div
-              className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center
-                         transition-all duration-300 ease-out
-                         group-hover:scale-110 group-hover:rotate-6"
-            >
-              <Icon
-                className="w-6 h-6 text-[#157be2] transition-all duration-300 ease-out
-                           group-hover:text-orange-500"
-              />
-            </div>
+    return (
+      <div
+        key={idx}
+        className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4
+                   transition-all duration-300 ease-out group
+                   hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]"
+      >
+        <div
+          className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center
+                     transition-all duration-300 ease-out
+                     group-hover:scale-110 group-hover:rotate-6"
+        >
+          <Icon
+            className="w-6 h-6 text-[#157be2] transition-all duration-300 ease-out
+                       group-hover:text-orange-500"
+          />
+        </div>
 
-            {/* TITLE */}
-            <p className="text-xl font-bold transition-all duration-300 group-hover:text-[#157be2]">
-              {sec.label}
-            </p>
+        <p className="text-xl font-bold transition-all duration-300 group-hover:text-[#157be2]">
+          {sec.label}
+        </p>
 
-            {/* LIST ITEMS */}
-            {[sec.list1, sec.list2, sec.list3].map(
-              (txt, i) =>
-                txt && (
-                  <div key={i} className="flex gap-2 items-start">
+        {[sec.list1, sec.list2, sec.list3].map(
+          (txt, i) =>
+            txt && (
+              <div key={i} className="flex gap-2 items-start">
+                <div className="w-5 h-5 rounded-full border-2 border-orange-500 flex items-center justify-center">
+                  <i className="fa-solid fa-check text-orange-500 text-[10px]"></i>
+                </div>
+                <p className="transition-all duration-300 text-gray-600">
+                  {txt}
+                </p>
+              </div>
+            )
+        )}
+      </div>
+    );
+  })}
+</div>
 
-                    <div className="w-5 h-5 rounded-full border-2 border-orange-500 flex items-center justify-center">
-                    <i className="fa-solid fa-check text-orange-500 text-[10px]"></i>
-                    </div>
-
-                    <p className="transition-all duration-300 text-gray-600 ">
-                      {txt}
-                    </p>
-                  </div>
-                )
-            )}
-          </div>
-        );
-      })}
-    </div>
   </div>
 </section>
 
@@ -577,7 +587,12 @@ export default async function Page({ params }) {
   <div className="min-h-[80vh] flex justify-center py-10">
     <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
 
-      <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p>
+      {/* <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p> */}
+
+      <h1 className="gradient-text montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight whitespace-nowrap">
+      {service?.resultsTitle}
+      </h1>
+
       <p className="text-gray-700 mt-3 text-center">{service?.resultsSubtitle}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-10">

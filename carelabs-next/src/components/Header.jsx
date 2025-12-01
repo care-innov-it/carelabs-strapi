@@ -227,9 +227,7 @@ const targetSlug = isBlogMenu
                   </div>
 
 
-          
-
-
+        
 
                   <div
                 className="menu-bar w-[15%] h-full flex items-center justify-center p-2 z-[999] lg:hidden"
