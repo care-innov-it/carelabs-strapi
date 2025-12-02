@@ -1323,6 +1323,12 @@ export interface ApiInsightblogInsightblog extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::blog-category.blog-category'
     >;
+    blogs_seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     button1icon: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
