@@ -174,6 +174,7 @@ query {
     successStat {
       title
       value
+      icon
     }
   }
 }

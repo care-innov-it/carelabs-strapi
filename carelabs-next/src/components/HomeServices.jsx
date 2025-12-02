@@ -71,9 +71,6 @@ const fetchGlobalReach = async () => {
       
       {/* Title */}
       {/* Comprehensive Power Solutions */}
-      {/* <p className="gradient-text  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold montserrat-font">
-       {globalReachData.title}
-      </p> */}
 
       <p 
      className=" text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold montserrat-font"

@@ -1,4 +1,5 @@
 "use client";
+import OurTeamMilestone from '@/components/OurTeams/OurTeamMilestone';
 import OurTeamPartner from '@/components/OurTeams/OurTeamPartner';
 import OurTeamRecognitions from '@/components/OurTeams/OurTeamRecognitions';
 import OurTeamsAction from '@/components/OurTeams/OurTeamsAction';
@@ -41,6 +42,10 @@ const page = () => {
       <section>
         <OurTeamPartner/>
       </section>
+
+      {/* <section>
+        <OurTeamMilestone/>
+      </section> */}
 
       <section>
         <OurTeamRecognitions/>

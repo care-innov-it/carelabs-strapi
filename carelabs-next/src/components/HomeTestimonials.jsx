@@ -75,10 +75,8 @@ const HomeTestimonials = () => {
     {/* Heading */}
     <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">
         <div className="text-[#157de5]">
-              < Quote size={18} />
+              <Quote size={18} />
           </div>
-
-        {/* Global Reach */}
         {testimonialData.badge}
       </h1>
     
