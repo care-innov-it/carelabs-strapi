@@ -12,15 +12,15 @@ const OurTeamsWrkTogether = ({data}) => {
   return (
     <div className='w-full flex flex-col items-center justify-center mt-20'>
         <div className="flex flex-col w-[85%] p-5 text-center
-                2xl:w-[65%]    ">
+                2xl:w-[70%]    ">
                     <h2 className='text-[30px] montserrat-font font-semibold mb-4'
                      dangerouslySetInnerHTML={{ __html: data.title }}></h2>
                     <p className='text-[18px]  para-text  poppins-font'>{data.description}</p>
                 </div>
 
         <div className="flex flex-col w-[85%] p- rounded-2xl mt-10
-            2xl:w-[65%]">
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            2xl:w-[70%] ">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
                 {data.Work_Together_Items?.map((item, index) => {
                             // Dynamically get icon from API using LucideIcons
                             const IconComponent = item.icon ? LucideIcons[item.icon] : null;
@@ -28,9 +28,24 @@ const OurTeamsWrkTogether = ({data}) => {
                             return (
                             <div
                                 key={index}
-                                className="p-8 flex flex-col justify-center gap-4 glass-panel"
-                            >
-                                <div className="w-[70px] h-[70px] rounded-xl flex items-center justify-center light-blue">
+                                // className="p-8 flex flex-col justify-center gap-4  ourteam-panel"
+                                    class="
+                                    p-8 
+                                    flex flex-col 
+                                    justify-center 
+                                    gap-4  
+                                    ourteam-panel
+                                    rounded-2xl
+                                    border border-transparent
+                                    transition-all duration-300 ease-out
+
+                                    hover:border-[#b7d5ff]
+                                    hover:shadow-[0_0_78px_30px_rgba(183,213,255,0.78)]
+                                    hover:scale-[1.06]
+                                    "                            >
+                                <div 
+                                className="w-[70px] h-[70px] rounded-xl flex items-center justify-center bg-gradient-to-r from-[#157DE5] to-[#FF7038]"
+                                >
                                 {IconComponent && <IconComponent size={24} color="#157de5" />}
                                 </div>
 

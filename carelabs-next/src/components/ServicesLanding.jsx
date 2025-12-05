@@ -111,9 +111,9 @@ const openRandomVideo = () => {
             <h1 className="text-black text-6xl font-bold "> 
               {/* for Safe, Reliable Networks */}
               {/* {mainheading2} */}
-              {mainheading2?.split('Networks')[0]}
+              {mainheading2}
               <br />
-              Networks
+              
               </h1>
            </div>
 
@@ -167,8 +167,11 @@ const openRandomVideo = () => {
           transition-opacity duration-300
         "
       ></span>
+     <button className="group flex items-center gap-3">
       <span className="relative z-10">{mainbutton1}</span>
-       <ArrowRight className="relative z-10 w-4 h-4" />
+      <ArrowRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+     </button>
+
  
     </a>
 
@@ -224,9 +227,12 @@ const openRandomVideo = () => {
   onClick={downloadRandomPdf}
   className="
     group relative px-6 sm:px-8 py-2 text-sm 
-    border-2 rounded-lg border-[#add9f8] 
+    border-2 rounded-lg 
+    border-[#157DE54D]              /* 30% opacity border */
+    hover:border-[#157DE580]        /* hover 50% opacity */
     bg-white text-gray-600
     overflow-hidden flex items-center gap-2 cursor-pointer
+    transition-colors duration-300
   "
 >
   <span
@@ -241,8 +247,11 @@ const openRandomVideo = () => {
   <Download className="relative z-10 w-4 h-4 group-hover:text-white transition-colors duration-300 text-black" />
 
   {/* TEXT */}
-  <span className="relative z-10 text-black group-hover:text-white transition-colors duration-300 ">{mainbutton2}</span>
+  <span className="relative z-10 text-black group-hover:text-white transition-colors duration-300 ">
+    {mainbutton2}
+  </span>
 </button>
+
 
 
             </div>
@@ -300,9 +309,12 @@ const openRandomVideo = () => {
   onClick={openRandomVideo}
   className="
     group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
-    border-2 border-[#fcd3c4] text-gray-600
+    border-2 border-[#FF70384D]       /* 30% opacity */
+    text-gray-600 bg-white            /* white background */
     lg:w-[50%] xl:w-[40%] 2xl:w-[40%]
     overflow-hidden flex items-center gap-2 cursor-pointer
+    hover:border-[#FF703880]          /* 50% opacity on hover */
+    transition-colors duration-300
   "
 >
   <span
@@ -313,9 +325,10 @@ const openRandomVideo = () => {
     "
   ></span>
 
-  <PlayCircle className="relative z-10 w-5 h-5 text-black group-hover:text-white transition-colors duration-300 " />
-  <span className="relative z-10 group-hover:text-white text-black transition-colors duration-300 ">{mainbutton3}</span>
+  <PlayCircle className="relative z-10 w-5 h-5 text-black group-hover:text-white transition-colors duration-300" />
+  <span className="relative z-10 group-hover:text-white text-black transition-colors duration-300">{mainbutton3}</span>
 </button>
+
 
 
           </div>
@@ -435,7 +448,13 @@ const openRandomVideo = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent"></div>
     </div> */}
 
-    <div className="relative w-full h-[320px] sm:h-[380px] md:h-[530px] rounded-4xl shadow-lg overflow-hidden">
+    <div className="
+  relative w-full 
+  h-[320px] sm:h-[380px] md:h-[530px] 
+  rounded-4xl shadow-lg overflow-hidden 
+  mt-[20px] sm:mt-[50px] md:mt-[74.62px]
+">
+
   <img
     src={mainimage?.url}
     alt="Service"
@@ -452,9 +471,9 @@ const openRandomVideo = () => {
     {/* Floating Stats */}
     <div
       className="
-        absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2
+        absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2
         w-[90%] sm:w-[85%] lg:w-[90%]
-        flex items-center justify-between gap-3 sm:gap-4 z-20
+        flex items-center justify-between gap-4 sm:gap-5 z-20
       "
     >
       {service_stats?.map((stat, idx) => (
@@ -468,7 +487,7 @@ const openRandomVideo = () => {
           "
         >
           <p className="text-base sm:text-lg lg:text-2xl font-bold" style={{
-              background: 'linear-gradient(180deg, #51a2ff 0%, #1e40af 100%)',
+              background: 'linear-gradient(90deg, #157DE5 0%, #FF7038 30%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'

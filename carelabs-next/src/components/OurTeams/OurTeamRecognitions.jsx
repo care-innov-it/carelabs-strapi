@@ -4,38 +4,7 @@ import React from 'react'
 import * as Icons from "lucide-react";
 
 
-const affiliations = [
-  {
-    title: "Certified Thermography Team",
-    location: "International",
-    year: "2019",
-  },
-  {
-    title: "Member - Safety Association",
-    location: "GCC",
-    year: "2016",
-  },
-  {
-    title: "IEC Compliance Partner",
-    location: "Global",
-    year: "2020",
-  },
-  {
-    title: "NFPA Certified Professionals",
-    location: "North America",
-    year: "2021",
-  },
-  {
-    title: "IEEE Member Organization",
-    location: "Global",
-    year: "2018",
-  },
-  {
-    title: "CSA Standards Contributor",
-    location: "Canada",
-    year: "2022",
-  },
-];
+
 
 const OurTeamRecognitions = ({data}) => {
   if(!data)return null;
@@ -51,7 +20,7 @@ const OurTeamRecognitions = ({data}) => {
     <div>
        <section className="w-full flex items-center justify-center lg:mt-20">
       <div className=" w-[85%] p- rounded-2xl mt-10
-            2xl:w-[65%]">
+            2xl:w-[70%]">
         <div className="bg-card rounded-2xl p-8 sm:p-12 glass-panel border border-border">
           {/* Header */}
           <div className="text-center mb-12">

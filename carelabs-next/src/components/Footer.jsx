@@ -99,7 +99,7 @@ const Footer = () => {
                     <a
                       key={idx}
                       href={item.url || "#"} 
-                      className="w-10 h-10 flex items-center justify-center rounded-full bg-[#092141] text-[#157de4]"
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-[#092141] text-[#157DE4] hover:bg-[#157DE4] hover:text-white transition-colors duration-300"
                     >
                       <IconComponent className="w-4 h-4" />
                     </a>

@@ -223,7 +223,7 @@ const HomeServices = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-transparent z-10"></div>
                   <div className="z-20 mb-2 sm:mb-4 lg:mb-5 flex flex-col justify-end gap-2 sm:gap-3 lg:gap-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#dae9fd] rounded-xl">
+                      <div className="w-[56px] h-[56px] flex items-center justify-center bg-[#dae9fd] rounded-[12px]">
                         {(() => {
                           const IconComponent = activeItem?.icon ? LucideIcons[activeItem.icon] : null;
                           return IconComponent ? <IconComponent size={30} className="text-[#2575b6]" /> : null;
@@ -269,7 +269,7 @@ const HomeServices = () => {
                       {activeItem?.performance?.map((p, idx) => (
                         <div key={idx} className="flex items-center justify-center flex-col text-center">
                           <p
-                            className="text-xl sm:text-2xl font-bold"
+                            className="text-xl sm:text-2xl font-bold "
                             dangerouslySetInnerHTML={{ __html: p.stats }}
                           />
                           <p className="text-xs sm:text-sm text-gray-600">{p.name}</p>

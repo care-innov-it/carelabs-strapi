@@ -13,10 +13,10 @@ const OurTeamsSnapshot = ({data}) => {
   <div className='w-full flex justify-center bg-geen-300'>
 
   <div className="
-    flex flex-col w-[85%] p-5 rounded-2xl glass-panel
+    flex flex-col w-[85%] p-5 ourteam-panel1
     sm:p-10
     lg:flex-row lg:justify-start lg:items-start
-    2xl:w-[65%] bg-white mt-[120px]
+    2xl:w-[70%] bg-white mt-[120px] rounded-[32px]
   ">
 
     {/* LEFT DIV */}
@@ -47,8 +47,17 @@ const OurTeamsSnapshot = ({data}) => {
         return (
           <div
             key={index}
-            className="p-6 rounded-2xl shadow-lg border border-transparent hover:border-[#dae9fd] transition-all duration-300"
-          >
+            className="
+                      p-6
+                      rounded-2xl
+                      bg-[rgba(255,255,255,0.80)]
+                      border border-transparent
+                      shadow-lg
+                      transition-all duration-300 ease-out
+                      hover:border-[#86b8f9]  
+                      hover:scale-[1.03]
+                      hover:shadow-xl"
+         >
             <IconComponent size={36} color={color} />
             <p className="text-[36px] font-extrabold montserrat-font" style={{ color }}>
               {item.stats}

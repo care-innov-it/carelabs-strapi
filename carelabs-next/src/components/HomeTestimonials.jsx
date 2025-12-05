@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { GET_TESTIMONIALS } from '@/lib/api-Collection';
 import client from '@/lib/appollo-client';
-import { Quote } from 'lucide-react';
+import { Quote, ChevronLeft, ChevronRight, } from 'lucide-react';
 
 
 const HomeTestimonials = () => {
@@ -9,30 +9,6 @@ const HomeTestimonials = () => {
   const [testimonialData, setTestimonialData] = useState(null)
   const [current, setCurrent] = useState(0);
  
-
-  //   const testimonials = [
-  //   {
-  //     quote:
-  //       "Carelabs transformed our power system reliability. Their expertise in compliance and safety audits helped us achieve 99.9% uptime across all facilities.",
-  //     name: "Ahmed Al-Mansouri",
-  //     position: "Facilities Director",
-  //     company: "Gulf Energy Corporation",
-  //   },
-  //   {
-  //     quote:
-  //       "Carelabs helped us improve energy efficiency by identifying critical faults early. Excellent service and highly professional team.",
-  //     name: "Sarah Johnson",
-  //     position: "Chief Engineer",
-  //     company: "International Mining Solutions",
-  //   },
-  //   {
-  //     quote:
-  //       "The power system studies conducted by Carelabs identified critical vulnerabilities before they became issues. Their proactive approach saved us significant downtime costs.",
-  //     name: "Michael Chen",
-  //     position: "Plant Supervisor",
-  //     company: "SunTech Industries",
-  //   },
-  // ];
 
   const fetchTestimonials = async () => {
     try {
@@ -70,7 +46,7 @@ const HomeTestimonials = () => {
     <div  
     data-aos="fade-up"
      data-aos-anchor-placement="top-center"
-    className="quotes w-11/12 sm:w-4/5 xl:w-[80%] flex items-center justify-center text-center flex-col gap-5 p-4">
+    className="quotes w-11/12 sm:w-4/5 xl:w-[80%] flex items-center justify-center text-center flex-col gap-5 p-4 -mt-7 ">
     
     {/* Heading */}
     <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">
@@ -81,7 +57,7 @@ const HomeTestimonials = () => {
       </h1>
     
     {/* Title */}
-    <p className=" w-full py-4  font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-[60px] montserrat-font"
+    <p className=" w-full py-4  font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[60px] montserrat-font"
        dangerouslySetInnerHTML={{ __html: testimonialData.title }}
     >
         {/* {testimonialData.title} */}
@@ -101,28 +77,64 @@ const HomeTestimonials = () => {
       <div 
        data-aos="fade-up"
      data-aos-anchor-placement="top-center"
-      className="bg-white rounded-3xl card-shadow  w-[90%] md:w-[80%] 2xl:w-[65%] p-20 lg:p-10 2xl:p-20 text-center relative">
+      //className="bg-white rounded-[24px] card-shadow  w-[90%] md:w-[80%] 2xl:w-[65%] p-20 lg:p-10 2xl:p-20 text-center relative"
+      className="
+      bg-white rounded-[24px] 
+      w-[90%]          
+      sm:w-[85%]      
+      md:w-[75%]       
+      lg:w-[70%]       
+      2xl:w-[60%]      
+      p-20 lg:p-10 2xl:p-20 
+      text-center relative
+      border border-[#0F172A]/10
+      shadow-[0_24px_60px_rgba(15,23,42,0.08)]
+    "
+
+      >
         
         {/* Quote Icon */}
         <div className="flex justify-center mb-6">
-          <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
-            <span className="text-3xl text-blue-500">❝</span>
+          <div className="w-16 h-16 rounded-full bg-[#E9EDF5] flex items-center justify-center">
+            <span className="text-3xl text-[#307FE2]">
+             <Quote size={32} strokeWidth={2} />
+            </span>
           </div>
         </div>
 
         {/* Testimonial Text */}
-        <p className="text-xl   md:text-2xl 2xl:px-0 text-gray-700 leading-relaxed poppins-font">
-          {/* "{testimonials[current].quote}" */}
-          {testimonials[current]?.feedback}
+
+        {/* <div className="min-h-[140px] md:min-h-[170px] flex items-center justify-center">
+        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed poppins-font">
+        {testimonials[current]?.feedback}
         </p>
+       </div> */}
+
+<div className="min-h-[140px] md:min-h-[170px] flex items-center justify-center">
+  <div
+    key={current} 
+    className="opacity-0 animate-feedbackFade max-w-[700px] text-center px-4 md:px-0"
+  >
+    <p className="text-xl md:text-2xl text-gray-700 leading-relaxed poppins-font">
+      {testimonials[current]?.feedback}
+    </p>
+  </div>
+
+  <style>{`
+    @keyframes feedbackFade {
+      0%   { opacity: 0; transform: translateY(10px); }
+      80%  { opacity: 1; transform: translateY(0px); }
+      100% { opacity: 1; transform: translateY(0px); }
+    }
+    .animate-feedbackFade {
+      animation: feedbackFade 0.5s ease-out forwards;
+    }
+  `}</style>
+</div>
+
 
         {/* Name + Position */}
 
-        {/* <div className="mt-6 ">
-          <p className="font-bold text-lg">{testimonials[current].name}</p>
-          <p className="text-sm text-gray-500">{testimonials[current].position}</p>
-          <p className="text-sm text-blue-600">{testimonials[current].company}</p>
-        </div> */}
         
         <div className="mt-6">
             <p className="font-bold text-lg poppins-font">{testimonials[current]?.name}</p>
@@ -139,13 +151,18 @@ const HomeTestimonials = () => {
           <button
             className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition"
             onClick={prevSlide}
+
+            style={{
+            borderColor: "#307FE2",
+            color: "#307FE2"
+            }}
           >
-            <i className="fa-solid fa-arrow-left fa-xl"></i>
+            <ChevronLeft size={20} strokeWidth={2.5} />
           
           </button>
 
           {/* Dot Indicators */}
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             {testimonials.map((_, index) => (
               <span
                 key={index}
@@ -154,13 +171,48 @@ const HomeTestimonials = () => {
                 }`}
               ></span>
             ))}
-          </div>
+          </div> */}
+
+          <div className="flex gap-2">
+  {testimonials.map((_, index) => {
+    const isActive = current === index;
+
+    return (
+      <span
+        key={index}
+        className={`
+          rounded-full transition-all duration-300
+          ${isActive ? "active-pill" : "inactive-dot"}
+        `}
+      ></span>
+    );
+  })}
+</div>
+
+<style>{`
+  .inactive-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #d1d5db;
+  }
+
+  .active-pill {
+    width: 24px;  
+    height: 8px;
+    background-color: #307FE2; 
+  }
+`}</style>
+
 
           <button
             className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition"
             onClick={nextSlide}
+            style={{
+            borderColor: "#307FE2",
+            color: "#307FE2"
+            }}
           >
-             <i className="fa-solid fa-arrow-right fa-xl"></i>
+              <ChevronRight size={20} strokeWidth={2.5} />
           </button>
         </div>
       </div>

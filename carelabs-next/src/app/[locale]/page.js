@@ -10,7 +10,7 @@ import RegionClients from "@/components/RegionClients";
 import RegionCompliance from "@/components/RegionCompliance";
 // import RegionClients from "@/components/RegionClients";
 import RegionIndustries from "@/components/RegionIndustries";
-import { GET_HOME_SECTION_12 } from "@/lib/api-Collection";
+import { GET_HOME_SECTION_12, GET_REGION_CLIENTS_BY_LOCALE, GET_REGION_INDUSTRIES } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 import { TextGenerateEffect } from "@/lib/ui/text-generate-effect";
 import Aos from "aos";
@@ -46,6 +46,9 @@ console.log("Pararar111",params['locale']);
   console.log("para-Local 44",locale);
   
   const [homeData,setHomeData]=useState();
+  const [regionIndustries,setRegionIndustries]=useState(null);
+  const [regionClients,setRegionClients]=useState(null);
+
 
   useEffect(() => {
     Aos.init({ 
@@ -65,7 +68,18 @@ console.log("Pararar111",params['locale']);
         query: GET_HOME_SECTION_12,
         variables: { locale },
       });
-      console.log("Home banner data1:",  data?.homes?.[0]);
+      const regionIndustriesData=await client.query({
+        query: GET_REGION_INDUSTRIES,
+        variables: { locale },
+      });
+       const regionClientData=await client.query({
+        query: GET_REGION_CLIENTS_BY_LOCALE,
+        variables: { locale },
+      });
+
+      console.log("RegionClients",regionClientData.data.homeOurClients[0]);
+      setRegionClients(regionClientData.data.homeOurClients[0]);
+      setRegionIndustries(regionIndustriesData.data.homeIndustries[0]);
       setHomeData(data?.homes?.[0]);
     }catch(err){
       console.log("Error fetching home banner data:", err);
@@ -78,34 +92,20 @@ console.log("Pararar111",params['locale']);
     };
     fetchData();
   }, []);
-
-  console.log("Home Data",homeData);
-
-
+  console.log("HomeData",homeData);
+  
   if (!homeData) {
     return (
       <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
-
-        {/* Skeleton for main card / hero section */}
         <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
-          
-          {/* Large placeholder for main heading */}
           <div className="w-full h-full bg-gray-300 rounded-lg"></div>
-
-          {/* Placeholder for subheading */}
           <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
-
-          {/* Inner content / stats placeholders */}
           <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
             <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
             <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-            <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-          </div>
-
+          <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+         </div>
         </div>
-
-      
-
       </div>
     );
   }
@@ -117,15 +117,15 @@ console.log("Pararar111",params['locale']);
         <div 
           data-aos="fade-up"
           data-aos-duration="2000"
-          className="  w-11/12 flex flex-col items-center justify-center blog-shadow border border-[#0f172914] glass-panel rounded-3xl  p-4 
+          className="  w-11/12 flex flex-col items-center justify-center blog-shadow border border-[#0f172914] glass-panel1  p-4 
           md:w-4/5 md:h-[85%] md:mt-2  md:p-6
           lg:w-[85%] lg:mt-5
           xl:w-[80%] xl:mt-16
-          2xl:mt-0 2xl:w-[65%]" >
+          2xl:mt-0 2xl:w-[65%] 2xl:gap  " >
 
-            <div className="w-full flex flex-col items-center justify-evenly space-y-6 md:space-y-8">
+            <div className="w-full flex flex-col items-center justify-center">
                 {/* Heading Button */}
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center ">
                   <button className="px-4 flex items-center justify-center gap-2 py-2 border border-[#157de54d] rounded-full ">
                     <div className="text-[#157de5]">
                         <Zap size={18} />
@@ -140,7 +140,7 @@ console.log("Pararar111",params['locale']);
                 </div>
 
                 {/* Title */}
-               <div className="w-full flex flex-col items-center justify-center text-center xl:text-[72px] title-Text">
+               <div className="w-full flex flex-col items-center justify-center text-center xl:text-[72px] title-Text mt-5 ">
 
                <p className="w-full md:w-[90%] text-3xl sm:text-4xl md:text-5xl lg:text-6xl py-1">
                {homeData.title1}
@@ -150,13 +150,13 @@ console.log("Pararar111",params['locale']);
                {homeData.title2} <span className="text-[#157de5]">{homeData.title3}</span>
                </p>
 
-           </div>
+               </div>
 
 
             </div>
 
             {/* Description */}
-            <div className="w-full flex items-center justify-center text-center px-4 md:px-8">
+            <div className="w-full flex items-center justify-center text-center p-5">
               <div className="w-full md:w-11/12 text-[20px]   md:text-xl py-5 ">
                 <p className="para-text poppins-font">{homeData.description}</p>
               </div>
@@ -176,19 +176,28 @@ console.log("Pararar111",params['locale']);
               </div>
             </div>
 
-            {/* Stats */}
-            <div
-              data-aos="fade-up"
-              data-aos-duration="2000"
-              className="w-full flex flex-col sm:flex-row  items-center justify-evenly py-4 gap-4 ">
-              {statsData.map((item, index) => (
-                <div key={index}
-                className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow">
-                  <HomeCounter end={item.number} duration={2} />
-                  <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
-                </div>
-              ))}
-            </div>
+
+              <div
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                  className="w-full flex flex-col sm:flex-row items-end justify-evenly p-10 ">
+                  {homeData.stats.map((item, index) => {
+                    // Define a repeating color pattern
+                    const colors = ["#157DE5", "#FF7038"];
+                    const color = colors[index % colors.length]; // cycles through colors
+
+                    return (
+                      <div
+                        key={index}
+                        className="w-full sm:w-[45%] md:w-[30%] flex flex-col p-8 xl:p-10 rounded-[24px] text-center  card-shadow"
+                      >
+                        <HomeCounter end={item.number} duration={2} color={color} />
+                        <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+
 
         </div>
       </div>
@@ -198,25 +207,20 @@ console.log("Pararar111",params['locale']);
       <div className="w-full h-[100px]  2xl:h-[250px]"></div>
 
       <section>   
-      <HomeServices/>
+        <HomeServices/>
       </section>
 
       <section>
-      <RegionIndustries/>
+        <RegionIndustries data={regionIndustries}/>
       </section>
 
       <section>
-        <RegionClients/>
+        <RegionClients data={regionClients}/>
       </section>
 
        <section>
         <RegionCompliance/>
       </section>
-
-      {/* Section-3  */}
-      {/* <section>
-        <GlobalReach />
-      </section> */}
 
       {/* Section-4 */}
       <section>

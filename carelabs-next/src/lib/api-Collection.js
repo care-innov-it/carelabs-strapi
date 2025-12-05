@@ -1129,5 +1129,59 @@ export const GET_CONTACT_PAGE = gql`
     }
   }`
 
-
-
+ export const GET_REGION_INDUSTRIES = gql`
+    query ($locale: I18NLocaleCode){
+      homeIndustries(locale:$locale) {
+        badgeicon
+        badge
+        title
+        industry_categories {
+          label
+        }
+        key_industries {
+          title
+          icon
+          highlight_text
+          highlight_color
+          key_features {
+            label
+          }
+        }
+        locale
+        description
+      }
+    }
+ `
+  export const GET_REGION_CLIENTS_BY_LOCALE = gql`
+    query ($locale: I18NLocaleCode){
+       homeOurClients(locale:$locale) {
+          Clients {
+            title
+            Clients_name {
+              name
+              logo {
+                url
+              }
+            }
+          }
+          Partners {
+            Partners_names {
+              countryName
+              description
+              id
+            }
+            Recenttitle
+            description
+            title
+            id
+          }
+          badge
+          badgeicon
+          description
+          createdAt
+          documentId
+          locale
+          publishedAt
+          title
+        }
+      }`

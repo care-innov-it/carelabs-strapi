@@ -18,7 +18,7 @@ const OurTeamsAction = ({data}) => {
                       </div>
       
                     <div className="flex flex-col w-[85%]  rounded-2xl mt-10 
-                        2xl:w-[65%]">
+                        2xl:w-[70%]">
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 

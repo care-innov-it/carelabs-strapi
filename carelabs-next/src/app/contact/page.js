@@ -2,40 +2,13 @@
 import client from "@/lib/appollo-client";
 import { GET_CONTACT_PAGE } from "@/lib/api-Collection";
 import React, { useState, useEffect } from "react";
-import { CheckCircle, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail, Phone, MessageCircle, Download } from "lucide-react";
+import { CircleCheck, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail, Clock , Shield, Phone, MessageCircle, Download } from "lucide-react";
 import * as LucideIcons from "lucide-react";
-
-
-const moreFaqs = [
-  {
-    q: "What languages do your engineers speak?",
-    a: "Our engineering teams are multilingual and support clients in English, Arabic, French, Hindi, and several regional languages. We match your project with the nearest and most suitable team."
-  },
-  {
-    q: "Do you work with international standards?",
-    a: "Yes, we comply with IEC, IEEE, NFPA, NEC, and local country-specific standards for all engineering assessments, reports, and studies."
-  },
-  {
-    q: "How do you keep project data secure?",
-    a: "We use encrypted storage, secure file-sharing channels, and follow strict cybersecurity practices. Sensitive project documentation is handled only by certified engineers."
-  },
-  {
-    q: "What's the typical project timeline?",
-    a: "Timeline depends on project complexity. Simple studies take 3–7 working days, while large-scale engineering projects may take several weeks. You’ll get an ETA upfront."
-  },
-  {
-    q: "What industries do you support?",
-    a: "We work with data centers, hospitals, utilities, manufacturing plants, oil & gas facilities, commercial buildings, and government sectors globally."
-  },
-  {
-    q: "Can you help with compliance for multiple standards (IEC, NFPA, CSA)?",
-    a: "Absolutely. Our engineers are certified across multiple international and regional standards including IEC, IEEE, NFPA, CSA, and NERC. We regularly work on projects requiring compliance with multiple standards simultaneously and can guide you through the specific requirements for your facility and location."
-  },
-];
 
 const Contactpage = () => {
      const [contactData, setContactData] = useState(null);
      const [openIndex, setOpenIndex] = useState(null);
+     const [selected, setSelected] = useState(null);
      const [selectedRegion, setSelectedRegion] = useState(
       contactData?.Where_we_support?.regions?.[0]?.region_item?.[0]
      );
@@ -60,40 +33,13 @@ const Contactpage = () => {
       }, []);
 
       if (!contactData) return <p>Loading...</p>;
-  
-    const cards = [
-      {
-        icon: <FileText className="w-6 h-6 text-blue-500" />,
-        title: "Project & quote requests",
-        desc: "For new projects and feasibility assessments",
-        linkText: "Share project details →",
-      },
-      {
-        icon: <HelpCircle className="w-6 h-6 text-blue-500" />,
-        title: "Technical & standards questions",
-        desc: "For engineers and facility teams with technical queries",
-        linkText: "Ask a technical question →",
-      },
-      {
-        icon: <Headphones className="w-6 h-6 text-blue-500" />,
-        title: "Existing client support",
-        desc: "For ongoing projects and report follow-ups",
-        linkText: "Get support →",
-      },
-      {
-        icon: <Users className="w-6 h-6 text-blue-500" />,
-        title: "Partnerships & training",
-        desc: "For OEMs, consultants, and training enquiries",
-        linkText: "Discuss partnership →",
-      },
-    ];
 
   return (
 
     <>
     <section className="w-full flex items-center justify-center py-35 bg-[#F7F8FA]">
       <div        
-      className=" w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%] bg-white  rounded-3xl shadow-[0_10px_60px_rgba(0,0,0,0.08)]  p-10 md:p-14  flex flex-col md:flex-row items-center gap-10 ">
+      className=" w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%] bg-white contact-shadow contact-panel p-10 md:p-14  flex flex-col md:flex-row items-center gap-10 ">
 
         {/* LEFT CONTENT */}
         <div className="flex-1">
@@ -109,24 +55,24 @@ const Contactpage = () => {
             </button>
           </div>
           {/* Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: contactData.title }}>          
+          <h1 className="text-5xl md:text-6xl font-bold" dangerouslySetInnerHTML={{ __html: contactData.title }}>          
           </h1>
 
           {/* Sub text */}
-          <p className="text-gray-500 mt-4 text-[18px] leading-relaxed">
+          <p className="text-gray-500 mt-7 text-[18px] leading-relaxed">
             {contactData.description}
           </p>
 
           {/* Buttons */}
-          <div className="flex items-center gap-4 mt-6 flex-wrap">
+          <div className="flex items-center gap-4 mt-9 flex-wrap">
             {contactData?.buttons?.map((btn, index) => (
               <a
                 key={index}
                 href={btn.link || "#"}
                 className={
                   index === 0
-                    ? "px-6 py-3 bg-[#FF6B35] text-white rounded-full text-sm font-medium shadow hover:bg-[#ff5820] transition"
-                    : "px-6 py-3 border border-blue-300 text-blue-600 rounded-full text-sm font-medium hover:bg-blue-50 transition"
+                    ? "px-8 py-3 bg-[#FF7038] text-white rounded-full text-sm font-medium shadow hover:bg-[#ff5820] transition"
+                    : "px-8 py-3 border border-blue-300 text-[#111827] rounded-full text-sm font-medium hover:bg-blue-50 transition"
                 }
               >
                 {btn.text}
@@ -136,19 +82,19 @@ const Contactpage = () => {
 
           {/* Bullet list */}
 
-          <div className="mt-6 space-y-3">
+          <div className="mt-11 space-y-3">
             {contactData?.features?.map((item, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 border border-[#E5EEF5] bg-[#F9FBFD] rounded-full px-4 py-2"
+                className="inline-flex items-center gap-3 border border-[#E5EEF5] rounded-full px-4 py-2"
               >
                 {/* Icon Circle */}
                 <div className="w-5 h-5 flex items-center justify-center bg-blue-50 rounded-full">
-                  <CheckCircle className="text-blue-500 w-4 h-4" />
+                  <CircleCheck className="text-blue-500 w-4 h-4" />
                 </div>
 
                 {/* Text */}
-                <p className="text-gray-700 text-[14.5px] font-medium">
+                <p className="text-gray-700 text-[14px] font-small">
                   {item.label}
                 </p>
               </div>
@@ -160,14 +106,17 @@ const Contactpage = () => {
 
         {/* RIGHT IMAGE */}
         <div className="flex-1 flex justify-center">
-          <div className="rounded-2xl overflow-hidden shadow-xl">
-            <img
-              src={contactData?.image?.url || "/placeholder.jpg"} 
-              alt="Contact Section Image"
-              className="w-full max-w-[500px] h-auto object-cover"
-            />
+          <div className="bg-white rounded-2xl shadow-2xl p-2.5">
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src={contactData?.image?.url || "/placeholder.jpg"} 
+                alt="Contact Section Image"
+                className="w-full max-w-[500px] h-auto object-cover rounded-2xl"
+              />
+            </div>
           </div>
         </div>
+
 
       </div>
     </section>
@@ -186,10 +135,10 @@ const Contactpage = () => {
         "
       >
         {/* Heading */}
-        <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold mb-4 leading-tight" dangerouslySetInnerHTML={{ __html: contactData?.Choose_how_to_connect?.title }}>
+        <h1 className="text-4xl md:text-5xl lg:text-[48px] font-bold mb-4 leading-tight" dangerouslySetInnerHTML={{ __html: contactData?.Choose_how_to_connect?.title }}>
         </h1>
 
-        <p className="text-gray-600 max-w-2xl mx-auto mb-14 text-[15.5px]">
+        <p className="text-gray-500 max-w-2xl mx-auto mb-14 text-[18px]">
           {contactData?.Choose_how_to_connect?.description}
         </p>
 
@@ -201,36 +150,42 @@ const Contactpage = () => {
             return (
               <div
                 key={i}
-                className="
-                  bg-white 
+                className="group
+                  bg-[#fbfcfe] 
                   rounded-3xl 
-                  p-6 md:p-7 
-                  shadow-[0_6px_30px_rgba(0,0,0,0.05)] 
+                  p-6 md:p-7
+                  contact-shadow2 
+                  transition-all duration-300 ease-out 
+                  hover:-translate-y-2 
                 "
               >
                 <div className="flex items-start gap-4">
 
                   {/* ICON LEFT */}
-                  <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center shadow-inner">
-                    <IconComponent className="w-7 h-7 text-blue-600" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] rounded-2xl flex items-center justify-center shadow-inner transition-transform duration-300 ease-out group-hover:scale-110 border-1 border-[rgba(21,125,229,0.4)]">
+                    <IconComponent className="w-7 h-7 text-[#007FFF] transition-transform duration-300 group-hover:scale-110" />
                   </div>
 
                   {/* TEXT RIGHT */}
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                  <div className="flex-1 item-start text-left">
+                    <h3 className="text-[20px] font-semibold text-gray-900 mb-1 transition-colors duration-300 group-hover:text-[#007FFF]">
                       {item.title}
                     </h3>
 
-                    <p className="text-gray-600 text-sm leading-relaxed mb-2">
+                    <p className="text-gray-500 text-[16px] leading-relaxed mb-2 mt-3">
                       {item.description}
                     </p>
 
-                    <a
-                      href={item.sharelink || "#"}
-                      className="text-blue-600 font-medium text-sm hover:underline"
-                    >
-                      {item.sharetext}
-                    </a>
+                    <div className="flex items-center gap-2 w-full group mt-3">
+                      <a
+                        href={item.sharelink || "#"}
+                        className="text-[#007FFF] font-medium text-[16px]"
+                      >
+                        {item.sharetext}
+                        <span className="inline-block transition-transform duration-300 text-[16px]
+                          group-hover:translate-x-1">→</span>
+                      </a>
+                    </div>
                   </div>
 
                 </div>
@@ -243,50 +198,42 @@ const Contactpage = () => {
 
     {/* formCard */}
 
-    <section className="w-full flex items-center justify-center py-20 bg-[#F7F8FB]">
+    <section className="w-full flex items-center justify-center py-20 bg-[#F7F8FB] ">
       <div
         className="
           w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
           bg-white rounded-3xl 
-          shadow-[0_10px_60px_rgba(0,0,0,0.08)]
+          contact-shadow
           p-10 md:p-14
           flex flex-col md:flex-row gap-12
         "
       >
 
         {/* LEFT SIDE */}
-        <div className="flex-1">
+        <div className="w-full md:w-[40%]">
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-6" dangerouslySetInnerHTML={{ __html: contactData?.Tell_us_about_project?.title }}>
+          <h1 className="text-2xl md:text-[35px] font-bold leading-tight mb-6" dangerouslySetInnerHTML={{ __html: contactData?.Tell_us_about_project?.title }}>
           </h1>
 
           {/* Info Box */}
-          <div className="bg-blue-50 border border-blue-100 p-4 rounded-2xl flex gap-3 items-start mb-8">
-            <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 11.5v3m0-8v.01M12 4a8 8 0 100 16 8 8 0 000-16z" />
-              </svg>
+          <div className="bg-[#157DE50D] border border-[#157DE51A] p-4 rounded-2xl flex gap-3 items-start mb-8">
+            <div className="w-5 h-5 text-[#157de5] flex items-center justify-center">
+              <Shield/>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed">
+            <p className="text-gray-500 text-sm leading-relaxed">
               {contactData?.Tell_us_about_project?.note}
             </p>
           </div>
 
           {/* Bullet List */}
-          <h3 className="font-semibold mb-3 text-gray-900">
+          <h3 className="font-semibold mb-3 text-gray-900  text-[15px]">
             {contactData?.Tell_us_about_project?.What_to_share_text}
           </h3>
 
-          <ul className="space-y-2 text-gray-700 text-sm">
+          <ul className="space-y-2 text-gray-500 text-sm">
             {contactData?.Tell_us_about_project?.what_to_share_Items?.map((item, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <CheckCircle className="text-blue-500 w-4 h-4 mt-0.5" />
+                <CircleCheck className="text-[#157de5] w-4 h-4 mt-0.5" />
                 {item.label}
               </li>
             ))}
@@ -294,8 +241,8 @@ const Contactpage = () => {
         </div>
 
         {/* RIGHT SIDE FORM */}
-        <div className="flex-1">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full md:w-[60%]">
+          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
 
             {(() => {
               const formFields = [...(contactData?.Tell_us_about_project?.contact_form?.contact_form_fields || [])];
@@ -314,14 +261,14 @@ const Contactpage = () => {
               .map((field, idx) => (
                 <div key={idx} className="flex flex-col">
                   <label className="text-sm font-medium mb-1">
-                    {field.fieldname} {field.required ? "*" : ""}
+                    {field.fieldname} {field.required ? "" : ""}
                   </label>
 
                   <input
                     type="text"
                     placeholder={field.placeholder}
                     required={field.required}
-                    className="w-full px-4 py-3 border rounded-xl bg-gray-50"
+                    className="w-full px-3 py-2 border border-[#13182014] rounded-xl placeholder:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#157DE5] focus:border-2"
                   />
                 </div>
             ))}
@@ -332,7 +279,7 @@ const Contactpage = () => {
                 {contactData?.Tell_us_about_project?.contact_form?.typeOfHelpTitle}
               </label>
 
-              <select className="w-full px-4 py-3 border rounded-xl bg-gray-50 text-gray-600">
+              <select className="w-full px-3 py-2 border border-[#13182014] rounded-xl text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500">
 
                 {[...(contactData?.Tell_us_about_project?.contact_form?.typeOfHelpOptions || [])]
                   .sort((a, b) => a.order - b.order)
@@ -354,12 +301,14 @@ const Contactpage = () => {
                 {[...(contactData?.Tell_us_about_project?.contact_form?.services || [])]
                   .sort((a, b) => a.order - b.order)
                   .map((service, idx) => (
-                    <span
-                      key={idx}
-                      className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer"
-                    >
-                      {service.label}
-                    </span>
+                    <span key={idx} onClick={() => setSelected(idx)}
+                    className={`
+                      px-3 py-2 border rounded-full text-[12px] font-semibold cursor-pointer
+                      ${selected === idx ? "bg-[#157DE5] text-white border-[#157DE5]" : "border-[#13182014] text-gray-700 hover:bg-gray-200"}
+                    `}
+                  >
+                    {service.label}
+                  </span>
                 ))}
               </div>
             </div>
@@ -370,7 +319,7 @@ const Contactpage = () => {
                 {contactData?.Tell_us_about_project?.contact_form?.contactMethodTitle}
               </label>
 
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-700">
+              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-900">
                 {[...(contactData?.Tell_us_about_project?.contact_form?.contactMethods || [])]
                   .sort((a, b) => a.order - b.order)
                   .map((method, idx) => (
@@ -393,7 +342,7 @@ const Contactpage = () => {
                   rows="4"
                   placeholder={window._messageField.placeholder}
                   required={window._messageField.required}
-                  className="w-full px-4 py-3 border rounded-xl bg-gray-50"
+                  className="w-full px-5 py-5 rounded-xl border border-[#13182014] text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500"
                 ></textarea>
               </div>
             )}
@@ -403,19 +352,17 @@ const Contactpage = () => {
               <button
                 type="submit"
                 className="
-                  w-full md:w-[60%] 
-                  py-3 bg-[#FF6B35] text-white 
+                  w-[60%] md:w-[100%] 
+                  py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white 
                   rounded-full text-sm font-medium 
-                  shadow hover:bg-[#ff5a1f] transition
+                  shadow hover:bg-[linear-gradient(90deg,#FF7038E6,#FF7038FF)] transition
                 "
               >
                 {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
               </button>
 
-              <p className="flex items-center gap-2 text-gray-600 text-sm mt-3">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 11.5v3m0-8v.01M12 4a8 8 0 100 16 8 8 0 000-16z" />
-                </svg>
+              <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
+                < Clock className="w-4 h-4"/>
                 {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
               </p>
             </div>
@@ -593,10 +540,10 @@ const Contactpage = () => {
           text-center
         "
       >
-        <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight mb-4"  dangerouslySetInnerHTML={{ __html: contactData?.Where_we_support?.title }}>
+        <h1 className="text-4xl md:text-5xl lg:text-[50px] font-bold leading-tight mb-4"  dangerouslySetInnerHTML={{ __html: contactData?.Where_we_support?.title }}>
         </h1>
 
-        <p className="text-gray-600 max-w-3xl mx-auto mb-16 text-[15px]">
+        <p className="text-gray-500 max-w-3xl mx-auto mb-16 text-[18px]">
           {contactData?.Where_we_support?.description}
         </p>
 
@@ -704,31 +651,34 @@ const Contactpage = () => {
             return (
               <div
                 key={i}
-                className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-7 space-y-3"
+                className="bg-white group rounded-3xl px-4 py-5 space-y-3 contact-shadow2 
+                  transition-all duration-300 ease-out 
+                  hover:-translate-y-2"
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 flex items-center justify-center rounded-xl bg-blue-50">
+                  <span className="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] border-1 border-[rgba(21,125,229,0.4)]">
                     {IconComponent && (
                       <IconComponent
-                        className="w-5 h-5"
-                        stroke="#3B82F6" 
+                        className="w-4 h-4 text-gray-900"
                         fill="none"
                       />
                     )}
                   </span>
 
-                  <h3 className="font-semibold text-gray-900 text-[17px]">
-                    {loc.location_name}
-                  </h3>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-semibold text-gray-900 text-[17px]">
+                      {loc.location_name}
+                    </h3>
+                    <span
+                      className={`w-fit px-3 py-1 rounded-full text-xs font-semibold border bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] text-white`} 
+                      style={{ color: loc.type_color, borderColor: `${loc.type_color}33` }}
+                    >
+                      {loc.type}
+                    </span>
+                  </div>
                 </div>
-                <span
-                  className="px-3 py-1 rounded-full text-xs font-medium"
-                  style={{ backgroundColor: loc.type_color, color: "#fff" }}
-                >
-                  {loc.type}
-                </span>
 
-                <p className="text-gray-600 text-sm leading-relaxed">{loc.description}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{loc.description}</p>
               </div>
             );
           })}
@@ -743,38 +693,40 @@ const Contactpage = () => {
   <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]">
 
     {/* Heading */}
-    <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-center" dangerouslySetInnerHTML={{ __html: contactData?.Not_sure?.title }}>
+    <h1 className="text-4xl md:text-5xl font-bold leading-tight text-center" dangerouslySetInnerHTML={{ __html: contactData?.Not_sure?.title }}>
     </h1>
 
     {/* Subtitle */}
-    <p className="text-gray-600 max-w-xl mx-auto mt-3 mb-14 text-center text-[15px]">
+    <p className="text-gray-500 max-w-xl mx-auto mt-3 mb-14 text-center text-[18px]">
       {contactData?.Not_sure?.description}
     </p>
 
     {/* GRID */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 w-[90%] mx-auto">
       {contactData?.Not_sure?.Not_sure_Item?.map((item, idx) => {
         const IconComponent = LucideIcons[item.icon];
 
         return (
           <div
             key={idx}
-            className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)]
-                       p-8 flex flex-col gap-2 border border-gray-100"
+            className="bg-[#feffff] rounded-3xl contact-shadow2 group
+                  transition-all duration-300 ease-out 
+                  hover:-translate-y-2 
+                       p-8 flex flex-col gap-2"
           >
             {/* ICON + TITLE */}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-                {IconComponent && <IconComponent className="w-6 h-6 text-blue-600" />}
+            <div className="flex items-center gap-4 ">
+              <div className="w-12 h-12 bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] border-1 border-[rgba(21,125,229,0.4)] rounded-2xl flex items-center justify-center shadow-inner transition-transform duration-300 ease-out group-hover:scale-110">
+                {IconComponent && <IconComponent className="w-6 h-6 text-blue-600 transition-transform duration-300 group-hover:scale-110" />}
               </div>
 
-              <h3 className="text-[18px] font-semibold text-gray-900 leading-snug">
+              <h3 className="text-[18px] font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#007FFF]">
                 {item.heading}
               </h3>
             </div>
 
             {/* DESCRIPTION */}
-            <p className="text-gray-600 text-[14px] leading-[1.4] ml-[60px] mt-1">
+            <p className="text-gray-500 text-[16px] leading-[1.4] ml-[60px]">
               {item.description}
             </p>
 
@@ -782,7 +734,7 @@ const Contactpage = () => {
             {item.Go_to_from_text && (
               <a
                 href={item.Go_to_from_link}
-                className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1 ml-[60px] mt-1"
+                className="text-[#007FFF] font-medium text-sm flex items-center gap-1 ml-[60px] mt-1"
               >
                 {item.Go_to_from_text} →
               </a>
@@ -795,21 +747,22 @@ const Contactpage = () => {
 </section>
 
 
-{/* gloabal reabality */}
+{/* global reabality */}
 
 <section className="w-full flex justify-center py-20 bg-[#F7F8FB]">
-  <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]">
+  <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%] ">
 
     <div
       className="
         bg-white rounded-3xl 
-        shadow-[0_12px_60px_rgba(0,0,0,0.06)]
+        contact-shadow
         p-10 md:p-16
         text-center
+        bg-[linear-gradient(to_right,#FFFFFFF2_0%,#EFF6FFCC_50%,#FFFFFFF2_100%)]
       "
     >
       {/* Heading */}
-      <h2 className="text-3xl md:text-4xl font-semibold mb-12" dangerouslySetInnerHTML={{ __html: contactData?.Local_expertise?.title }}>   
+      <h2 className="text-3xl md:text-3xl font-bold mb-12" dangerouslySetInnerHTML={{ __html: contactData?.Local_expertise?.title }}>   
       </h2>
 
 
@@ -820,13 +773,13 @@ const Contactpage = () => {
           const IconComponent = LucideIcons[item.icon];
           return (
             <div key={idx} className="flex flex-col items-center gap-3">
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
-                {IconComponent && <IconComponent size={32} className="text-blue-600" />}
+              <div className="w-14 h-14 bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] border-1 border-[rgba(21,125,229,0.4)] rounded-2xl flex items-center justify-center">
+                {IconComponent && <IconComponent size={28} className="text-[#157DE5]" />}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">
+              <h3 className="text-4xl font-bold bg-gradient-to-r from-[#157DE5] to-[#FF7038] bg-clip-text text-transparent">
                 {item.count}
               </h3>
-              <p className="text-gray-600 text-sm">{item.label}</p>
+              <p className="text-gray-500  text-sm" >{item.label}</p>
             </div>
           );
         })}
@@ -837,9 +790,8 @@ const Contactpage = () => {
       <div className="border-t border-gray-200 my-6"></div>
 
       {/* TRUST MESSAGE */}
-      <p className="text-gray-600 text-sm max-w-xl mx-auto">
-        {contactData?.Local_expertise?.Trusted_text}
-      </p>
+      <h1 className="text-gray-600 text-sm max-w-xl mx-auto" dangerouslySetInnerHTML={{ __html: contactData?.Local_expertise?.Trusted_text }}>
+      </h1>
 
     </div>
   </div>
@@ -857,10 +809,10 @@ const Contactpage = () => {
         
 
     {/* Title + Subtitle Section */}
-    <h2 className="text-4xl md:text-5xl font-semibold mb-3" dangerouslySetInnerHTML={{ __html: contactData?.Before_you_reach_out_heading }}>
+    <h2 className="text-4xl md:text-5xl font-bold mb-3" dangerouslySetInnerHTML={{ __html: contactData?.Before_you_reach_out_heading }}>
     </h2>
 
-    <p className="text-gray-600 text-[15px] mb-12">
+    <p className="text-gray-500 text-[18px] mb-12">
       {contactData?.Before_you_reach_out_subheading}
     </p>
 
@@ -868,31 +820,38 @@ const Contactpage = () => {
           className="
             bg-white rounded-3xl p-8 md:p-10 
             shadow-[0_12px_60px_rgba(0,0,0,0.06)]
-            w-full max-w-4xl mx-auto
+            w-full max-w-4xl mx-auto space-y-4
           "
         >
           {contactData?.Before_you_reach_out_Item?.map((item, i) => (
-            <div key={i} className="border-b border-gray-200 last:border-b-0">
+            <div
+              key={i}
+              className="border border-[#13182014] rounded-xl focus:outline-none focus:border-[#157DE5] focus:border-2 overflow-hidden"
+            >
               <button
                 className="w-full flex justify-between items-center py-5 text-left"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className="text-gray-800 font-medium text-[15px]">
+                <span className="text-gray-800 font-bold text-[16px] ml-5 hover:text-[#157DE5] hover:underline cursor-pointer">
                   {item.question}
                 </span>
 
                 <ChevronDown
-                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                  className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
-              {openIndex === i && (
-                <div className="pb-5 text-gray-600 text-sm leading-relaxed">
+              <div
+                className={`overflow-hidden transition-all duration-500 text-gray-600 text-sm leading-relaxed ${
+                  openIndex === i ? "max-h-[500px] pb-5" : "max-h-0"
+                }`}
+              >
+                <div className="px-2 items-start">
                   {item.answer}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
@@ -901,21 +860,21 @@ const Contactpage = () => {
 
 
    <section className="w-full flex justify-center py-10 bg-[#F7F8FB]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-[95%] md:w-[85%] xl:w-[75%]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-[95%] md:w-[85%] xl:w-[75%] ">
         {contactData?.contact_cta?.map((cta, i) => {
           const IconComponent = LucideIcons[cta.icon];
           return (
             <a
             key={i}
             href={cta.link || "#"} 
-            className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+            className="bg-white rounded-3xl p-6 contact-shadow2
                       flex flex-col items-center text-center gap-2 
-                      hover:shadow-[0_10px_35px_rgba(0,0,0,0.10)]
                       transition-all duration-300
-                      cursor-pointer no-underline"
+                      cursor-pointer no-underline transition-all duration-300 ease-out 
+                  hover:-translate-y-2 "
           >
-            <div className="w-[60px] h-[60px] bg-[#eaf4ff] text-[#157de5] flex items-center justify-center rounded-2xl shadow-sm">
-              {IconComponent && <IconComponent size={32} />}
+            <div className="w-[48px] h-[48px] bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] border-1 border-[rgba(21,125,229,0.4)] text-[#157de5] flex items-center justify-center rounded-2xl shadow-sm">
+              {IconComponent && <IconComponent size={25} />}
             </div>
 
             <p className="text-lg font-semibold mt-2">{cta.heading}</p>

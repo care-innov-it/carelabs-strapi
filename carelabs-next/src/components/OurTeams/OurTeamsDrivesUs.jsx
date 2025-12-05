@@ -13,7 +13,7 @@ const OurTeamsDrivesUs = ({data}) => {
         <h2 className='text-[36px] montserrat-font font-semibold text-center  my-10'
          dangerouslySetInnerHTML={{ __html: data.title }}
         ></h2>
-           <div className="flex flex-col w-[85%] rounded-2xl lg:flex-row 2xl:w-[65%]">
+           <div className="flex flex-col w-[85%] rounded-2xl lg:flex-row 2xl:w-[70%]">
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         {data.Drives_Us_Items.map((item, index) => {
           const IconComponent = LucideIcons[item.icon] || LucideIcons["Target"]; // fallback icon

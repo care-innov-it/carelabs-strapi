@@ -71,11 +71,11 @@ export default async function Page({ params }) {
           <div
             key={idx}
             className="
-              w-full sm:w-[45%] lg:w-[30%] 
+              w-full sm:w-[45%] lg:w-[31.8%] 
               bg-[#ffffffd9] p-6 rounded-2xl shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex flex-col gap-3
 
-              transform transition-all duration-500 
-              hover:scale-[1.05] hover:shadow-xl hover:-translate-y-1
+              group transition-all duration-300 ease-out 
+              hover:-translate-y-2 hover:shadow-xl
             "
           >
             <Icon className="w-8 h-8 text-[#157de5]" />
@@ -159,7 +159,7 @@ export default async function Page({ params }) {
         w-full lg:w-[50%] xl:w-[48%] 
         shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex flex-col gap-6
       ">
-        <div className="w-[55px] h-[55px] bg-[#f9e0e2] rounded-xl flex justify-center items-center">
+        <div className="w-[55px] h-[55px] bg-[#f9e0e2] rounded-xl flex justify-center items-center border border-[#EF4343]/40">
           {service?.Why_Matters?.[0]?.icon && (() => {
             const Icon1 = LucideIcons[service?.Why_Matters?.[0]?.icon] || LucideIcons.AlertCircle;
             return <Icon1 className="w-7 h-7 text-red-500" />;
@@ -261,18 +261,23 @@ export default async function Page({ params }) {
                 <div
                   key={idx}
                   className="
-                    bg-white p-6 rounded-2xl shadow-xl group
-                    transform transition-transform duration-300
-                    hover:-translate-y-2 hover:scale-[1.02]
+                    bg-white p-6 rounded-2xl group
+                    shadow-[0_6px_10px_rgba(0,0,0,0.15)]
+                    transform transition-all duration-500 ease-out
+                    hover:-translate-y-2 hover:shadow-xl
                   "
                 >
                   <div className="flex items-center justify-between w-full">
-                    <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center transition-colors duration-300">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center 
+                     bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] 
+                     transition-colors duration-300
+                     group-hover:scale-110 group-hover:rotate-3
+                     ">
                       <Icon className="text-blue-600 text-xl group-hover:text-[#ff7038]" />
                     </div>
 
                     {f.stat && (
-                      <span className="inline-block border-2 border-[#fcd3c4] bg-orange-50 text-[#ff7038] text-[12px] font-medium px-3 py-1 rounded-2xl w-fit">
+                      <span className="inline-block border-2 border-[rgba(255,112,56,0.2)] bg-[rgba(255,112,56,0.1)] text-[#ff7038] text-[12px] font-medium px-3 py-1 rounded-2xl w-fit">
                         {f.stat}
                       </span>
                     )}
@@ -345,54 +350,14 @@ export default async function Page({ params }) {
   {service?.methodsTitle?.split(" ").slice(-1)}
 </h1>
 
-    <p className="text-gray-700 max-w-xl text-center mt-3">{service?.methodsSubtitle}</p>
+    <p className="text-gray-500 text-[18px] max-w-3xl text-center mt-3">{service?.methodsSubtitle}</p>
 
     <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10 ">
       {service?.methodology?.map((step, index) => (
         <div key={index} className="flex flex-col items-center gap-4">
 
-          <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
-  {/* <div
-      className={`
-      group bg-white rounded-2xl navbar-shadow flex overflow-hidden
-      w-full lg:w-[80%] xl:w-[75%] 2xl:w-[70%]
-      ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
-     `}
-     >
-    
-    <div className="w-full md:w-[40%] h-56 md:h-auto overflow-hidden">
-      <div
-        className="
-          w-full h-full
-          transition-transform duration-[1100ms]
-          ease-[cubic-bezier(.13,.62,.31,1)]
-          group-hover:scale-[1.08]
-        "
-        style={{
-          backgroundImage: `url(${step?.image?.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-    </div>
-
-    <div className="p-6 flex gap-4 md:w-[90%]">
-      <div className="w-[100px] h-[40px] flex justify-center items-center bg-[#e2ecf8] text-[#157be2] rounded-xl text-lg font-bold">
-        {step.Order}
-      </div>
-
-      {step.icon && (() => {
-        const iconName = step.icon.trim();
-        const StepIcon = LucideIcons[iconName] || LucideIcons.Circle;
-        return <StepIcon className="text-[#157be2] w-12 h-10" />;
-      })()}
-
-      <div>
-        <p className="text-xl font-bold">{step.OrderTitleText}</p>
-        <p className="text-sm text-gray-700 mt-2">{step.OrderSubtitleText}</p>
-      </div>
-    </div>
-  </div> */}
+          <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start " : "md:justify-end"}`}>
+  
 
   <div
   className={`
@@ -421,7 +386,14 @@ export default async function Page({ params }) {
     />
 
     {/* GRADIENT OVERLAY */}
-    <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-transparent pointer-events-none"></div>
+{/* OVERLAY */}
+<div
+  className={`absolute inset-0 pointer-events-none
+    ${index % 2 === 0 
+      ? "bg-gradient-to-r from-white/30 via-white/10 to-transparent" 
+      : "bg-gradient-to-l from-white/30 via-white/10 to-transparent"
+    }`}
+></div>
 
   </div>
 
@@ -453,8 +425,17 @@ export default async function Page({ params }) {
           </div>
 
           {index !== service.methodology.length - 1 && (
-            <ChevronDown className="text-blue-400 w-6 h-6" />
-          )}
+  <div className="flex items-center gap-2">
+    {/* Left separator */}
+    <div className="w-12 h-[2px] bg-gradient-to-l from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
+
+    {/* Icon */}
+    <ChevronDown className="text-blue-400 w-6 h-6" />
+
+    {/* Right separator */}
+    <div className="w-12 h-[2px] bg-gradient-to-r from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
+  </div>
+)}
         </div>
       ))}
     </div>
@@ -462,75 +443,7 @@ export default async function Page({ params }) {
   </div>
 </section>
 
-      {/* =====================================================================================
-         SECTION 5 → Sector Benefits
-      ===================================================================================== */}
-      {/* <section>
-        <div className="w-full flex flex-col items-center py-10">
-
-          <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
-          <p className="text-gray-700 max-w-xl text-center mt-3">{service?.sectorBenefitsSubtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
-            {service?.sectorBenefits?.map((sec, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4">
-
-                <div className="w-[50px] h-[50px] bg-blue-300 rounded-xl flex justify-center items-center">
-                  <i className={sec.icon} />
-                </div>
-
-                <p className="text-xl font-bold">{sec.label}</p>
-
-                {[sec.list1, sec.list2, sec.list3].map(
-                  (txt, i) =>
-                    txt && (
-                      <div key={i} className="flex gap-2">
-                        <i className="fa-solid fa-circle-exclamation" />
-                        <p>{txt}</p>
-                      </div>
-                    )
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section>
-  <div className="w-full flex flex-col items-center py-10">
-
-    <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
-    <p className="text-gray-700 max-w-xl text-center mt-3">{service?.sectorBenefitsSubtitle}</p>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
-      {service?.sectorBenefits?.map((sec, idx) => {
-        const iconName = sec.icon?.trim(); 
-        const Icon = LucideIcons[iconName] || LucideIcons.Circle; 
-
-        return (
-          <div key={idx} className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4 transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl">
-
-            <div className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center transition-all duration-300 group-hover:scale-110 ">
-              <Icon className="w-6 h-6 text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
-            </div>
-
-            <p className="text-xl font-bold">{sec.label}</p>
-
-            {[sec.list1, sec.list2, sec.list3].map(
-              (txt, i) =>
-                txt && (
-                  <div key={i} className="flex gap-2">
-                    <i className="fa-solid fa-circle-exclamation" />
-                    <p>{txt}</p>
-                  </div>
-                )
-            )}
-          </div>
-        );
-      })}
-    </div>
-  </div>
-</section> */}
+  
 
 <section>
   <div className="w-full flex flex-col items-center py-10 bg-[#f9fbfe]">
@@ -554,9 +467,11 @@ export default async function Page({ params }) {
                    hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]"
       >
         <div
-          className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center
-                     transition-all duration-300 ease-out
-                     group-hover:scale-110 group-hover:rotate-6"
+          className="w-[50px] h-[50px] rounded-xl flex justify-center items-center
+          bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] 
+                     transition-colors duration-300
+                     group-hover:scale-110 group-hover:rotate-3           
+          "
         >
           <Icon
             className="w-7 h-7 text-[#157be2] transition-all duration-300 ease-out
@@ -585,7 +500,7 @@ export default async function Page({ params }) {
   {[sec.list1, sec.list2, sec.list3].map(
    (txt, i) =>
     txt && (
-      <div key={i} className="flex gap-3 items-start">
+      <div key={i} className="flex gap-2 items-start">
         <div
           className="
             w-4 h-5 rounded-full 
@@ -674,10 +589,10 @@ export default async function Page({ params }) {
 
           return (
             <div key={i} className=" p-6 rounded-xl text-center flex flex-col items-center gap-3 group">
-              <div className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center transition-all duration-300
+              <div className="w-[64px] h-[64px] rounded-xl flex justify-center items-center bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] transition-all duration-300
               group-hover:scale-110">
 
-                <StatIcon className="w-6 h-6 text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
+                <StatIcon className="w-[32px] h-[32px] text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
               </div>
               <p className="text-4xl font-bold bg-gradient-to-r from-[#5b68c3] to-[#c58a7a] bg-clip-text text-transparent">
                 {stat.percentage}

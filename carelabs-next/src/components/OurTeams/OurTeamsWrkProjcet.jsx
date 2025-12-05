@@ -16,9 +16,9 @@ const OurTeamsWrkProjcet = ({data}) => {
                 </div>
 
         <div className="flex flex-col w-[85%] p- rounded-2xl mt-10 
-            2xl:w-[65%]">
+            2xl:w-[70%]">
         
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5">
 
             {data.Guiding_Items?.map((item, index) => {
                 const imageUrl = item.image?.url

@@ -54,7 +54,10 @@ if (!compliance) return null;
   return (
      <div className='w-full flex flex-col items-center justify-center  mt-40 lg:mt-60'>
 
-        <div className="flex flex-col  items-center justify-center w-[85%] p-5 text-center
+        <div 
+           data-aos="fade-up"
+            data-aos-anchor-placement="top-center"
+        className="flex flex-col  items-center justify-center w-[85%] p-5 text-center
                 2xl:w-[65%]">
               <div className="w-fit flex items-center justify-center ">
                   <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">
@@ -66,7 +69,7 @@ if (!compliance) return null;
               </div>    
                
               <div className="w-full sm:w-[80%] flex items-center justify-center flex-col py-5">
-                  <h2 className="gradient-text  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-semibold montserrat-font"
+                  <h2 className=" text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-semibold montserrat-font"
                     dangerouslySetInnerHTML={{ __html: compliance.title }}
                   >
                
@@ -88,8 +91,11 @@ if (!compliance) return null;
                     const FeatureIcon = getIcon(item.icon);
 
                     return (
-                      <div key={index} className="p-8 flex flex-col justify-center gap-4 glass-panel">
-                        <div className="w-[70px] h-[70px] rounded-xl flex items-center justify-center light-blue"
+                      <div 
+                       data-aos="fade-up"
+                       data-aos-anchor-placement="top-center"
+                      key={index} className="p-8 flex flex-col justify-center gap-4 glass-panel">
+                        <div className="w-[70px] h-[70px] rounded-[24px] flex items-center justify-center light-blue"
                         style={{ backgroundColor: item.color + "10" }}
 >
                           <FeatureIcon size={32} color={item.color}  />
@@ -115,7 +121,7 @@ if (!compliance) return null;
             </div>
           
            <div className=" w-full lg:w-[80%]  text-[#2575b6] flex items-center justify-center mt-10 p-6 rounded-2xl  card-shadow ">
-            <div className="poppins-font text-[16px] ">
+            <div className="poppins-font text-[16px] text-center">
                 <p> {compliance.notetext}</p>
             </div>
            </div>

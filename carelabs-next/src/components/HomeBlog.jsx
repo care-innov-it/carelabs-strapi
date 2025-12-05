@@ -80,7 +80,7 @@ if (!featured) {
             </div>
 
             <Link href="/services/power-system-analysis" legacyBehavior>
-              <a className="px-5 py-3 border border-blue-400 rounded-xl inline-block poppins-font">
+              <a className="px-5 py-3 border border-[#1F8FEB] text-[#1F8FEB] rounded-xl inline-block poppins-font">
                 {insights.button}
               </a>
             </Link>
@@ -89,7 +89,7 @@ if (!featured) {
         </div>
 
         {/* BLOG CARD */}
-        <div data-aos="fade-up" data-aos-anchor-placement="top-center" className="bg-white transform transition-all duration-500 ease-in-out hover:-translate-y-3 w-full mt-10  flex flex-col md:flex-row navbar-shadow group rounded-2xl 
+        <div data-aos="fade-up" data-aos-anchor-placement="top-center" className="bg-white transform transition-all duration-500 ease-in-out hover:-translate-y-3 w-full mt-10  flex flex-col md:flex-row navbar-shadow group rounded-[24px] 
           md:w-[80%]
           lg:h-auto
           2xl:w-[65%] ">
@@ -174,12 +174,13 @@ if (!featured) {
                 src={item?.image?.url}
                 className="w-full h-full object-cover transform transition-all 
                     duration-500 ease-in-out group-hover:scale-115"
+
                 alt={item.title}
               />
             </div>
 
             {/* CONTENT */}
-            <div className="px-6 py-4 flex flex-col gap-3 rounded-2xl flex-grow">
+            <div className="px-6 py-4 flex flex-col gap-3 rounded-[16px] flex-grow">
               <div className="flex items-center gap-1">
                 {(() => {
                   const IconComponent = LucideIcons[item.icon];

@@ -228,6 +228,7 @@ if (!homeData) {
         window.openContactModal();
       }}
       className="
+        group 
         w-[202px] h-[44px]
         bg-[#FF7038] text-white 
         rounded-[9999px]
@@ -238,7 +239,14 @@ if (!homeData) {
       "
     >
       {homeData.btn1_text}
-      <ArrowRight size={14} />
+      <ArrowRight size={14}
+      className="
+      transform
+      transition-transform duration-300 
+      group-hover:translate-x-1   
+    "
+      />
+      
     </button>
 
     {/* SECONDARY BUTTON — BORDERED */}
@@ -252,7 +260,8 @@ if (!homeData) {
         flex items-center justify-center gap-2
         text-[14px] poppins-font font-medium
         transition-all duration-300
-        hover:bg-[#FF7038] hover:text-white hover:border-[#FF7038]
+        hover:bg-[#FF7038] hover:text-white
+        hover:border-[#307FE2]
       "
     >
       <Play size={14} />
@@ -291,10 +300,12 @@ if (!homeData) {
             w-[324.66px] h-[126px]
             bg-white
             rounded-[24px]
+            border border-[#307FE2]/10 
             flex flex-col items-center justify-center
-            shadow-[0_12px_40px_rgba(0,0,0,0.15)]
+            shadow-[0_18px_45px_rgba(15,23,42,0.10)]
             transition-all duration-500
-            hover:scale-[1.04] hover:-translate-y-1 hover:shadow-xl
+            hover:scale-[1.04] hover:-translate-y-1 
+            hover:shadow-[0_22px_55px_rgba(15,23,42,0.12)]
           "
           style={{
             opacity: 0,

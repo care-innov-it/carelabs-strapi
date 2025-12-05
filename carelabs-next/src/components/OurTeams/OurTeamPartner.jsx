@@ -11,7 +11,7 @@ const OurTeamPartner = ({data}) => {
     <div>
         <div className='w-full flex flex-col items-center justify-center mt-20 mb-20'>
         <div className="flex flex-col w-[85%] p-5 text-center
-                2xl:w-[65%]    ">
+                2xl:w-[70%]    ">
                     <h2 className='text-[30px] montserrat-font font-semibold mb-4'
                       dangerouslySetInnerHTML={{ __html: data.title }}
                     ></h2>
@@ -19,7 +19,7 @@ const OurTeamPartner = ({data}) => {
                 </div>
 
               <div className="flex flex-col gap-5 w-[85%] py-5 rounded-2xl mt-10 glass-panel
-                    lg:flex-row 2xl:w-[65%]">
+                    lg:flex-row 2xl:w-[70%]">
 
       {items.map((item, index) => {
         const Icon = Icons[item.icon] || Icons.HelpCircle; // fallback icon

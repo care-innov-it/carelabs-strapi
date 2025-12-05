@@ -18,7 +18,7 @@ import React, { useEffect, useState } from 'react'
 
 
 const page = () => {
-
+  const[ourTeamAllData,setourTeamAllData]=useState(null);
   const[ourTeamSnapshot,setourTeamSnapshot]=useState(null);
   const[ourTeamDriversUs,setourTeamDriversUs]=useState(null);
   const[ourTeamWrkTgther,setourTeamDWrkTgther]=useState(null);
@@ -28,7 +28,9 @@ const page = () => {
   const[ourTeamMilestones,setourTeamMilestones]=useState(null);
   const[ourTeamGallery,setourTeamGallery]=useState(null);
   const[ourTeamworkWithUs,setourTeamworkWithUs]=useState(null);
-  const[ourTeamRecognitions,setourTeamRecognitions]=useState(null)
+  const[ourTeamRecognitions,setourTeamRecognitions]=useState(null);
+  const[ourTeamReadyToTalk,setourTeamReadyToTalk]=useState(null);
+
 
 
   const getOurTeamPageData=async()=>{
@@ -38,40 +40,19 @@ const page = () => {
                    });
 
         const fetchedData=res.data.ourTeamPage;
-
         const snapShot=fetchedData.snapshot;
-        console.log("snapShot",snapShot);
-
         const driversUs=fetchedData.Drives_Us;
-        console.log("driversUs",driversUs);
-
         const wrkTgther=fetchedData.Work_Together;
-        console.log("wrkTgther",wrkTgther);
-
         const GuidingWrk=fetchedData.Guiding;
-        console.log("Guiding",GuidingWrk);
-
         const WrkAction=fetchedData.Teams_in_Action;
-        console.log("Teams_in_Action1",WrkAction);
-
         const partner=fetchedData.How_We_Partner;
-        console.log("How_We_Partner",partner);
-
         const mileStone=fetchedData.Milestones;
-        console.log("Milestones",mileStone);
-
         const gallery=fetchedData.What_it_feels;
-        console.log("gallery",gallery);
-
         const workWithUs=fetchedData.Where_you_work;
-        console.log("workWithUs",workWithUs);
-
         const Recognition = fetchedData.Recognitions;
-        console.log("Recognitions",Recognition)
-
-        
+        const readyToTalk=fetchedData.Ready_to_Talk;
       
-
+        setourTeamAllData(fetchedData);
         setourTeamSnapshot(snapShot);
         setourTeamDriversUs(driversUs);
         setourTeamDWrkTgther(wrkTgther);
@@ -82,6 +63,7 @@ const page = () => {
         setourTeamGallery(gallery);
         setourTeamworkWithUs(workWithUs);
         setourTeamRecognitions(Recognition);
+        setourTeamReadyToTalk(readyToTalk);
 
         console.log("OURTEAM",fetchedData);
 
@@ -103,7 +85,7 @@ const page = () => {
   return (
     <div>
       <section>
-        <OurTeamsBanner/>
+        <OurTeamsBanner data={ourTeamAllData}/>
       </section>
 
       <section>
@@ -147,7 +129,7 @@ const page = () => {
       </section>
 
        <section>
-        <OurTeamConverstation/>
+        <OurTeamConverstation data={ourTeamReadyToTalk}/>
       </section>
      
     </div>

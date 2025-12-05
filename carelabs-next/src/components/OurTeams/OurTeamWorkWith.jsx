@@ -17,9 +17,8 @@ const OurTeamWorkWith = ({data}) => {
           </div>
   
 
-            <div className="flex flex-col w-[85%]  glass-panel  rounded-[16px]
-               
-                2xl:w-[65%] mt-10 ">
+            <div className="flex flex-col w-[85%]  glass-panel  rounded-[16px]    
+                2xl:w-[70%] mt-10 ">
 
               <div className="w-full p-5 grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-10">
 
