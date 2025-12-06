@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import client from '@/lib/appollo-client';
 import { GET_HOME_SERVICES_BY_LOCALE } from '@/lib/api-Collection';
-import { CircleCheckBig, Zap } from 'lucide-react';
+import { CircleCheckBig, Zap, Check } from 'lucide-react';
 import * as LucideIcons from "lucide-react";
 import { useParams } from 'next/navigation';
 
@@ -244,16 +244,19 @@ const HomeServices = () => {
                 {/* Content Section */}
                 <div className="w-full flex-1 flex flex-col justify-between gap-4 sm:gap-6 p-5 sm:p-6 lg:p-8">
 
-                  <hr className="w-[15%] rounded-full h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 border-none" />
+                  <hr className="w-[15%] rounded-full h-[2px] bg-gradient-to-r from-[#2575B6] to-[#F15C30] border-none" />
 
                   {/* Key Features */}
                   <div>
                     <h4 className="mb-3 font-semibold text-[14px] primary-color">KEY FEATURES</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2  text-sm sm:text-base">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2  text-sm sm:text-base ">
                       {activeItem?.serviceFeatures?.map((feat, idx) => (
                         <div key={idx}
                           className="flex items-center  gap-2 ">
-                          <CircleCheckBig size={20} className='text-green-300' />
+                          {/* <CircleCheckBig size={20} className='text-green-300' /> */}
+                          <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(5, 150, 105, 0.1)' }}>
+                            <Check size={12} className="text-[#059669]" />
+                          </div>
                           <li key={idx} className='poppins-font text-[16px] font-medium'> {feat.name}</li>
                         </div>
 
@@ -262,7 +265,7 @@ const HomeServices = () => {
                   </div>
 
                   {/* Performance Metrics */}
-                  <div>
+                  {/* <div>
                     <p className="mb-3 font-semibold text-[14px] primary-color">PERFORMANCE METRICS</p>
                     <div className="flex flex-col sm:flex-row items-center justify-between sm:justify-evenly gap-4 sm:gap-2">
 
@@ -276,7 +279,29 @@ const HomeServices = () => {
                         </div>
                       ))}
                     </div>
-                  </div>
+                  </div> */}
+
+                  <div>
+  <p className="mb-3 font-semibold text-[14px] primary-color">
+    PERFORMANCE METRICS
+  </p>
+
+  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between sm:justify-evenly gap-4 sm:gap-2">
+    {activeItem?.performance?.map((p, idx) => (
+      <div 
+        key={idx} 
+        className="flex flex-col items-start text-left sm:items-center sm:text-center"
+      >
+        <p
+          className="text-xl sm:text-2xl font-bold"
+          dangerouslySetInnerHTML={{ __html: p.stats }}
+        />
+        <p className="text-xs sm:text-sm text-gray-600">{p.name}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
                   {/* Action Buttons */}
 

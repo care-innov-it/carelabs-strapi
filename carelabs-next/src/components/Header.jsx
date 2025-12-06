@@ -153,7 +153,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <div className="menuList hidden lg:flex lg:w-[60%] xl:w-[38%] lg:justify-center h-full">
+          <div className="menuList hidden lg:flex lg:w-[60%] xl:w-[38%] lg:justify-center h-full ">
             <ul className='flex text-[14px] font-medium justify-evenly items-center gap-6 w-[95%] p-3'>
               {navbarData.items.map((item, index) => (
 
@@ -228,11 +228,12 @@ const Header = () => {
                   </div> */}
 
             <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[35%] 2xl:w-[45%] bg-[#157de5]">
-              <button className="text-sm lg:py-[10px] lg:px-3 cursor-pointer" onClick={() => setIsContactModalOpen(true)}>
+              <button className="text-sm lg:py-[10px] lg:px-3 cursor-pointer" onClick={() => navigate(navbarData.buttonlink)}>
                 <span className="text-[14px] text-white font-medium">
                   {navbarData?.buttontext}
                 </span>
               </button>
+
               <ContactPopupModal
                 isOpen={isContactModalOpen}
                 setIsOpen={setIsContactModalOpen}
@@ -265,7 +266,7 @@ const Header = () => {
           <div className="sub-menu-cards absolute top-[80px] w-full flex justify-center z-50"
           >
 
-            <div className="w-[65%] h-[500px] bg-white mt-2 rounded-2xl flex items-center justify-evenly p-6 navbar-shadow fixed"
+            <div className="w-[65%] h-[500px] bg-white mt-2 rounded-2xl hidden lg:flex items-center justify-evenly p-6 navbar-shadow fixed"
               onMouseLeave={() => setActiveIndex(null)}>
 
               {/* LEFT SECTION */}
@@ -383,8 +384,8 @@ const Header = () => {
 
       {/* Mobile Bar  Menus */}
       {openMobileMenu && (
-        <div className="w-full h-max glass-panel  fixed flex items-center top-[80px] z-[1000] justify-center p-3 lg:hidden">
-          <div className="glass-panel w-[90%] h-[90%] rounded-2xl p-4 md:w-[80%] md:flex md:justify-center md:flex-col md:items-center">
+        <div className="w-full h-max bg-white  fixed flex items-center top-[80px] z-[1000] justify-center p-3 lg:hidden">
+          <div className=" w-[90%] h-[90%] rounded-2xl p-4 md:w-[80%] md:flex md:justify-center md:flex-col md:items-center">
             <ul className="w-full">
               {navbarData.items.map((item, index) => (
                 <li key={item.id} className="border-b-[1px] rounded-b-xl  border-[#65758b] p-4 mt-2 card-shadow">

@@ -40,23 +40,6 @@ export default async function Page({ params }) {
       {/* =====================================================================================
          SECTION 1 → What It Covers (service_features)
       ===================================================================================== */}
-      {/* <section>
-        <div className="w-full min-h-[300px] flex items-center justify-center px-4 py-10">
-          <div className="w-full sm:w-[90%] lg:w-[70%] flex flex-wrap justify-center gap-6">
-
-            {service?.service_features?.map((feat, idx) => (
-              <div
-                key={idx}
-                className="w-full sm:w-[45%] lg:w-[30%] bg-white p-6 rounded-2xl card-shadow flex flex-col gap-3"
-              >
-                <i className="fa-regular fa-circle-check fa-xl" style={{ color: "#1764e8" }} />
-                <p className="text-xl font-bold">{feat.title}</p>
-                <p className="text-sm text-gray-700">{feat.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
 
 <section>
@@ -94,58 +77,7 @@ export default async function Page({ params }) {
       {/* =====================================================================================
          SECTION 2 → Why Matters + What Carelabs Delivers
       ===================================================================================== */}
-      {/* <section>
-        <div className="w-full flex justify-center px-4 py-10">
-          <div className="w-full sm:w-[90%] lg:w-[75%] flex flex-col lg:flex-row gap-8">
-
-            
-            <div className="bg-white p-6 sm:p-8 rounded-2xl w-full lg:w-[45%] card-shadow flex flex-col gap-5">
-              <div className="w-[50px] h-[50px] bg-red-300 rounded-xl flex justify-center items-center">
-                <i className="fa-solid fa-circle-exclamation" />
-              </div>
-
-              <p className="text-3xl font-bold">{service?.Why_Matters?.title}</p>
-              <p className="text-gray-700">{service?.Why_Matters?.subtitle}</p>
-
-              <div className="flex flex-col gap-3">
-                {[service?.Why_Matters?.ans1,
-                service?.Why_Matters?.ans2,
-                service?.Why_Matters?.ans3,
-                service?.Why_Matters?.ans4].map(
-                  (item, i) =>
-                    item && (
-                      <div key={i} className="flex gap-2 text-sm">
-                        <i className="fa-solid fa-angle-right" />
-                        <p>{item}</p>
-                      </div>
-                    )
-                )}
-              </div>
-            </div>
-
-            
-            <div className="bg-white p-6 sm:p-8 rounded-2xl w-full lg:w-[45%] card-shadow flex flex-col gap-5">
-              <div className="w-[50px] h-[50px] bg-blue-300 rounded-xl flex justify-center items-center">
-                <i className="fa-solid fa-circle-exclamation" />
-              </div>
-
-              <p className="text-3xl font-bold">{service?.WhatsIncludedtitle}</p>
-              <p className="text-gray-700">{service?.WhatsIncludedsubtitle}</p>
-
-              <div className="flex flex-col gap-3">
-                {service?.whats_include_features?.map((f, idx) => (
-                  <div key={idx} className="flex gap-2 text-sm">
-                    <i className="fa-regular fa-circle-check" />
-                    <p>{f.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section> */}
-
+     
       <section>
   <div className="w-full flex justify-center px-4 py-10 bg-[#f9fbfe]">
     <div className="

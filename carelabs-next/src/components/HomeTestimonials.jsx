@@ -113,9 +113,9 @@ const HomeTestimonials = () => {
 <div className="min-h-[140px] md:min-h-[170px] flex items-center justify-center">
   <div
     key={current} 
-    className="opacity-0 animate-feedbackFade max-w-[700px] text-center px-4 md:px-0"
+    className="opacity-0 animate-feedbackFade md:max-w-[700px] text-center px-4 md:px-0"
   >
-    <p className="text-base sm:text-lg md:text-2xl text-gray-700 leading-relaxed poppins-font">
+    <p className="text-base sm:text-lg md:text-2xl text-gray-700 leading-relaxed poppins-font ">
       {testimonials[current]?.feedback}
     </p>
   </div>
