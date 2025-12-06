@@ -128,7 +128,7 @@ const Page = (params) => {
                 )}
 
         </section>
-
+                
         {/* INTRO SECTION */}
         <section>
         <div className="w-full flex items-center justify-center p-5 ">
