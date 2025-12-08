@@ -36,6 +36,26 @@
       "relation": "oneToOne",
       "target": "api::home.home"
     },
+    "home_service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-serivice.home-serivice"
+    },
+    "home_industry": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-industry.home-industry"
+    },
+    "home_compliance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-compliance.home-compliance"
+    },
+    "testimonial": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::testimonial.testimonial"
+    },
     "homeseo": {
       "type": "component",
       "pluginOptions": {

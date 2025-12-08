@@ -970,6 +970,18 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    home_compliance: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-compliance.home-compliance'
+    >;
+    home_industry: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-industry.home-industry'
+    >;
+    home_service: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-serivice.home-serivice'
+    >;
     homebanner: Schema.Attribute.Relation<'oneToOne', 'api::home.home'>;
     homeseo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -989,6 +1001,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    testimonial: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::testimonial.testimonial'
+    >;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
