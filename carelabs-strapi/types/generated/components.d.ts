@@ -404,6 +404,36 @@ export interface FooterSocialLink extends Struct.ComponentSchema {
   };
 }
 
+export interface HomeTestimonialsSection extends Struct.ComponentSchema {
+  collectionName: 'components_home_testimonials_sections';
+  info: {
+    displayName: 'testimonials_section';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    testimonials: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface HomeWorldwideimpactSection extends Struct.ComponentSchema {
+  collectionName: 'components_home_worldwideimpact_sections';
+  info: {
+    displayName: 'worldwideimpact_section';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    projectStat: Schema.Attribute.Component<'stats.project-stat', true>;
+    successStat: Schema.Attribute.Component<'stats.success-stat', true>;
+    title: Schema.Attribute.RichText;
+  };
+}
+
 export interface IndustryClients extends Struct.ComponentSchema {
   collectionName: 'components_industry_clients';
   info: {
@@ -1380,6 +1410,8 @@ declare module '@strapi/strapi' {
       'footer.footer-menu': FooterFooterMenu;
       'footer.menu-link': FooterMenuLink;
       'footer.social-link': FooterSocialLink;
+      'home.testimonials-section': HomeTestimonialsSection;
+      'home.worldwideimpact-section': HomeWorldwideimpactSection;
       'industry.clients': IndustryClients;
       'industry.clients-name': IndustryClientsName;
       'industry.components-features': IndustryComponentsFeatures;

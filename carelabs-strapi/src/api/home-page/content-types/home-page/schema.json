@@ -51,11 +51,6 @@
       "relation": "oneToOne",
       "target": "api::home-compliance.home-compliance"
     },
-    "testimonial": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::testimonial.testimonial"
-    },
     "homeseo": {
       "type": "component",
       "pluginOptions": {
@@ -64,6 +59,26 @@
         }
       },
       "component": "shared.seo",
+      "repeatable": false
+    },
+    "testimonials_section": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.testimonials-section",
+      "repeatable": false
+    },
+    "worldwideimpact_section": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.worldwideimpact-section",
       "repeatable": false
     }
   }
