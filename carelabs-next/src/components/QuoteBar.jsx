@@ -1,58 +1,95 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import client from '@/lib/appollo-client'
+import { GET_FOOTER } from '@/lib/api-Collection'
+import { clientIcons } from "@/lib/clientIcons";
 
 const QuoteBar = () => {
+  const [footerData, setFooterData] = useState(null)
   const [showBar, setShowBar] = useState(false);
 
+   const fetchFooter = async () => {
+    try {
+      const response = await client.query({
+        query: GET_FOOTER,
+      });
+
+      console.log("QuoteBar footerData:", response.data.footer);
+      setFooterData(response.data.footer);
+    } catch (error) {
+      console.log("Error fetching footer in QuoteBar:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFooter();
+  }, []);
+
+  /** Scroll logic */
   const controlBar = () => {
     const currentScrollY = window.scrollY;
     const viewportHeight = window.innerHeight;
 
     if (currentScrollY >= viewportHeight) {
-      setShowBar(true); // Show bar after scrolling past 100vh
+      setShowBar(true);
     } else {
-      setShowBar(false); // Hide bar before 100vh
+      setShowBar(false);
     }
   };
 
+    
+
   useEffect(() => {
-    window.addEventListener('scroll', controlBar);
-    return () => window.removeEventListener('scroll', controlBar);
+    window.addEventListener("scroll", controlBar);
+    return () => window.removeEventListener("scroll", controlBar);
   }, []);
+
+  if (!footerData) return null;
+
+  const cta = footerData.floating_cta;
+  
+  const IconComponent = clientIcons[cta?.button2icon.trim()] || clientIcons.ArrowRight
 
   return (
     <div
       className={`w-full fixed bottom-0 mb-5 z-[999] flex items-center justify-center p-2 transition-transform duration-300 ${
-        showBar ? 'translate-y-0' : 'translate-y-full'
+        showBar ? "translate-y-0" : "translate-y-full"
       }`}
     >
       <div className="w-[90%] sm:w-[80%] md:w-[65%] quotes-background h-auto sm:h-[100px] rounded-2xl flex flex-col sm:flex-row items-center sm:justify-between p-4 sm:p-5 gap-3 card-shadow">
-        
-        {/* Text Section */}
+
+        {/* TEXT */}
         <div className="flex-1 flex flex-col justify-center text-center sm:text-left">
-          <p className='text-lg sm:text-xl font-bold'>
-            Ready to power your next project with global expertise?
-          </p>
-          <p className='text-sm sm:text-base'>
-            Get a custom quote from our certified engineers
-          </p>
+          <p className="text-lg sm:text-xl font-bold">{cta?.heading}</p>
+          <p className="text-sm sm:text-base">{cta?.subheading}</p>
         </div>
 
-        {/* Button Section */}
+        {/* BUTTONS */}
         <div className="flex flex-wrap sm:flex-nowrap gap-2 items-center justify-center sm:justify-end">
-          <button className='px-4 sm:px-5 py-2 bg-[#FF7038] text-white rounded-full text-sm sm:text-base'
-          onClick={(e) => {
-             e.preventDefault();
-             window.openContactModal();
-             }}>
-        Request a Quote
-          </button>
-          <button className='w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 flex items-center justify-center' onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <i className="fa-solid fa-arrow-up text-black"></i>
+
+          {/* CTA BUTTON */}
+          <a
+            href={cta?.button1link || "/contact"}
+            aria-label={cta?.button1text}
+            className="px-4 sm:px-5 py-2 bg-[#FF7038] text-white rounded-full text-sm sm:text-base inline-flex items-center justify-center cursor-pointer hover:bg-[#ff5722] transition-colors no-underline"
+            onClick={(e) => {
+              e.preventDefault();
+              window.openContactModal();
+            }}
+          >
+            {cta?.button1text}
+          </a>
+
+          {/* SCROLL TO TOP */}
+          <button
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 flex items-center justify-center"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            {/* Dynamic Icon EXACTLY like your style */}
+          <IconComponent/>
           </button>
         </div>
-
       </div>
     </div>
   );

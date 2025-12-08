@@ -4,6 +4,7 @@ import {
   Activity,
   AlertCircle,
   ArrowRight,
+  ArrowUp,
   Award,
   BookOpen,
   Brain,
@@ -72,6 +73,7 @@ import {
 export const clientIcons = {
   Activity,
   ArrowRight,
+  ArrowUp,
   AlertCircle,
   Award,
   BookOpen,

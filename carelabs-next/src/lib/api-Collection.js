@@ -281,6 +281,13 @@ query {
       url
     }
     copyrightText
+    floating_cta {
+      heading
+      subheading
+      button1text
+      button1link
+      button2icon
+    }
   }
 }
 

@@ -266,7 +266,7 @@ const HomeServices = () => {
   <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
   
   {/* Primary Button */}
-  <a href={activeItem?.button1link}
+  {/* <a href={activeItem?.button1link}
 
       className="
         w-[177px]
@@ -284,11 +284,31 @@ const HomeServices = () => {
     >
       {activeItem?.button1text}
   
-  </a>
+  </a> */}
+  <a 
+  href={activeItem?.button1link || '#'} 
+  aria-label={activeItem?.button1text || 'Request Demo'}
+  rel={activeItem?.button1link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+  className="
+    w-[177px]
+    h-[48px]
+    bg-[#FF7038]
+    text-white
+    font-bold
+    rounded-[9999px]
+    flex items-center justify-center
+    hover:bg-[#ff5722]
+    transition-colors
+    cursor-pointer
+    monserrat-font
+  "
+>
+  {activeItem?.button1text || 'Request Demo'}
+</a>
   
   
   {/* Secondary Button */}
-  <a href={activeItem?.button2link}
+  {/* <a href={activeItem?.button2link}
   
       className="
         w-[177px]
@@ -306,7 +326,27 @@ const HomeServices = () => {
     >
       {activeItem?.button2text}
   
-  </a>
+  </a> */}
+  <a 
+  href={activeItem?.button2link || '#'} 
+  aria-label={activeItem?.button2text || 'Learn More'}
+  rel={activeItem?.button2link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+  className="
+    w-[177px]
+    h-[48px]
+    border-2 border-blue-400
+    text-blue-400
+    font-semibold
+    rounded-[9999px]
+    flex items-center justify-center
+    hover:bg-blue-50
+    transition-colors
+    cursor-pointer
+    monserrat-font
+  "
+>
+  {activeItem?.button2text || 'Learn More'}
+</a>
 
 
 </div>
