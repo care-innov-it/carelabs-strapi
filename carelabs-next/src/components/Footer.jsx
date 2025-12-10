@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import client from '@/lib/appollo-client'
 import { GET_FOOTER } from '@/lib/api-Collection'
 import { clientIcons } from "@/lib/clientIcons";
-
+import Image from "next/image";
 
 const Footer = () => {
  const [footerData, setFooterData] = useState(null)
@@ -43,14 +43,15 @@ const Footer = () => {
 
             {/* LOGO + DESC + SOCIAL LINKS */}
             <div className="flex-1 flex flex-col gap-4 text-gray-50">
-              <img
-                className="w-32 md:w-55"
+              <Image
                 src={logo?.url}
                 alt="Footer Logo"
-                width={128} 
-                height={128} 
-                loading="eager"
+                width={128}
+                height={128}
+                className="w-32 md:w-55"
+                priority
                 fetchPriority="high"
+                quality={70}
               />
               <p className="text-sm text-[#808898] ">{description}</p>
 

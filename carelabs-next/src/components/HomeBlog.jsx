@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { clientIcons } from "@/lib/clientIcons";
 import { ArrowRight } from "lucide-react";
 import { useParams } from 'next/navigation';
-
+import Image from "next/image";
 
 const HomeBlog = () => {
   const params=useParams();
@@ -111,10 +111,14 @@ if (!featured) {
               >
                
                 
-              <img
-                  src={featured?.image?.url}
-                  alt='insights feautred'
-                  className="w-full h-full object-cover  transform transition-all duration-500 ease-in-out group-hover:scale-115 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+              <Image
+                src={featured?.image?.url}
+                alt="Insights Featured"
+                className="w-full h-full object-cover transform transition-all duration-500 ease-in-out group-hover:scale-115 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+                width={800}
+                height={500} 
+                quality={70} 
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
 
@@ -190,12 +194,14 @@ if (!featured) {
 
             {/* IMAGE */}
             <div className="w-full h-48 overflow-hidden rounded-t-lg">
-              <img
+              <Image
                 src={item?.image?.url}
-                className="w-full h-full object-cover transform transition-all 
-                    duration-500 ease-in-out group-hover:scale-115"
-
-                alt={item.title}
+                alt={item.title || "Item Image"}
+                className="w-full h-full object-cover transform transition-all duration-500 ease-in-out group-hover:scale-115"
+                width={800} 
+                height={500} 
+                quality={70}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
 

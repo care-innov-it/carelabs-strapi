@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { clientIcons } from "@/lib/clientIcons";
 import { ArrowRight, Download, PlayCircle } from "lucide-react";
-
+import Image from "next/image";
 
 
 const ServicesLanding = ({service}) => {
@@ -448,15 +448,14 @@ const openRandomVideo = () => {
   mt-[20px] sm:mt-[50px] md:mt-[74.62px]
 ">
 
-  <img
+  <Image
     src={mainimage?.url}
     alt="Service"
-    className="
-      w-full h-full object-cover
-      transition-transform duration-[1100ms]
-      ease-[cubic-bezier(.13,.62,.31,1)]
-      group-hover:scale-[1.08]
-    "
+    className="w-full h-full object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(.13,.62,.31,1)] group-hover:scale-[1.08]"
+    width={800} 
+    height={500} 
+    quality={70}
+    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
   />
   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/30 to-transparent"></div>
 </div>

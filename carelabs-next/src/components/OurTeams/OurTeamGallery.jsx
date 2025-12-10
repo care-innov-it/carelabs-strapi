@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from "next/image";
 
 
 const OurTeamGallery = ({ data }) => {
@@ -25,7 +26,15 @@ const OurTeamGallery = ({ data }) => {
 
           const renderImage = (img) => (
             <div key={img.image.url} className="relative w-full h-full rounded-[16px] overflow-hidden bg-gray-200 group">
-              <img src={img.image.url} alt={img.hovertext || "Gallery image"} className="w-full h-full object-cover" />
+              <Image
+                src={img.image.url}
+                alt={img.hovertext || "Gallery image"}
+                className="w-full h-full object-cover"
+                width={800}  
+                height={500} 
+                quality={70} 
+                sizes="100vw"
+              />
               {/* Hover text */}
              <div className="absolute inset-0 bg-[#00000069] montserrat-font font-semibold flex items-end justify-center p-2 text-white text-sm transition-opacity duration-300 opacity-0 group-hover:opacity-100">
           {img.hovertext}

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import { Zap, Check } from 'lucide-react';
 import { clientIcons } from "@/lib/clientIcons";
+import Image from "next/image";
+
 
 const HomeServices = ({data}) => {
   
@@ -155,11 +157,15 @@ const HomeServices = ({data}) => {
                   //style={{ backgroundImage: `url('${activeItem?.Image?.url}')` }}
                 >
 
-                  <img
-    src={activeItem?.Image?.url}
-    alt={activeItem?.Image?.alt || "Electrical safety compliance service"}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
+                  <Image
+                    src={activeItem?.Image?.url}
+                    alt={activeItem?.Image?.alt || "Electrical safety compliance service"}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    width={800} 
+                    height={500} 
+                    quality={70} 
+                    sizes="100vw"
+                  />
 
 
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-transparent z-10"></div>

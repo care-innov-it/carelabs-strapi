@@ -2,6 +2,7 @@
 
 import React from 'react'
 import carelabzImage from '@/assets/carlabz.jpg'
+import Image from "next/image";
 
 
 const OurTeamsWrkProjcet = ({data}) => {
@@ -31,10 +32,14 @@ const OurTeamsWrkProjcet = ({data}) => {
                  {/* IMAGE WRAPPER */}
                     <div className="relative group rounded-t-[32px] overflow-hidden">
                         {/* Image */}
-                        <img
-                            className="w-full xl:h-[280px] object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                        <Image
                             src={imageUrl}
-                            alt={item.title}
+                            alt={item.title || "Carelabs"}
+                            className="w-full xl:h-[280px] object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                            width={800}      
+                            height={280}   
+                            quality={70}    
+                            sizes="(max-width: 1280px) 100vw, 1280px"
                         />
 
                         {/* Gradient overlay for the whole image */}

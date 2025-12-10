@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import client from "@/lib/appollo-client";
 import { GET_CONTACT_POPUP_FIELDNAMES } from "@/lib/api-Collection";
+import Image from "next/image";
+
 
 const ContactPopupModal = ({ isOpen, setIsOpen }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -88,13 +90,16 @@ const ContactPopupModal = ({ isOpen, setIsOpen }) => {
                     </button>
 
                     <div className="flex justify-center mb-6">
-                        <img
+                        <Image
                             src={fieldNames?.logo?.url}
                             alt="Carelabs Logo"
                             className="h-8 w-auto object-contain"
-                            loading="eager"
+                            width={128}  
+                            height={32} 
+                            priority      
                             fetchPriority="high"
-                        />
+                            quality={70}  
+                            />
                     </div>
 
                     <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-2">

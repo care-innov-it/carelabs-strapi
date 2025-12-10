@@ -4,6 +4,7 @@ import { GET_CONTACT_PAGE } from "@/lib/api-Collection";
 import React, { useState, useEffect } from "react";
 import { CircleCheck, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail, Clock , Shield, Phone, MessageCircle, Download } from "lucide-react";
 import { clientIcons } from "@/lib/clientIcons";
+import Image from "next/image";
 
 const Contactpage = () => {
      const [contactData, setContactData] = useState(null);
@@ -133,10 +134,14 @@ const Contactpage = () => {
         <div className="flex-1 flex justify-center">
           <div className="bg-white rounded-2xl shadow-2xl p-2.5">
             <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={contactData?.image?.url || "/placeholder.jpg"} 
+              <Image
+                src={contactData?.image?.url || "/placeholder.jpg"}
                 alt="Contact Section Image"
+                width={500}
+                height={350}
                 className="w-full max-w-[500px] h-auto object-cover rounded-2xl"
+                sizes="(max-width: 500px) 100vw, 500px"
+                quality={70}
               />
             </div>
           </div>

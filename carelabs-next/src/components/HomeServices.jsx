@@ -5,6 +5,7 @@ import { GET_HOME_SERVICES_BY_LOCALE } from '@/lib/api-Collection';
 import { Zap, Check } from 'lucide-react';
 import { clientIcons } from "@/lib/clientIcons";
 import { useParams } from 'next/navigation';
+import Image from "next/image";
 
 const HomeServices = () => {
 
@@ -184,12 +185,14 @@ const HomeServices = () => {
                   //style={{ backgroundImage: `url('${activeItem?.Image?.url}')` }}
                 >
 
-                  <img
+                  <Image
                     src={activeItem?.Image?.url}
                     alt={activeItem?.Image?.alt || "Electrical safety compliance service"}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    className="absolute inset-0 object-cover"
+                    sizes="100vw"
+                    quality={70}
                   />
-
 
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-transparent z-10"></div>
                   <div className="z-20 mb-2 sm:mb-4 lg:mb-5 flex flex-col justify-end gap-2 sm:gap-3 lg:gap-4">
