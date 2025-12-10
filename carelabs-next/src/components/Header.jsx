@@ -23,7 +23,6 @@ const Header = () => {
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [logoUrl,setLogoUrl]=useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -69,7 +68,7 @@ const Header = () => {
           ?.flatMap(item => item.submenus || [])
           ?.map(sub => sub.slug);
       setNavbarData(res.data.navbar);
-       setLogoUrl(res.data.navbar.Logo?.url);
+
     } catch (err) {
       console.log("Error fetching navbar data:", err);
     }
@@ -139,20 +138,13 @@ const Header = () => {
           <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
               <Image
-                  className="p-3 md:w-[60%] lg:w-[75%] object-contain"
-                  src={
-                    navbarData.Logo?.url
-                      ? navbarData.Logo.url
-                      : "https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png"
-                  }
-                  alt="Logo"
-                  width={400}
-                  height={100}
-                  priority
-                  fetchPriority="high"
-                  decoding="async"
-                />
-
+                className="p-3 md:w-[0%] lg:w-[75%] object-contain"
+                src={navbarData.Logo?.url}
+                alt="Logo"
+                width={400}
+                height={100}
+                priority   
+                fetchPriority="high"     />
             </Link>
           </div>
 

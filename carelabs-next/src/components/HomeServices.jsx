@@ -185,10 +185,10 @@ const HomeServices = () => {
                 >
 
                   <img
-    src={activeItem?.Image?.url}
-    alt={activeItem?.Image?.alt || "Electrical safety compliance service"}
-    className="absolute inset-0 w-full h-full object-cover"
-  />
+                    src={activeItem?.Image?.url}
+                    alt={activeItem?.Image?.alt || "Electrical safety compliance service"}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
 
 
                   <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/70 to-transparent z-10"></div>
