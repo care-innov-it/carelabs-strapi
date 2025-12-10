@@ -1,0 +1,29 @@
+/* aos-custom.css */
+
+/* fade-up */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(50px);
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+   transition-duration: 600ms; 
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* zoom-in */
+[data-aos="zoom-in"] {
+  opacity: 0;
+  transform: scale(0.8);
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in-out;
+  transition-duration: 600ms; 
+}
+
+[data-aos="zoom-in"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+}
