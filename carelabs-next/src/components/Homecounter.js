@@ -4,16 +4,25 @@ import { useInView } from "framer-motion";
 
 const animateValue = (end, duration, callback) => {
   let start = 0;
-  const increment = end / (duration * 60); // 60fps
-  const interval = setInterval(() => {
-    start += increment;
-    if (start >= end) {
-      start = end;
-      clearInterval(interval);
+  let startTime = null;
+
+  const animate = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+
+    const progress = timestamp - startTime;
+    const fraction = Math.min(progress / (duration * 1000), 1);
+
+    const value = Math.floor(fraction * end);
+    callback(value);
+
+    if (fraction < 1) {
+      requestAnimationFrame(animate);
     }
-    callback(Math.floor(start));
-  }, 1000 / 60);
+  };
+
+  requestAnimationFrame(animate);
 };
+
 
 const HomeCounter = ({ end = "100+", duration = 2, color = "#000" }) => {
 
