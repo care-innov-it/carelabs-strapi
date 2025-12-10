@@ -9,6 +9,7 @@ import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
 import ContactPopupModal from './Modal/ContactPopupModal';
+import Image from 'next/image';
 
 
 const Header = () => {
@@ -34,14 +35,6 @@ const Header = () => {
   const ActiveIcon = activeSubmenu ? clientIcons[activeSubmenu.icon] : null;
 
 
-  const regions = [
-    "Global",
-    "Middle East & Africa",
-    "Asia-Pacific",
-    "Europe",
-    "Americas",
-    "Canada"
-  ];
 
   const handleRegionChange = (e) => {
     setSelectedRegion(e.target.value);
@@ -138,8 +131,8 @@ const Header = () => {
         <div className="header w-full  h-full flex items-center justify-between lg:justify-center  2xl:p-3 ">
           <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
-              <img
-                className="p-3 md:w-[0%] lg:w-[75%] object-contain"
+              <Image
+                className="p-3  lg:w-[75%] object-contain"
                 // src={navbarData.Logo?.url}
                 src={logoUrl}
                 alt="Logo"
