@@ -92,6 +92,8 @@ const ContactPopupModal = ({ isOpen, setIsOpen }) => {
                             src={fieldNames?.logo?.url}
                             alt="Carelabs Logo"
                             className="h-8 w-auto object-contain"
+                            loading="eager"
+                            fetchPriority="high"
                         />
                     </div>
 

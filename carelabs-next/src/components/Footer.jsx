@@ -49,6 +49,8 @@ const Footer = () => {
                 alt="Footer Logo"
                 width={128} 
                 height={128} 
+                loading="eager"
+                fetchPriority="high"
               />
               <p className="text-sm text-[#808898] ">{description}</p>
 
