@@ -143,7 +143,8 @@ const Header = () => {
                 alt="Logo"
                 width={400}
                 height={100}
-                priority              />
+                priority   
+                loading="eager"           />
             </Link>
           </div>
 
