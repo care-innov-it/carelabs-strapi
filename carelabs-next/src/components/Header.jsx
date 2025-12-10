@@ -23,6 +23,7 @@ const Header = () => {
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [logoUrl,setLogoUrl]=useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -68,7 +69,7 @@ const Header = () => {
           ?.flatMap(item => item.submenus || [])
           ?.map(sub => sub.slug);
       setNavbarData(res.data.navbar);
-
+       setLogoUrl(res.data.navbar.Logo?.url);
     } catch (err) {
       console.log("Error fetching navbar data:", err);
     }
