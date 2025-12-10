@@ -410,7 +410,7 @@ export interface HomeHomeInsights extends Struct.ComponentSchema {
     displayName: 'home_insights';
   };
   attributes: {
-    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     buttonlink: Schema.Attribute.String;
     buttontext: Schema.Attribute.String;
     description: Schema.Attribute.Text;
