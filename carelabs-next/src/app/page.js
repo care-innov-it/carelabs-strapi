@@ -123,7 +123,7 @@ if (!homeData) {
 
 
   className="
-  homeBanner relative
+  homeBanner 
   w-full max-w-[1152px]
   min-h-[600px] md:h-[758px]
   flex flex-col items-center justify-center
@@ -235,12 +235,6 @@ if (!homeData) {
       />
       
     </button>
-{isOpen && (
-  <ContactPopupModal 
-    isOpen={isOpen}
-    setIsOpen={setIsOpen}
-  />
-)}
 
     
 
@@ -340,6 +334,15 @@ if (!homeData) {
 
 
   </div>
+
+{isOpen && (
+  <ContactPopupModal 
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
+  />
+)}
+
+
 </div>
 
 

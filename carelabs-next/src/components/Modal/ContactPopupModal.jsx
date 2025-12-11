@@ -81,7 +81,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
      
     return (
         <div
-            className="absolute  w-full z-50 h-screen flex items-center justify-center bg-red-300/60 backdrop-blur-sm p-4"
+            className="absolute  w-full z-50 h-screen flex items-center justify-center bg-black/60 backdrop-blur-sm lg:p-4"
             onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
         >
             <div className="relative w-full max-w-[650px] lg:max-w-[700px] rounded-2xl shadow-xl bg-white overflow-hidden">
