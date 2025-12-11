@@ -72,9 +72,9 @@ const Header = () => {
   useEffect(() => {
     fetchNavbarData();
 
-    if (typeof window !== "undefined") {
-      window.openContactModal = () => setIsContactModalOpen(true);
-    }
+    // if (typeof window !== "undefined") {
+    //   window.openContactModal = () => setIsContactModalOpen(true);
+    // }
 
 
   }, []);
@@ -433,16 +433,16 @@ const Header = () => {
                 </a>
               </button> */}
               <button
-              className="bg-blue-500 w-full md:w-[80%] p-3 rounded-lg text-[14px] text-white"
-              onClick={() => setIsContactModalOpen(true)}
-              >
-             {navbarData?.buttontext}
- </button>
+                className="bg-blue-500 w-full md:w-[80%] p-3 rounded-lg text-[14px] text-white"
+                // onClick={() => setIsContactModalOpen(true)}
+                >
+              {navbarData?.buttontext}
+              </button>
 
-              <ContactPopupModal
+              {/* <ContactPopupModal
                 isOpen={isContactModalOpen}
                 setIsOpen={setIsContactModalOpen}
-              />
+              /> */}
             </div>
           </div>
         </div>

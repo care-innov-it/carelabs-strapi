@@ -41,33 +41,19 @@ const Header = ({navbarData}) => {
 
   const openMobilemenus = () => {
     console.log("TETEE");
-
     setOpenMobileMenu(!openMobileMenu);
   }
 
 
 
 
-  // const fetchNavbarData = async () => {
-  //   try {
-  //     const res = await client.query({
-  //       query: GET_NAVBAR,
-  //     });
-
-  //     const allSlugs =
-  //       res.data.navbar.items
-  //         ?.flatMap(item => item.submenus || [])
-  //         ?.map(sub => sub.slug);
-  //     setNavbarData(res.data.navbar);
-  //     setLogoUrl(res.data.navbar.Logo?.url || logoUrl);
-
-  //   } catch (err) {
-  //     console.log("Error fetching navbar data:", err);
-  //   }
-  // }
+  
 useEffect(() => {
   if (navbarData?.Logo?.url) {
     setLogoUrl(navbarData.Logo.url);
+  }
+  if(navbarData?.Logo?.alternativeText==""){
+
   }
 }, [navbarData]);
 
@@ -75,9 +61,9 @@ useEffect(() => {
   useEffect(() => {
 
 
-    if (typeof window !== "undefined") {
-      window.openContactModal = () => setIsContactModalOpen(true);
-    }
+    // if (typeof window !== "undefined") {
+    //   window.openContactModal = () => setIsContactModalOpen(true);
+    // }
 
 
   }, []);
@@ -222,11 +208,6 @@ useEffect(() => {
                   {navbarData?.buttontext}
                 </span>
               </button>
-
-              <ContactPopupModal
-                isOpen={isContactModalOpen}
-                setIsOpen={setIsContactModalOpen}
-              />
             </div>
 
 
@@ -437,15 +418,15 @@ useEffect(() => {
               </button> */}
               <button
               className="bg-blue-500 w-full md:w-[80%] p-3 rounded-lg text-[14px] text-white"
-              onClick={() => setIsContactModalOpen(true)}
+              onClick={() => navigate(navbarData.buttonlink)}
               >
              {navbarData?.buttontext}
- </button>
+            </button>
 
-              <ContactPopupModal
+              {/* <ContactPopupModal
                 isOpen={isContactModalOpen}
                 setIsOpen={setIsContactModalOpen}
-              />
+              /> */}
             </div>
           </div>
         </div>

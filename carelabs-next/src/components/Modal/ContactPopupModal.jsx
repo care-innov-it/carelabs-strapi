@@ -7,26 +7,30 @@ import { GET_CONTACT_POPUP_FIELDNAMES } from "@/lib/api-Collection";
 import Image from "next/image";
 
 
-const ContactPopupModal = ({ isOpen, setIsOpen }) => {
+const ContactPopupModal = ({ setIsOpen }) => {
+    
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [fieldNames, setFieldNames] = useState([]);
 
+console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
 
-    useEffect(() => {
-        fetchFieldValues();
-    }, [])
-
+ 
+   useEffect(() => {
     const fetchFieldValues = async () => {
         try {
             const response = await client.query({
                 query: GET_CONTACT_POPUP_FIELDNAMES,
             });
+            console.log("ContactData", response.data);
             setFieldNames(response.data.contactPopup);
-
         } catch (err) {
-            console.log("Error at fetching field values", err);
+            console.error("Error fetching field values:", err);
         }
-    }
+    };
+
+    fetchFieldValues(); // call on mount
+}, []);
+
 
 
     const handleSubmit = async (e) => {
@@ -73,11 +77,11 @@ const ContactPopupModal = ({ isOpen, setIsOpen }) => {
     };
 
 
-    if (!isOpen) return null; // Do not render if modal is closed
-
+    if (fieldNames.length==0) return null;
+     
     return (
         <div
-            className="fixed inset-0 z-50 h-screen flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+            className="absolute  w-full z-50 h-screen flex items-center justify-center bg-red-300/60 backdrop-blur-sm p-4"
             onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
         >
             <div className="relative w-full max-w-[650px] lg:max-w-[700px] rounded-2xl shadow-xl bg-white overflow-hidden">
@@ -132,7 +136,7 @@ const ContactPopupModal = ({ isOpen, setIsOpen }) => {
                                 </label>
                                 <input
                                     type="text"
-                                    name="contactName"
+                                    name="Company Name"
                                     placeholder={fieldNames?.form_fields[1]?.placeholder}
                                     required
                                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"

@@ -6,6 +6,8 @@ import client from "@/lib/appollo-client";
 import { GET_REGIONS } from "@/lib/api-Collection";
 
 const RegionModal = ({ setIsModalOpen }) => {
+  console.log("OpenModals",setIsModalOpen);
+  
   const router = useRouter();
   const [regions,setRegion]=useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

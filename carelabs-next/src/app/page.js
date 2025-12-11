@@ -6,6 +6,7 @@ import HomeBlog from "@/components/HomeBlog";
 import HomeCounter from "@/components/Homecounter";
 import HomeServices from "@/components/HomeServices";
 import HomeTestimonials from "@/components/HomeTestimonials";
+import ContactPopupModal from "@/components/Modal/ContactPopupModal";
 import {GET_HOME_SECTION_1 } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 import Aos from "aos";
@@ -19,6 +20,8 @@ export default function Home() {
   const [homeData,setHomeData]=useState();
   const [showVideo, setShowVideo] = useState(false);
   const [videoId, setVideoId] = useState(null);
+    const [isOpen, setIsOpen] = useState(false)
+  
 
     useEffect(() => {
     Aos.init({ 
@@ -120,7 +123,7 @@ if (!homeData) {
 
 
   className="
-  homeBanner
+  homeBanner relative
   w-full max-w-[1152px]
   min-h-[600px] md:h-[758px]
   flex flex-col items-center justify-center
@@ -209,10 +212,7 @@ if (!homeData) {
 
     {/* PRIMARY BUTTON — ORANGE */}
     <button
-      onClick={(e) => {
-        e.preventDefault();
-        window.openContactModal();
-      }}
+     onClick={() => setIsOpen(true)}
       className="
         group 
         w-[202px] h-[44px]
@@ -235,6 +235,14 @@ if (!homeData) {
       />
       
     </button>
+{isOpen && (
+  <ContactPopupModal 
+    isOpen={isOpen}
+    setIsOpen={setIsOpen}
+  />
+)}
+
+    
 
     {/* SECONDARY BUTTON — BORDERED */}
     <button
