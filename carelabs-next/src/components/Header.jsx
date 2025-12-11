@@ -139,7 +139,7 @@ const Header = () => {
                 width={400}
                 height={100}
                 priority   
-                fetchPriority="high"     />
+                />
             </Link>
           </div>
 
