@@ -22,7 +22,7 @@ const Header = ({navbarData}) => {
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
+  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -49,23 +49,23 @@ const Header = ({navbarData}) => {
 
 
 
-  const fetchNavbarData = async () => {
-    try {
-      const res = await client.query({
-        query: GET_NAVBAR,
-      });
+  // const fetchNavbarData = async () => {
+  //   try {
+  //     const res = await client.query({
+  //       query: GET_NAVBAR,
+  //     });
 
-      const allSlugs =
-        res.data.navbar.items
-          ?.flatMap(item => item.submenus || [])
-          ?.map(sub => sub.slug);
-      setNavbarData(res.data.navbar);
-      setLogoUrl(res.data.navbar.Logo?.url || logoUrl);
+  //     const allSlugs =
+  //       res.data.navbar.items
+  //         ?.flatMap(item => item.submenus || [])
+  //         ?.map(sub => sub.slug);
+  //     setNavbarData(res.data.navbar);
+  //     setLogoUrl(res.data.navbar.Logo?.url || logoUrl);
 
-    } catch (err) {
-      console.log("Error fetching navbar data:", err);
-    }
-  }
+  //   } catch (err) {
+  //     console.log("Error fetching navbar data:", err);
+  //   }
+  // }
    setLogoUrl(navbarData.Logo?.url || logoUrl);
 
 
