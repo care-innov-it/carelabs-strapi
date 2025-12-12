@@ -35,6 +35,9 @@ export default function Page({ params }) {
                           variables: { slug },
                           fetchPolicy: "no-cache",
                         });
+
+                         console.log("BlogURL:",response.data.insightblogs[0]);
+                         
       setblog(response.data.insightblogs[0]);            
     }catch(err){
       console.log("Error at Fetching Blog By Slug",err);
