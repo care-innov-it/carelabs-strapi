@@ -7,7 +7,6 @@ import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
 import Image from 'next/image';
-import ContactPopupModal from '../Modal/ContactPopupModal';
 import RegionModal from '../Modal/RegionModal';
 
 
@@ -18,9 +17,7 @@ const Header = ({navbarData}) => {
   const [selectedSubmenuIndex, setSelectedSubmenuIndex] = useState(0);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
@@ -32,22 +29,18 @@ const Header = ({navbarData}) => {
     navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex];
   const ActiveIcon = activeSubmenu ? clientIcons[activeSubmenu.icon] : null;
 
+  console.log("NavbarData",navbarData);
+  console.log("NavbarItems",navbarData?.items);
+  
 
 
-  const handleRegionChange = (e) => {
-    setSelectedRegion(e.target.value);
-  };
-
+  
 
   const openMobilemenus = () => {
     console.log("TETEE");
     setOpenMobileMenu(!openMobileMenu);
   }
 
-
-
-
-  
 useEffect(() => {
   if (navbarData?.Logo?.url) {
     setLogoUrl(navbarData.Logo.url);
@@ -56,17 +49,6 @@ useEffect(() => {
 
   }
 }, [navbarData]);
-
-
-  useEffect(() => {
-
-
-    // if (typeof window !== "undefined") {
-    //   window.openContactModal = () => setIsContactModalOpen(true);
-    // }
-
-
-  }, []);
 
   //cloudFlare
   useEffect(() => {
@@ -105,7 +87,7 @@ useEffect(() => {
     );
   }
 
-  //slugmethod 
+const navigatetoSlugPage = () => {
   const currentItem = navbarData?.items?.[activeIndex] ?? null;
   const currentSubmenu = currentItem?.submenus?.[selectedSubmenuIndex] ?? null; 
   const isBlogMenu = currentItem?.label === "Insights Hub";
@@ -113,6 +95,21 @@ useEffect(() => {
   const targetSlug = isBlogMenu
     ? `/blogs/${currentSubmenu?.slug}`
     : `/services/${currentSubmenu?.slug}`;
+
+  // const targetSlug ="/ourTeam"
+
+
+  console.log("TargetSlug", targetSlug);
+  console.log("currentSubmenu", currentSubmenu.slug);
+  window.location.href=targetSlug;
+
+  // Navigate
+  // navigate(targetSlug); // or router.push(targetSlug) if using useRouter
+}
+
+
+  
+      
 
   return (
     <>
@@ -192,7 +189,7 @@ useEffect(() => {
               </button>
             </div>
 
-            {isModalOpen && <RegionModal setIsModalOpen={setIsModalOpen} />}
+           
 
 
             {/* <div className="theme hidden">
@@ -229,6 +226,8 @@ useEffect(() => {
 
         </div>
       </div>
+
+
 
 
       {activeIndex !== null &&
@@ -323,12 +322,16 @@ useEffect(() => {
                         </span>
                       </Link> */}
 
-                  <Link href={targetSlug} className="relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105">
-                    <span className="flex items-center gap-2 whitespace-nowrap">
-                      {currentSubmenu?.Button}
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
-                  </Link>
+               <button
+                  // onClick={navigatetoSlugPage}
+                  className="relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
+                >
+                  <span className="flex items-center gap-2 whitespace-nowrap">
+                    {navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex]?.Button}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </button>
+
 
                   {/* <Link
                         //href={finalURL}
@@ -433,7 +436,7 @@ useEffect(() => {
       )}
 
   
-
+        {isModalOpen && <RegionModal setIsModalOpen={setIsModalOpen} />}
 
 
 

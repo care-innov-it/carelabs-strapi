@@ -1,6 +1,6 @@
 "use client";
 import { ChevronDown, Globe, Mail, X } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import client from "@/lib/appollo-client";
 import { GET_REGIONS } from "@/lib/api-Collection";
@@ -13,34 +13,22 @@ const RegionModal = ({ setIsModalOpen }) => {
   const { regions, loading } = useRegions();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
+  const initialized = useRef(false);
+
 
 
    useEffect(() => {
-    if (!loading && regions.length) {
+      if (!initialized.current && !loading && regions.length) {
+      initialized.current = true;
       const pathParts = window.location.pathname.split("/").filter(Boolean);
       const currentLocale = pathParts[0] || "";
-
-      // Find region matching the current locale
       const matchedRegion = regions.find(r => r.language === currentLocale);
-
-      // If none match, use the default region (isDefault === true) or first region
       const defaultRegion = matchedRegion || regions.find(r => r.isDefault) || regions[0];
-
       setSelectedRegion(defaultRegion.name);
     }
   }, [loading, regions]);
 
-  // const defaultRegion=(regions) => {
-  //     const pathParts = window.location.pathname.split("/").filter(Boolean);
-  //   const currentLocale = pathParts[0] || "";
-
-  //   const matchedRegion =
-  //     regions.find((r) => r.lang === currentLocale) ||
-  //     regions[0]; // default: Global
-
-  //   setSelectedRegion(matchedRegion.name);
-  // }
-
+  
   // Change region
   const handleSelectRegion = (region) => {
     setSelectedRegion(region.name);

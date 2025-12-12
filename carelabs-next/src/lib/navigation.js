@@ -1,40 +1,29 @@
-// lib/navigation.js
-"use client";
-
-import { useRouter, usePathname } from "next/navigation";
+import { useRef, useMemo } from "react";
 import { useRegions } from "./regionContext";
-
-
+import { usePathname, useRouter } from "next/navigation";
 
 export const useLocalizedNavigate = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { regions } = useRegions();
 
- console.log("RegionS:::",regions);
-
- const filteredLanguages = regions
-  .map(r => r.language)   // get language
-  .filter(lang => lang);  // remove null or undefined
-
-console.log(filteredLanguages);
- 
-  // Extract locale from pathname
-  const pathSegments = pathname.split("/").filter(Boolean);
-  console.log("Pathsegments",pathSegments);
+  const allowedLanguages = useMemo(() => regions.map(r => r.language).filter(Boolean), [regions]);
+  console.log("allowedLanguages",allowedLanguages);
   
-  // Example: 'en-US' or 'ca', adjust the check based on your locale format
-const locale = filteredLanguages.includes(pathSegments[0]) ? pathSegments[0] : null;
-  console.log("Localein Nav",locale);
-  
+
+  // store locale in a ref so it won't trigger re-renders
+  const localeRef = useRef(null);
+  if (localeRef.current === null) {
+    const segments = pathname.split("/").filter(Boolean);
+    localeRef.current = allowedLanguages.includes(segments[0]) ? segments[0] : null;
+  }
 
   const navigate = (path) => {
-    // Prepend the locale if it exists
-    const finalPath = locale
-      ? `/${locale}${path.startsWith("/") ? path : `/${path}`}`
+    const finalPath = localeRef.current
+      ? `/${localeRef.current}${path.startsWith("/") ? path : `/${path}`}`
       : path;
-     console.log("FinalPath",finalPath);
-     
+    console.log("Final Path",finalPath);
+    
     router.push(finalPath);
   };
 

@@ -16,7 +16,8 @@ export default async function Page({ params }) {
     variables: { slug },
     fetchPolicy: "no-cache",
   });
-
+   console.log("Services Api Call");
+   
   //const service = response?.data?.services?.data?.[0]?.attributes;
   const service = response?.data?.services?.[0];
 

@@ -10,10 +10,11 @@ const Navbar = async () => {
   try {
     const res = await client.query({ query: GET_NAVBAR });
     navbarData = res.data.navbar;
+    console.log("12345566677");
   } catch (err) {
-    console.error("Navbar fetch failed:", err);
+    console.error("Navbar fetch failed navbar:", err);
   }
-
+ 
   return <Header navbarData={navbarData} />;
 };
 

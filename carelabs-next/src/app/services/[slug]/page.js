@@ -12,12 +12,14 @@ import { clientIcons } from "@/lib/clientIcons";
 
 export default async function Page({ params }) {
   const { slug } = await params;
-
+    console.log("Services Slug",slug);
+    
   const response = await client.query({
     query: GET_SINGLE_SERVICE_BY_SLUG,
     variables: { slug },
     fetchPolicy: "no-cache",
   });
+  console.log("Service Response11111",response.data);
 
   //const service = response?.data?.services?.data?.[0]?.attributes;
   const service = response?.data?.services?.[0];
@@ -48,7 +50,7 @@ export default async function Page({ params }) {
       {service?.service_features?.map((feat, idx) => {
         const iconName = feat.icon.trim();
         const Icon = clientIcons[iconName] || clientIcons.CircleCheck; 
-        // console.log("Icon Name",Icon);
+        console.log("Icon Name",Icon);
         
 
         return (
