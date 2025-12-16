@@ -1,5 +1,6 @@
 {
   "name": "carelabs-strapi",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -29,6 +30,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-5-sitemap-plugin": "^1.0.7",
+    "strapi-plugin-backup": "^2.0.1",
     "styled-components": "^6.0.0"
   },
   "engines": {
