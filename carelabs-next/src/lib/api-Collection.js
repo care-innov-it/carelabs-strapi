@@ -1429,6 +1429,9 @@ export const GET_HOMEPAGE_DATA = gql`
       title
       description
       Partners {
+      title
+      description
+      Recenttitle
         Partners_names {
           countryName
           description
@@ -1440,6 +1443,7 @@ export const GET_HOMEPAGE_DATA = gql`
           logo {
             url
           }
+          name
         }
       }
     }

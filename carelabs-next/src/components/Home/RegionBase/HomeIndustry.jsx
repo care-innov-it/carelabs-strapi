@@ -39,7 +39,7 @@ const HomeIndustry = ({data}) => {
                 </h2>
                 
                 {/* Description */}
-                <p className="px-4 sm:px-8 text-xl  md:text-lg poppins-font para-text">
+                <p className="px-4 w-[80%] sm:px-8 text-lg  md:text-xl poppins-font para-text">
                      {data.description}
                  </p>
     
@@ -48,7 +48,7 @@ const HomeIndustry = ({data}) => {
                   {data.industry_categories.map((category, index) => (
                     <div
                       key={index}
-                      className="px-[24px] py-[10px] bg-white text-center card-shadow rounded-full"
+                      className="px-[24px] py-[10px] bg-white text-center card-shadow rounded-full border border-transparent transition-all duration-300 ease-in-out hover:border-blue-500 hover:scale-105"
                     >
                       <p className="text-[14px] poppins-font">{category.label}</p>
                     </div>
@@ -63,18 +63,26 @@ const HomeIndustry = ({data}) => {
             {industriesData.map((item, index) => {
               const CardIcon = item.icon ? clientIcons[item.icon.trim()] : Heart; // fallback icon
               return (
-                <div key={index} className="glass-panel p-5 rounded-xl"
+                <div key={index} className="
+                  glass-panel p-5 rounded-xl
+                  border border-transparent
+                  transition-all duration-300 ease-out
+                  hover:-translate-y-2
+                  hover:border-[var(--hl)]
+                  group
+                  cursor-pointer
+                "
                   data-aos="fade-up"
                   data-aos-anchor-placement="top-center"
                 >
                   <div
-                    className="w-[50px] h-[50px] rounded-[24px] flex items-center justify-center"
+                    className="w-[60px] h-[60px] rounded-[10px] flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-3"
                     style={{
                       background: item.highlight_color + "10",
                       color: item.highlight_color,
                     }}
                   >
-                    {CardIcon && React.createElement(CardIcon, { size: 24 })}
+                    {CardIcon && React.createElement(CardIcon, { size: 34 })}
                   </div>
 
                   <h4 className="montserrat-font text-[24px] font-semibold py-3">
@@ -83,12 +91,12 @@ const HomeIndustry = ({data}) => {
 
                   <ul className="list-disc px-5 text-gray-500">
                     {item.key_features.map((point, i) => (
-                      <li key={i}>{point.label}</li>
+                      <li className='text-[15px] mt-1' key={i}>{point.label}</li>
                     ))}
                   </ul>
 
                   <p
-                    className="w-fit py-1 px-2 rounded-full text-[12px] poppins-font mt-2"
+                    className="w-fit py-1 px-2 rounded-full text-[12px] poppins-font mt-8"
                     style={{
                       background: item.highlight_color + "10",
                       color: item.highlight_color,

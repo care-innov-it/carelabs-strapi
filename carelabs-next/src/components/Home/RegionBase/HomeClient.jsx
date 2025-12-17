@@ -6,6 +6,9 @@ import { clientIcons } from "@/lib/clientIcons";
 
 const HomeClient = ({data}) => {
 
+    console.log("Data in client",data);
+    
+
     if(!data)return null;
       const BadgeIcon =clientIcons[data.badgeicon.trim()];
      

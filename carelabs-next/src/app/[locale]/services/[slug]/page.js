@@ -5,7 +5,7 @@ import EngineeringServices from "@/components/Services/EngineeringServices";
 import FaqResourcesSection from "@/components/Services/FaqResourcesSection";
 import PowerSystemAnalysisCTA from "@/components/Services/PowerSystemAnalysisCTA";
 import { clientIcons } from "@/lib/clientIcons";
-import {ChevronDown, ChevronRight, CircleCheck } from "lucide-react";
+import {CheckCircle, ChevronDown, ChevronRight, CircleCheck } from "lucide-react";
 
 
 export default async function Page({ params }) {
