@@ -7,6 +7,9 @@ import Image from "next/image";
 
 
 const HomeServices = ({data}) => {
+
+  console.log("Button Daata",data);
+  
   
   const [globalReachData, setGlobalReachData] = useState(null)
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)

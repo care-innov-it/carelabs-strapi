@@ -344,7 +344,12 @@ const Header = ({navbarData}) => {
                       setActiveIndex(activeIndex === index ? null : index)
                     }
                   >
-                    <span className="montserrat-font font-light text-[16px]">{item.label}</span>
+                    <a href={item.link} className="montserrat-font font-light text-[16px] text-gray-800 hover:text-blue-500"
+                    onClick={() => setOpenMobileMenu(false)} 
+                  >
+                    {item.label}
+                  </a>
+                    {/* <span className="montserrat-font font-light text-[16px]">{item.label}</span> */}
 
                     {item.submenus?.length > 0 && (
                       <ChevronDown
@@ -392,7 +397,7 @@ const Header = ({navbarData}) => {
               </button> */}
               <button
               className="bg-blue-500 w-full md:w-[80%] p-3 rounded-lg text-[14px] text-white"
-              onClick={() => navigate(navbarData.buttonlink)}
+              onClick={() => { setOpenMobileMenu(false); navigate(navbarData.buttonlink);}}
               >
              {navbarData?.buttontext}
             </button>

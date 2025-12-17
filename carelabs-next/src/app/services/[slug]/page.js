@@ -6,6 +6,7 @@ import EngineeringServices from "@/components/Services/EngineeringServices";
 import FaqResourcesSection from "@/components/Services/FaqResourcesSection";
 import PowerSystemAnalysisCTA from "@/components/Services/PowerSystemAnalysisCTA";
 import { clientIcons } from "@/lib/clientIcons";
+import { CheckCircle, ChevronRight } from "lucide-react";
 
 
 
@@ -123,7 +124,7 @@ export default async function Page({ params }) {
             .filter(Boolean)
             .map((item, i) => (
               <div key={i} className="flex gap-2 text-sm">
-                <i className="fa-solid fa-angle-right text-red-500 mt-1 text-[15px]" />
+                <ChevronRight className="text-red-500"/>
                 <p className="text-[16px] text-[#0F1729]">{item}</p>
               </div>
             ))}
@@ -169,7 +170,7 @@ export default async function Page({ params }) {
             .filter(Boolean)
             .map((item, i) => (
               <div key={i} className="flex gap-2 text-sm">
-                <i className="fa-regular fa-circle-check text-orange-500 mt-1 text-[17px]" />
+                <CheckCircle className="text-orange-500"/>
                 <p className="text-[16px] text-[#0F1729]">{item}</p>
               </div>
             ))}

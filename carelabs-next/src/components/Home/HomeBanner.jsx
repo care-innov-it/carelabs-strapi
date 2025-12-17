@@ -172,7 +172,7 @@ const  HomeBanner = ({data}) => {
 
                 className="
                     group 
-                    w-[202px] h-[44px]
+                    w-[202px] 
                     bg-[#FF7038] text-white 
                     rounded-[9999px]
                     flex items-center justify-center gap-2
@@ -180,6 +180,9 @@ const  HomeBanner = ({data}) => {
                     transition-all duration-300
                     hover:bg-[#FF4C05]
                     cursor-pointer
+                    py-2
+                    px-4
+                    text-center
                 "
                 >
                 {homeData.btn1_text}
@@ -197,7 +200,7 @@ const  HomeBanner = ({data}) => {
                 <button
                 onClick={openRandomVideo}
                 className="
-                    w-[202px] h-[44px]
+                    w-[202px] 
                     bg-white text-gray-800 
                     border border-gray-300
                     rounded-[9999px]
@@ -207,6 +210,8 @@ const  HomeBanner = ({data}) => {
                     hover:bg-[#FF7038] hover:text-white
                     hover:border-[#307FE2]
                     cursor-pointer
+                    py-2 px-4
+                    text-center
                 "
                 >
                 <Play size={14} />

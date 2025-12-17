@@ -5,7 +5,7 @@ import EngineeringServices from "@/components/Services/EngineeringServices";
 import FaqResourcesSection from "@/components/Services/FaqResourcesSection";
 import PowerSystemAnalysisCTA from "@/components/Services/PowerSystemAnalysisCTA";
 import { clientIcons } from "@/lib/clientIcons";
-import { ChevronDown, CircleCheck } from "lucide-react";
+import {ChevronDown, ChevronRight, CircleCheck } from "lucide-react";
 
 
 export default async function Page({ params }) {
@@ -120,7 +120,7 @@ export default async function Page({ params }) {
             .filter(Boolean)
             .map((item, i) => (
               <div key={i} className="flex gap-2 text-sm">
-                <i className="fa-solid fa-angle-right text-red-500 mt-1 text-[15px]" />
+               <ChevronRight className="text-red-500"/>
                 <p className="text-[16px] text-[#0F1729]">{item}</p>
               </div>
             ))}
@@ -162,7 +162,7 @@ export default async function Page({ params }) {
             .filter(Boolean)
             .map((item, i) => (
               <div key={i} className="flex gap-2 text-sm">
-                <i className="fa-regular fa-circle-check text-orange-500 mt-1 text-[17px]" />
+                <CheckCircle className="text-orange-500"/>
                 <p className="text-[16px] text-[#0F1729]">{item}</p>
               </div>
             ))}
@@ -225,49 +225,7 @@ export default async function Page({ params }) {
       {/* =====================================================================================
          SECTION 4 → How Study Runs (Timeline)
       ===================================================================================== */}
-      {/* <section>
-        <div className="w-full flex flex-col items-center py-10">
 
-          <p className="gradient-text text-4xl font-bold">{service?.methodsTitle}</p>
-          <p className="text-gray-700 max-w-xl text-center mt-3">{service?.methodsSubtitle}</p>
-
-          <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10">
-            {service?.methodology?.map((step, index) => (
-              <div key={index} className="flex flex-col items-center gap-4">
-
-                <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
-                  <div className="bg-white rounded-2xl navbar-shadow flex flex-col md:flex-row overflow-hidden w-full lg:w-[60%]">
-                    
-                    <div
-                      className="w-full md:w-[40%] h-56 md:h-auto"
-                      style={{
-                        backgroundImage: `url(${step?.image?.url})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />
-
-                    <div className="p-6 flex gap-4 md:w-[60%]">
-                      <div className="w-[50px] h-[50px] flex justify-center items-center bg-amber-200 rounded-xl text-lg font-bold">
-                        {step.Order}
-                      </div>
-                      <div>
-                        <p className="text-xl font-bold">{step.OrderTitleText}</p>
-                        <p className="text-sm text-gray-700 mt-2">{step.OrderSubtitleText}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {index !== service.methodology.length - 1 && (
-                  <i className="fa-solid fa-angles-down text-blue-500 text-3xl" />
-                )}
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section> */}
 
       <section>
   <div className="w-full flex flex-col items-center py-11 bg-[#f9fbfe]">
@@ -394,19 +352,7 @@ export default async function Page({ params }) {
           {sec.label}
         </p>
 
-        {/* {[sec.list1, sec.list2, sec.list3].map(
-          (txt, i) =>
-            txt && (
-              <div key={i} className="flex gap-2 items-start">
-                <div className="w-5 h-5 rounded-full border-2 border-orange-500 flex items-center justify-center">
-                  <i className="fa-solid fa-check text-orange-500 text-[10px]"></i>
-                </div>
-                <p className="transition-all duration-300 text-gray-600">
-                  {txt}
-                </p>
-              </div>
-            )
-        )} */}
+
 
   {[sec.list1, sec.list2, sec.list3].map(
    (txt, i) =>
@@ -443,43 +389,7 @@ export default async function Page({ params }) {
       {/* =====================================================================================
          SECTION 6 → Results Section (Stats + Bottom Cards)
       ===================================================================================== */}
-      {/* <section>
-        <div className="min-h-[80vh] flex justify-center py-10">
-          <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
-
-            <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p>
-            <p className="text-gray-700 mt-3 text-center">{service?.resultsSubtitle}</p>
-
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-10">
-              {service?.resultsStat?.map((stat, i) => (
-                <div key={i} className="bg-white p-6 rounded-xl text-center flex flex-col items-center gap-3">
-                  <div className="w-[50px] h-[50px] bg-yellow-300 rounded-xl flex justify-center items-center">
-                    <i className="fa-solid fa-circle-exclamation" />
-                  </div>
-                  <p className="text-4xl font-bold bg-gradient-to-r from-[#5b68c3] to-[#c58a7a] bg-clip-text text-transparent">{stat.percentage}</p>
-                  <p className="text-sm text-gray-600 ">{stat.description}</p>
-                </div>
-              ))}
-            </div>
-
-            
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 w-full mt-10">
-              {service?.resultName?.map((item, idx) => (
-                <div key={idx} className="bg-white p-6 rounded-xl flex flex-col gap-4">
-                  <div className="flex gap-4 items-center">
-                    <i className={item.icon} />
-                    <p className="text-xl font-bold">{item.label}</p>
-                  </div>
-                  <p className="text-sm pl-10 text-gray-600 ">{item.description}</p>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section> */}
-
+    
 <section>
   <div className="min-h-[80vh] flex justify-center py-10 bg-[#f9fbfe]">
     <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
