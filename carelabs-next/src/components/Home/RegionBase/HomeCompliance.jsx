@@ -61,9 +61,10 @@ const HomeCompliance = ({data}) => {
                     return (
                       <div 
                        data-aos="fade-up"
+                       data-aos-once="true"
                        data-aos-anchor-placement="top-center"
-                      key={index} className="p-8 flex flex-col justify-center gap-4 glass-panel">
-                        <div className="w-[70px] h-[70px] rounded-[24px] flex items-center justify-center light-blue"
+                      key={index} className="p-8 flex flex-col justify-center gap-4 glass-panel3 group cursor-pointer transform transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]  hover:-translate-y-2" style={{ '--card-color': item.color,}}>
+                        <div className="w-[70px] h-[70px] rounded-[24px] flex items-center justify-center light-blue transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-3 "
                         style={{ backgroundColor: item.color + "10" }}
 >
                           <FeatureIcon size={32} color={item.color}  />

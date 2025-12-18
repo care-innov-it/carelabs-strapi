@@ -20,11 +20,6 @@ const  HomeBanner = ({data}) => {
     setHomeData(data);
    }, [data]);
 
-    useEffect(()=> {
-        if (typeof window !== "undefined") {
-            window.openRandomVideoGlobal = () => openRandomVideo();
-        }
-    },[]);
     
     useEffect(() => {
         Aos.init({ 
@@ -39,21 +34,6 @@ const  HomeBanner = ({data}) => {
     }, []);
     
     
-
-   const randomVideos = [
-            "dQw4w9WgXcQ",
-            "kXYiU_JCYtU",
-            "RgKAFK5djSk",
-            "3JZ_D3ELwOQ",
-            "9bZkp7q19f0",
-         ];
-
-    const openRandomVideo = () => {
-        const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-            setVideoId(randomId);
-            setShowVideo(true);
-    };
-
     const popIn = `
       @keyframes popIn {
         0% { opacity: 0; transform: translateY(20px) scale(0.9); }
@@ -63,6 +43,20 @@ const  HomeBanner = ({data}) => {
     `;
     
    if(!homeData) return null;
+
+   const openVideo = () => {
+    if (!homeData.btn2_link) return;
+
+    let youtubeId = null;
+
+    // If btn2_link is a full YouTube URL
+    const url = homeData.btn2_link;
+    const match = url.match(/(?:v=|\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (match) youtubeId = match[1];
+
+    setVideoId(youtubeId);
+    setShowVideo(true);
+  };
 
   return (
     <div>
@@ -194,7 +188,7 @@ const  HomeBanner = ({data}) => {
 
                 {/* SECONDARY BUTTON — BORDERED */}
                 <button
-                onClick={openRandomVideo}
+                onClick={openVideo}
                 className="
                     bg-white text-gray-800 
                     border border-gray-300

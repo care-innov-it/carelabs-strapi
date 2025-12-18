@@ -7,6 +7,7 @@ import HomeCompliance from '@/components/Home/RegionBase/HomeCompliance';
 import HomeIndustry from '@/components/Home/RegionBase/HomeIndustry';
 import { GET_HOMEPAGE_DATA } from '@/lib/api-Collection';
 import client from '@/lib/appollo-client';
+import { getRegionsServer } from '@/lib/getRegions.server';
 
 
 // cache at module scope
@@ -36,6 +37,16 @@ async function getHomePageData(locale) {
   }
 }
 
+function resolveLocaleFromRegions(locale, regions) {
+  if (!locale || !Array.isArray(regions)) return locale;
+
+  const matchedRegion = regions.find(
+    (region) => region.language === locale
+  );
+  const regionValue= matchedRegion?.language_value || "en";
+  console.log("matchedRegion",regionValue);
+  return regionValue
+}
 
 
 
@@ -95,16 +106,18 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({params}) {
 
+    const regions = await getRegionsServer();
+
+    console.log("Regions",regions);
+    
+
+
     var { locale } = await params;
     console.log("Locale in Home",locale);
-      const localeMap = {
-        ca: "en-CA",
-        ar: "ar",
-        en: "en",
-        fr: "fr-FR",   // example additional
-        es: "es-ES",   // example additional
-        };
-        locale = localeMap[locale] || "en";
+
+
+      locale = resolveLocaleFromRegions(locale, regions);
+
     const homeData = await getHomePageData(locale);
     console.log("Home Data:", homeData);
      

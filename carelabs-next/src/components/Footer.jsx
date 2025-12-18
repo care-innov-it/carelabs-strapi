@@ -14,7 +14,7 @@ const Footer = () => {
         const response = await client.query({
             query:GET_FOOTER
         });
-
+        
         setFooterData(response.data.footer)
     } catch (error) {
         console.log("Error fetching footer:", error);
@@ -35,7 +35,7 @@ const Footer = () => {
     
     <div>
       {/* MAIN FOOTER BLOCK */}
-      <div className="w-full footer-background md:h-[350px] lg:h-[400px] py-20 flex justify-center">
+      <div className="w-full footer-background py-16 flex justify-center">
         <div className="w-[90%] md:w-[90%] flex flex-col gap-10">
 
           {/* TOP ROW: LOGO + MENUS */}
@@ -58,6 +58,7 @@ const Footer = () => {
               <div className="flex gap-3">
                 {socialLinks?.map((item, idx) => {
                   const IconComponent = clientIcons[item.icon];
+                  console.log("fooooooooooter",item.icon, clientIcons[item.icon]);
                   if (!IconComponent) return null; 
 
                   return (
@@ -90,19 +91,22 @@ const Footer = () => {
               </div>
             ))}
           </div>
+          <hr className="text-gray-700" />
 
-          {/* BOTTOM LINKS */}
-          <div className="flex flex-wrap gap-4 justify-center text-gray-300 text-sm">
-            {bottomLinks?.map((item, idx) => (
-              <a key={idx} href={item.url} className="hover:underline">
-                {item.label}
-              </a>
-            ))}
-          </div>
+          <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-2 text-gray-300 text-sm">
+            {/* COPYRIGHT TEXT */}
+            <div className="text-sm text-center lg:text-left">
+              {copyrightText}
+            </div>
 
-          {/* COPYRIGHT TEXT — NOW INSIDE FOOTER */}
-          <div className="text-left text-gray-300 text-xs">
-            {copyrightText}
+            {/* BOTTOM LINKS */}
+            <div className="flex flex-wrap justify-center lg:justify-end gap-4 mt-2 lg:mt-0">
+              {bottomLinks?.map((item, idx) => (
+                <a key={idx} href={item.url} className="hover:underline text-sm">
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
 
         </div>

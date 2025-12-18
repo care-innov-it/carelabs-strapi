@@ -131,6 +131,15 @@
 .glass-panel2:hover {
   border-color: color-mix(in srgb, var(--card-border) 25%, transparent);
 }
+
+.glass-panel3 {
+    transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), box-shadow 0.7s ease;
+}
+.glass-panel3:hover {
+  box-shadow:
+    0 10px 25px color-mix(in srgb, var(--card-color) 20%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--card-color) 25%, transparent);
+}
 /* 5th december */
 .ourteam-panel {
     background: rgba(255, 255, 255, 0.9); /* white with opacity */

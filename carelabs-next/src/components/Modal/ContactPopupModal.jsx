@@ -47,48 +47,64 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
     return () => clearInterval(interval);
   }, []);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const token = document.querySelector(
-            "input[name='cf-turnstile-response']"
-        )?.value;
-        if (!token) {
-            alert("Please complete the CAPTCHA");
-            return;
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const token = document.querySelector(
+        "input[name='cf-turnstile-response']"
+    )?.value;
+
+    if (!token) {
+        alert("Please complete the CAPTCHA");
+        return;
+    }
+
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.target);
+    const data = {};
+
+    fieldNames.form_fields.forEach((field) => {
+        const slug = field.label
+            .toLowerCase()
+            .replace(/\s+/g, "_");
+
+        // Phone field handling
+        if (slug === "phone") {
+            const phone = formData.get("phone");
+            const countryCode = formData.get("country_code");
+            data[field.label] = `${countryCode || ""}${phone || ""}`;
+        } else {
+            data[field.label] = formData.get(slug) || "";
         }
-        setIsSubmitting(true);
-        const formData = new FormData(e.target);
-        const data = {
-            "Contact Name": formData.get("contactName"),
-            "Company Name": formData.get("companyName"),
-            "Country": formData.get("country"),
-            "Email": formData.get("email"),
-            "Phone": `${formData.get("countryCode")}${formData.get("phone")}`,
-            "Services": formData.get("services"),
-            "Issue Faced": formData.get("issueFaced"),
-            "cf_token": token,
-        };
+    });
 
-        const queryString = new URLSearchParams(data).toString();
-        const webhookUrl = `https://sreyasteam.app.n8n.cloud/webhook/formsubmission?${queryString}`;
+    // Add captcha token
+    data["cf_token"] = token;
 
-        try {
-            const response = await fetch(webhookUrl, { method: "GET" });
+    const queryString = new URLSearchParams(data).toString();
 
-            if (response.ok) {
-                alert("Form submitted successfully!");
-                setIsOpen(false);
-                e.target.reset();
-            } else {
-                alert("Failed to submit form. Please try again.");
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            alert("An error occurred. Please try again..");
-        } finally {
-            setIsSubmitting(false);
+    console.log("QueryString",queryString);
+    
+    const webhookUrl = `https://sreyasteam.app.n8n.cloud/webhook/formsubmission?${queryString}`;
+
+    try {
+        const response = await fetch(webhookUrl, { method: "GET" });
+
+        if (response.ok) {
+            alert("Form submitted successfully!");
+            setIsOpen(false);
+            e.target.reset();
+        } else {
+            alert("Failed to submit form. Please try again.");
         }
-    };
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred. Please try again.");
+    } finally {
+        setIsSubmitting(false);
+    }
+};
 
 
     if (fieldNames.length==0) return null;
@@ -138,7 +154,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 </label>
                                 <input
                                     type="text"
-                                    name="contactName"
+                                    name={fieldNames.form_fields[0].label.toLowerCase().replace(/\s+/g, "_")}
                                     placeholder={fieldNames?.form_fields[0]?.placeholder}
                                     required
                                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"
@@ -150,7 +166,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 </label>
                                 <input
                                     type="text"
-                                    name="Company Name"
+                                    name={fieldNames.form_fields[1].label.toLowerCase().replace(/\s+/g, "_")}
                                     placeholder={fieldNames?.form_fields[1]?.placeholder}
                                     required
                                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"
@@ -201,7 +217,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 </label>
                                 <input
                                     type="email"
-                                    name="email"
+                                    name={fieldNames.form_fields[3].label.toLowerCase().replace(/\s+/g, "_")}
                                     placeholder={fieldNames?.form_fields[3]?.placeholder}
                                     required
                                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-colors"
@@ -218,18 +234,19 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 <div className="flex gap-2">
                                     <input
                                         type="text"
-                                        name="countryCode"
+                                        name="country_code" // separate name for country code
                                         defaultValue="+1"
                                         className="w-14 px-2 py-2.5 text-sm text-center border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"
                                     />
                                     <input
                                         type="tel"
-                                        name="phone"
+                                        name="phone" // separate name for phone number
                                         placeholder={fieldNames?.form_fields[4]?.placeholder}
                                         required
                                         className="flex-1 px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"
                                     />
-                                </div>
+                                    </div>
+
                             </div>
 
                             <div>
@@ -238,7 +255,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 </label>
                                 <input
                                     type="text"
-                                    name="services"
+                                    name={fieldNames.form_fields[5].label.toLowerCase().replace(/\s+/g, "_")}
                                     placeholder={fieldNames?.form_fields[5]?.placeholder}
                                     required
                                     className="w-full px-3 py-2.5 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-colors"
@@ -251,7 +268,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                                 {fieldNames?.form_fields[6]?.label} {fieldNames?.form_fields[6]?.required && <span className="text-red-500">*</span>}
                             </label>
                             <textarea
-                                name="issueFaced"
+                                name={fieldNames.form_fields[6].label.toLowerCase().replace(/\s+/g, "_")}
                                 placeholder={fieldNames?.form_fields[6]?.placeholder}
                                 rows={4}
                                 required

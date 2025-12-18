@@ -36,8 +36,7 @@ const HomeClient = ({data}) => {
                 
                 {/* Title */}
                 <h2 className="  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-bold montserrat-font"
-                  dangerouslySetInnerHTML={{ __html: data.title }}>
-                
+                  dangerouslySetInnerHTML={{ __html: data.title }}>            
                 </h2>
                 
                 {/* Description */}
