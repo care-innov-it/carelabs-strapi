@@ -1,7 +1,5 @@
 "use client";
-import client from "@/lib/appollo-client";
-import { GET_CONTACT_PAGE } from "@/lib/api-Collection";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CircleCheck, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail, Clock , Shield, Phone, MessageCircle, Download } from "lucide-react";
 import { clientIcons } from "@/lib/clientIcons";
 import Image from "next/image";
@@ -10,11 +8,25 @@ const ContactClient = ({ contactData }) => {
    
      const [openIndex, setOpenIndex] = useState(null);
      const [selected, setSelected] = useState(null);
+     const [normalFields, setNormalFields] = useState([]);
+     const [messageField, setMessageField] = useState(null);
      const [selectedRegion, setSelectedRegion] = useState(
       contactData?.Where_we_support?.regions?.[0]?.region_item?.[0]
      );
 
+useEffect(() => {
+  const formFields =
+    contactData?.Tell_us_about_project?.contact_form?.contact_form_fields || [];
 
+  const msgField = formFields.find(f =>
+    f.fieldname?.toLowerCase().includes("message")
+  );
+
+  const otherFields = formFields.filter(f => f !== msgField);
+
+  setMessageField(msgField);
+  setNormalFields(otherFields);
+}, [contactData]);
 
       if (!contactData) {
         return (
@@ -257,134 +269,122 @@ const ContactClient = ({ contactData }) => {
         </div>
 
         {/* RIGHT SIDE FORM */}
-        <div className="w-full md:w-[60%]">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+    <div className="w-full md:w-[60%]">
+    <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {(() => {
-              const formFields = [...(contactData?.Tell_us_about_project?.contact_form?.contact_form_fields || [])];
+        {/* NORMAL FIELDS */}
+        {normalFields
+        ?.sort((a, b) => a.order - b.order)
+        .map((field, idx) => (
+            <div key={idx} className="flex flex-col">
+            <label className="text-sm font-medium mb-1">
+                {field.fieldname} {field.required ? "*" : ""}
+            </label>
 
-              window._messageField = formFields.find(f =>
-                f.fieldname?.toLowerCase().includes("message")
-              );
-              window._normalFields = formFields.filter(f =>
-                f !== window._messageField
-              );
-            })()}
+            <input
+                type="text"
+                placeholder={field.placeholder}
+                required={field.required}
+                className="w-full px-3 py-2 border border-[#13182014] rounded-xl placeholder:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#157DE5] focus:border-2"
+            />
+            </div>
+        ))}
 
-            {/* NORMAL FIELDS (NO MESSAGE FIELD HERE) */}
-            {window._normalFields
-              ?.sort((a, b) => a.order - b.order)
-              .map((field, idx) => (
-                <div key={idx} className="flex flex-col">
-                  <label className="text-sm font-medium mb-1">
-                    {field.fieldname} {field.required ? "" : ""}
-                  </label>
+        {/* TYPE OF HELP */}
+        <div className="col-span-1 md:col-span-2 flex flex-col">
+        <label className="text-sm font-medium mb-1">
+            {contactData?.Tell_us_about_project?.contact_form?.typeOfHelpTitle}
+        </label>
 
-                  <input
-                    type="text"
-                    placeholder={field.placeholder}
-                    required={field.required}
-                    className="w-full px-3 py-2 border border-[#13182014] rounded-xl placeholder:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#157DE5] focus:border-2"
-                  />
-                </div>
+        <select className="w-full px-3 py-2 border border-[#13182014] rounded-xl text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2">
+            {(contactData?.Tell_us_about_project?.contact_form?.typeOfHelpOptions || [])
+            .sort((a, b) => a.order - b.order)
+            .map((opt, i) => (
+                <option key={i} defaultValue={opt.default}>
+                {opt.name}
+                </option>
             ))}
-
-            {/* TYPE OF HELP */}
-            <div className="col-span-1 md:col-span-2 flex flex-col">
-              <label className="text-sm font-medium mb-1">
-                {contactData?.Tell_us_about_project?.contact_form?.typeOfHelpTitle}
-              </label>
-
-              <select className="w-full px-3 py-2 border border-[#13182014] rounded-xl text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500">
-
-                {[...(contactData?.Tell_us_about_project?.contact_form?.typeOfHelpOptions || [])]
-                  .sort((a, b) => a.order - b.order)
-                  .map((opt, i) => (
-                    <option key={i} selected={opt.default}>
-                      {opt.name}
-                    </option>
-                ))}
-              </select>
-            </div>
-
-            {/* SERVICES CHIPS */}
-            <div className="col-span-1 md:col-span-2 flex flex-col">
-              <label className="text-sm font-medium mb-1">
-                {contactData?.Tell_us_about_project?.contact_form?.servicesTitle}
-              </label>
-
-              <div className="flex flex-wrap gap-3 mt-3">
-                {[...(contactData?.Tell_us_about_project?.contact_form?.services || [])]
-                  .sort((a, b) => a.order - b.order)
-                  .map((service, idx) => (
-                    <span key={idx} onClick={() => setSelected(idx)}
-                    className={`
-                      px-3 py-2 border rounded-full text-[12px] font-semibold cursor-pointer
-                      ${selected === idx ? "bg-[#157DE5] text-white border-[#157DE5]" : "border-[#13182014] text-gray-700 hover:bg-gray-200"}
-                    `}
-                  >
-                    {service.label}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* CONTACT METHOD */}
-            <div className="col-span-1 md:col-span-2">
-              <label className="text-sm font-medium mb-2 block">
-                {contactData?.Tell_us_about_project?.contact_form?.contactMethodTitle}
-              </label>
-
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-900">
-                {[...(contactData?.Tell_us_about_project?.contact_form?.contactMethods || [])]
-                  .sort((a, b) => a.order - b.order)
-                  .map((method, idx) => (
-                    <label key={idx} className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="contact_method" />
-                      {method.label}
-                    </label>
-                ))}
-              </div>
-            </div>
-
-            {/* NOW PUT MESSAGE FIELD HERE */}
-            {window._messageField && (
-              <div className="col-span-1 md:col-span-2 flex flex-col">
-                <label className="text-sm font-medium mb-1">
-                  {window._messageField.fieldname} {window._messageField.required ? "*" : ""}
-                </label>
-
-                <textarea
-                  rows="4"
-                  placeholder={window._messageField.placeholder}
-                  required={window._messageField.required}
-                  className="w-full px-5 py-5 rounded-xl border border-[#13182014] text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500"
-                ></textarea>
-              </div>
-            )}
-
-            {/* SUBMIT BUTTON */}
-            <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
-              <button
-                type="submit"
-                className="
-                  w-[60%] md:w-[100%] 
-                  py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white 
-                  rounded-full text-sm font-medium 
-                  shadow hover:bg-[linear-gradient(90deg,#FF7038E6,#FF7038FF)] transition
-                "
-              >
-                {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
-              </button>
-
-              <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
-                < Clock className="w-4 h-4"/>
-                {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
-              </p>
-            </div>
-
-          </form>
+        </select>
         </div>
+
+        {/* SERVICES */}
+        <div className="col-span-1 md:col-span-2 flex flex-col">
+        <label className="text-sm font-medium mb-1">
+            {contactData?.Tell_us_about_project?.contact_form?.servicesTitle}
+        </label>
+
+        <div className="flex flex-wrap gap-3 mt-3">
+            {(contactData?.Tell_us_about_project?.contact_form?.services || [])
+            .sort((a, b) => a.order - b.order)
+            .map((service, idx) => (
+                <span
+                key={idx}
+                onClick={() => setSelected(idx)}
+                className={`px-3 py-2 border rounded-full text-[12px] font-semibold cursor-pointer
+                    ${
+                    selected === idx
+                        ? "bg-[#157DE5] text-white border-[#157DE5]"
+                        : "border-[#13182014] text-gray-700 hover:bg-gray-200"
+                    }`}
+                >
+                {service.label}
+                </span>
+            ))}
+        </div>
+        </div>
+
+        {/* CONTACT METHOD */}
+        <div className="col-span-1 md:col-span-2">
+        <label className="text-sm font-medium mb-2 block">
+            {contactData?.Tell_us_about_project?.contact_form?.contactMethodTitle}
+        </label>
+
+        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-900">
+            {(contactData?.Tell_us_about_project?.contact_form?.contactMethods || [])
+            .sort((a, b) => a.order - b.order)
+            .map((method, idx) => (
+                <label key={idx} className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="contact_method" />
+                {method.label}
+                </label>
+            ))}
+        </div>
+        </div>
+
+        {/* MESSAGE FIELD (ALWAYS LAST) */}
+        {messageField && (
+        <div className="col-span-1 md:col-span-2 flex flex-col">
+            <label className="text-sm font-medium mb-1">
+            {messageField.fieldname} {messageField.required ? "*" : ""}
+            </label>
+
+            <textarea
+            rows="4"
+            placeholder={messageField.placeholder}
+            required={messageField.required}
+            className="w-full px-5 py-5 rounded-xl border border-[#13182014] text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500"
+            />
+        </div>
+        )}
+
+        {/* SUBMIT */}
+        <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
+        <button
+            type="submit"
+            className="w-[60%] md:w-full py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white rounded-full text-sm font-medium shadow transition"
+        >
+            {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
+        </button>
+
+        <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
+            <Clock className="w-4 h-4" />
+            {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
+        </p>
+        </div>
+
+    </form>
+    </div>
+
       </div>
     </section>
 
