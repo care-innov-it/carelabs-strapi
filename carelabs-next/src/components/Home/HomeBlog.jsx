@@ -138,17 +138,17 @@ const HomeBlog = ({data}) => {
               Read article           
               </p> */}
               
-              <a
-                href={featured?.buttonlink || '#'}
-                className="text-md font-semibold text-[#2575b6] cursor-pointer 
-             flex items-center gap-2 group"
+ 
+              <Link
+                href={featured?.buttonlink ? `/blogs/${featured.buttonlink}` : '#'}
+                className="text-md font-semibold text-[#2575b6] cursor-pointer flex items-center gap-2 group"
               >
                 {featured?.buttontext}
-                <ArrowRight 
-                  size={18} 
+                <ArrowRight
+                  size={18}
                   className="text-[#2575b6] transform transition-all duration-300 group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
 
             </div>
         </div>
