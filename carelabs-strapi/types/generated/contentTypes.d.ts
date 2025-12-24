@@ -1316,62 +1316,6 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiInsightInsight extends Struct.SingleTypeSchema {
-  collectionName: 'insights';
-  info: {
-    displayName: 'Insight';
-    pluralName: 'insights';
-    singularName: 'insight';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-    button: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    buttonLink: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::insight.insight'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiInsightblogInsightblog extends Struct.CollectionTypeSchema {
   collectionName: 'insightblogs';
   info: {
@@ -1985,74 +1929,6 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiTestimonialsSectionTestimonialsSection
-  extends Struct.SingleTypeSchema {
-  collectionName: 'testimonials_sections';
-  info: {
-    displayName: 'testimonials-section';
-    pluralName: 'testimonials-sections';
-    singularName: 'testimonials-section';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    badge: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::testimonials-section.testimonials-section'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    testimonials: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
-    title: Schema.Attribute.RichText;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiWorldwideImpactWorldwideImpact
-  extends Struct.SingleTypeSchema {
-  collectionName: 'worldwide_impacts';
-  info: {
-    displayName: 'worldwide-impact';
-    pluralName: 'worldwide-impacts';
-    singularName: 'worldwide-impact';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    badge: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::worldwide-impact.worldwide-impact'
-    > &
-      Schema.Attribute.Private;
-    projectsStat: Schema.Attribute.Component<'stats.project-stat', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    successStat: Schema.Attribute.Component<'stats.success-stat', true>;
-    title: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2704,7 +2580,6 @@ declare module '@strapi/strapi' {
       'api::home-serivice.home-serivice': ApiHomeSeriviceHomeSerivice;
       'api::home-service-item.home-service-item': ApiHomeServiceItemHomeServiceItem;
       'api::home.home': ApiHomeHome;
-      'api::insight.insight': ApiInsightInsight;
       'api::insightblog.insightblog': ApiInsightblogInsightblog;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::our-team-page.our-team-page': ApiOurTeamPageOurTeamPage;
@@ -2713,8 +2588,6 @@ declare module '@strapi/strapi' {
       'api::service-page.service-page': ApiServicePageServicePage;
       'api::service.service': ApiServiceService;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
-      'api::testimonials-section.testimonials-section': ApiTestimonialsSectionTestimonialsSection;
-      'api::worldwide-impact.worldwide-impact': ApiWorldwideImpactWorldwideImpact;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
