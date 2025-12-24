@@ -39,6 +39,9 @@
     },
     "reply_msg": {
       "type": "text"
+    },
+    "submissionlink": {
+      "type": "string"
     }
   },
   "config": {}

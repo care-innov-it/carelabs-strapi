@@ -37,6 +37,12 @@
     },
     "buttonlink": {
       "type": "string"
+    },
+    "sitekey": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "string"
     }
   }
 }

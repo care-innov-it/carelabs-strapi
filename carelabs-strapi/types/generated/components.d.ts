@@ -103,6 +103,7 @@ export interface ContactContactForm extends Struct.ComponentSchema {
     reply_msg: Schema.Attribute.Text;
     services: Schema.Attribute.Component<'contact.services', true>;
     servicesTitle: Schema.Attribute.String;
+    submissionlink: Schema.Attribute.String;
     submitbutton: Schema.Attribute.String;
     typeOfHelpOptions: Schema.Attribute.Component<
       'contact.type-of-help-options',
