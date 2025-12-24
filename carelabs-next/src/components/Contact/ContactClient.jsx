@@ -28,6 +28,8 @@ useEffect(() => {
   setNormalFields(otherFields);
 }, [contactData]);
 
+
+
       if (!contactData) {
         return (
             <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
@@ -89,7 +91,13 @@ useEffect(() => {
             {contactData?.buttons?.map((btn, index) => (
               <a
                 key={index}
-                href={btn.link || "#"}
+                href={btn.link || "#contact_form"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document
+                    .getElementById("contact_form")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
                 className={
                   index === 0
                     ? "px-8 py-3 bg-[#FF7038] text-white rounded-full text-sm font-medium shadow hover:bg-[#ff5820] transition"
@@ -206,8 +214,14 @@ useEffect(() => {
 
                     <div className="flex items-center gap-2 w-full group mt-3">
                       <a
-                        href={item.sharelink || "#"}
-                        className="text-[#007FFF] font-medium text-[16px]"
+                        href={item.sharelink || "#contact_form"}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document
+                            .getElementById("contact_form")
+                            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }}
+                                className="text-[#007FFF] font-medium text-[16px]"
                       >
                         {item.sharetext}
                         <span className="inline-block transition-transform duration-300 text-[16px]
@@ -226,7 +240,7 @@ useEffect(() => {
 
     {/* formCard */}
 
-    <section className="w-full flex items-center justify-center py-20 bg-[#F7F8FB] ">
+    <section id="contact_form" className="w-full flex items-center justify-center py-20 bg-[#F7F8FB] ">
       <div
         className="
           w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]

@@ -1,7 +1,7 @@
 
 import client from "@/lib/appollo-client";
 import { GET_INSIGHTS_BY_SLUG_By_LOCALE } from "@/lib/api-Collection";
-import { Calendar,Clock,ArrowRight,Tag } from "lucide-react";
+import { Calendar,Clock,ArrowRight,Tag, User } from "lucide-react";
 import { clientIcons } from "@/lib/clientIcons";
 import carlabz from "@/assets/carlabz.jpg";
 import { getRegionsServer } from "@/lib/getRegions.server";
