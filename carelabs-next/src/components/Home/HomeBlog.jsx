@@ -166,7 +166,7 @@ const HomeBlog = ({data}) => {
     {insights.articles.slice(1, 4).map((item, idx) => (
       <a  key={idx} href={item.buttonlink || '#'}>
         <div className="transform transition-all duration-500 ease-in-out hover:-translate-y-3 
-            border-[1px] border-transparent hover:border hover:border-blue-900 h-full rounded-2xl">
+            border-[1px] border-transparent hover:border hover:border-blue-100 h-full rounded-2xl">
 
           <div 
             data-aos="fade-up"

@@ -31,21 +31,34 @@ const ContactPopupModal = ({ setIsOpen }) => {
     fetchFieldValues(); // call on mount
 }, []);
 
-   useEffect(() => {
-   
+//    useEffect(() => {
+//     const interval = setInterval(() => {
+//       if (window.turnstile) {
+//         window.turnstile.render("#cf-turnstile", {
+//           sitekey: "0x4AAAAAAA_eaDkiLVUQBCGg",
+//           theme: "light",
+//         });
+//         clearInterval(interval);
+//       }
+//     }, 300);
 
-    const interval = setInterval(() => {
-      if (window.turnstile) {
-        window.turnstile.render("#cf-turnstile", {
-          sitekey: "0x4AAAAAAA_eaDkiLVUQBCGg",
-          theme: "light",
-        });
-        clearInterval(interval);
-      }
-    }, 300);
+//     return () => clearInterval(interval);
+//    }, []);
+useEffect(() => {
+  if (!fieldNames?.sitekey) return;
 
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(() => {
+    if (window.turnstile) {
+      window.turnstile.render("#cf-turnstile", {
+        sitekey: fieldNames.sitekey,
+        theme: fieldNames.theme || "light",
+      });
+      clearInterval(interval);
+    }
+  }, 300);
+
+  return () => clearInterval(interval);
+}, [fieldNames]);
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,7 +99,9 @@ const handleSubmit = async (e) => {
 
     console.log("QueryString",queryString);
     
-    const webhookUrl = `https://sreyasteam.app.n8n.cloud/webhook/formsubmission?${queryString}`;
+    // const webhookUrl = `https://sreyasteam.app.n8n.cloud/webhook/formsubmission?${queryString}`;
+    const webhookUrl = `${fieldNames?.buttonlink}?${queryString}`;
+
 
     try {
         const response = await fetch(webhookUrl, { method: "GET" });
@@ -107,7 +122,8 @@ const handleSubmit = async (e) => {
 };
 
 
-    if (fieldNames.length==0) return null;
+    // if (fieldNames.length==0) return null;
+    if (!fieldNames?.form_fields) return null;
      
     return (
         <div
