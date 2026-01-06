@@ -122,6 +122,14 @@
           "localized": true
         }
       }
+    },
+    "random": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }
